@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/dev.Dockerfile
+    volumes:
+    - ./frontend:/frontend
+    ports:
+      - "3000:3000"
+      - "9876:9876"
+  backend:
+    build:
+      context: .
+      dockerfile: backend/dev.Dockerfile
+    volumes:
+        - ./backend:/backend
+    ports:
+      - "8080:8080"
