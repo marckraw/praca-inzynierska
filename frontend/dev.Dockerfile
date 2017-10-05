@@ -12,4 +12,4 @@ RUN ls -l
 
 EXPOSE 3000
 EXPOSE 9876
-CMD yarn && yarn start
+CMD npm install && npm run start
