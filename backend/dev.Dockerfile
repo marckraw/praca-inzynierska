@@ -11,4 +11,4 @@ VOLUME ["/backend"]
 RUN ls -l
 
 EXPOSE 8080
-CMD npm install && npm run start
+CMD npm install && npm run start & npm run test
