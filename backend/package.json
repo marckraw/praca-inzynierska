@@ -1,0 +1,40 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "js-start": "node ./bin/www",
+    "tsc-start": "node dist/index.js",
+    "tsc-compile": "node_modules/.bin/tsc",
+    "tsc-gulp": "gulp",
+    "start": "gulp assets && gulp scripts && npm run tsc-start",
+    "test": "mocha --reporter spec --require ts-node/register 'test/**/*.test.ts'",
+    "coverage": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.5",
+    "@types/chai": "^4.0.4",
+    "@types/chai-http": "^3.0.3",
+    "@types/debug": "0.0.30",
+    "@types/express": "^4.0.37",
+    "@types/mocha": "^2.2.43",
+    "@types/morgan": "^1.7.33",
+    "@types/node": "^8.0.33",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.1",
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  }
+}

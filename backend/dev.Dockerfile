@@ -1,15 +1,14 @@
-FROM python:3.4
+# Dockerfile for BACKEND container
+FROM node:latest
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /backend
+WORKDIR /backend
 
-WORKDIR /usr/src/app
+ADD /backend /backend
+
+VOLUME ["/backend"]
+
 RUN ls -l
-COPY backend/requirements.txt ./
-RUN pip install -r requirements.txt
-COPY . .
 
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 8080
+CMD npm install && npm run start & npm run test
