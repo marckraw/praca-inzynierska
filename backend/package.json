@@ -7,7 +7,7 @@
     "tsc-start": "node dist/index.js",
     "tsc-compile": "node_modules/.bin/tsc",
     "tsc-gulp": "gulp",
-    "start": "gulp scripts && npm run tsc-start",
+    "start": "gulp assets && gulp scripts && npm run tsc-start",
     "test": "mocha --reporter spec --require ts-node/register 'test/**/*.test.ts'",
     "coverage": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")"
   },
