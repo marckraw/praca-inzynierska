@@ -1,0 +1,68 @@
+import {Router, Request, Response, NextFunction} from 'express';
+const Products = require('../product.json');
+
+export class HeroRouter {
+    router: Router
+
+    /**
+     * Initialize the HeroRouter
+     */
+    constructor() {
+        this.router = Router();
+        this.init();
+    }
+
+    /**
+     * GET all Heroes.
+     */
+    public getAll(req: Request, res: Response, next: NextFunction) {
+        res.send(Products);
+    }
+
+
+    /**
+     * GET one hero by id
+     */
+    public getOne(req: Request, res: Response, next: NextFunction) {
+        let query = parseInt(req.params.id);
+        let hero = Products.find(hero => hero.id === query);
+        if (hero) {
+            res.status(200)
+                .send({
+                    message: 'Success',
+                    status: res.status,
+                    hero
+                });
+        }
+        else {
+        res.status(404)
+            .send({
+                message: 'No hero found with the given id.',
+                status: res.status
+            });
+        }
+    }
+
+    /**
+     * POST Add Product.
+     */
+    public addProduct(req: Request, res: Response) {
+        res.send(req);
+    }
+
+    /**
+     * Take each handler, and attach to one of the Express.Router's
+     * endpoints.
+     */
+    init() {
+        this.router.get('/', this.getAll);
+        this.router.post('/add', this.addProduct);
+    }
+
+}
+
+// Create the HeroRouter, and export its configured Express.Router
+const heroRoutes = new HeroRouter();
+heroRoutes.init();
+
+export default heroRoutes.router;

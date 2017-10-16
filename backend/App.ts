@@ -4,6 +4,7 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
 import HeroRouter from './routes/HeroRouter';
+import ProductRouter from './routes/ProductRouter';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -23,6 +24,11 @@ class App {
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
   }
 
   // Configure API endpoints.
@@ -39,6 +45,7 @@ class App {
     });
     this.express.use('/', router);
     this.express.use('/api/v1/heroes', HeroRouter);
+    this.express.use('/api/product', ProductRouter);
   }
 
 }
