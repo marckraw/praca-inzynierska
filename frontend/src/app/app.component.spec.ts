@@ -1,3 +1,7 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProductService } from './product.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddingProductComponent } from './adding-product/adding-product.component';
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
@@ -5,9 +9,19 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+        imports: [
+            FormsModule,
+            ReactiveFormsModule,
+            HttpClientModule,
+        ],
+        declarations: [
+            AppComponent,
+            AddingProductComponent
+        ],
+        providers: [
+            ProductService,
+            HttpClient,
+        ]
     }).compileComponents();
   }));
 
