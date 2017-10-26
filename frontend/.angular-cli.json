@@ -20,7 +20,7 @@
       "prefix": "pi",
       "styles": [
         "styles.css",
-        "./src/_theme.scss"
+        "_theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
