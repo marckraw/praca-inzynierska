@@ -10,7 +10,7 @@
         "no-empty" : false,
         "one-line" : [false],
         "ordered-imports": false,
-        "max-line-length": false,
+        "max-line-length": 160
     },
     "rulesDirectory": []
 }

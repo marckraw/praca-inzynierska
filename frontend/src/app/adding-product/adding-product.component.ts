@@ -38,14 +38,23 @@ import { MaterialModule } from "./../material.module";
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput type="text" [formControlName]="'productCategory'" placeholder="Product Category">
+                    <mat-select placeholder="Product Category" [(ngModel)]="selectedCategory" name="category" [formControlName]="'productCategory'">
+                        <mat-option *ngFor="let category of categories" [value]="category.viewValue">
+                            {{ category.viewValue }}
+                        </mat-option>
+                    </mat-select>
                     <mat-hint align="end">Choose proudct Category</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput type="text" [formControlName]="'productQuantitativeType'" placeholder="Product Quantitative Type">
+                    <mat-select placeholder="Product Quantitative Type" [(ngModel)]="selectedType" name="type" [formControlName]="'productQuantitativeType'">
+                        <mat-option *ngFor="let type of qType" [value]="type.viewValue">
+                            {{ type.viewValue }}
+                        </mat-option>
+                    </mat-select>
                     <mat-hint align="end">Choose product Quantitative Type</mat-hint>
                 </mat-form-field>
+
 
                 <mat-form-field>
                     <input matInput type="text" [formControlName]="'productTags'" placeholder="Product Tags">
@@ -63,7 +72,22 @@ import { MaterialModule } from "./../material.module";
     styleUrls: ["./adding-product.component.scss"],
 })
 export class AddingProductComponent {
+
     public formGroup: FormGroup;
+    public selectedCategory: string;
+    public selectedType: string;
+    public categories = [
+        {value: "miesa_wedliny", viewValue: "Mięsa i wędliny"},
+        {value: "pieczywo", viewValue: "Pieczywo"},
+        {value: "przyprawy", viewValue: "Przyprawy"},
+        {value: "kawa_i_herbata", viewValue: "Kawa i herbata"},
+        {value: "sery_jogurty_i_mleczne", viewValue: "Sery, jogurty i mleczne"},
+        {value: "dania_gotowe_i_sosy", viewValue: "Dania gotowe i sosy"},
+    ];
+    public qType = [
+        {value: "by_quantity", viewValue: "Quantity"},
+        {value: "by_weight", viewValue: "Weight"},
+    ];
 
     constructor(
         private formBuilder: FormBuilder,
