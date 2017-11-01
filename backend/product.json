@@ -7,7 +7,7 @@
         "price": 2,
         "weight": "200g",
         "category": "Mleczne",
-        "type": "by_quantity",
+        "quantitativeType": "by_quantity",
         "tags": [
             "sery",
             "piątnica",
@@ -23,7 +23,7 @@
         "price": 5.65,
         "weight": "100g",
         "category": "Słodycze",
-        "type": "by_quantity",
+        "quantitativeType": "by_quantity",
         "tags": [
             "słodycze",
             "czekolada",
@@ -39,7 +39,7 @@
         "price": 14.12,
         "weight": "500g",
         "category": "Słodycze",
-        "type": "by_quantity",
+        "quantitativeType": "by_quantity",
         "tags": [
             "słodycze",
             "czekolada"
@@ -53,7 +53,7 @@
         "price": 3.2,
         "weight": "350ml",
         "category": "Napoje niegazowane",
-        "type": "by_quantity",
+        "quantitativeType": "by_quantity",
         "tags": [
             "słodycze",
             "napoje niegazowane",
@@ -68,7 +68,7 @@
         "price": 0.5,
         "weight": "50mg",
         "category": "Sery",
-        "type": "by_weight",
+        "quantitativeType": "by_weight",
         "tags": [
             "sery"
         ]

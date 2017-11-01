@@ -6,6 +6,6 @@ export interface Product {
     price: number;
     weight: string;
     category: string;
-    type: string;
+    quantitativeType: string;
     tags: string[];
 }
