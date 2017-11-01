@@ -12,7 +12,11 @@ export class ProductService {
       console.dir(product);
       console.log('Dodaje do bazy produktow');
 
-      return this.http.post('localhost:8080/api/product/', product);
+      return this.http.post('http://localhost:8080/api/product/add', product);
+  }
+
+  showProducts() {
+      return this.http.get('http://localhost:8080/api/product');
   }
 
 }
