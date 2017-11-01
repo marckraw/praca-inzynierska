@@ -1,4 +1,7 @@
 import {Router, Request, Response, NextFunction} from 'express';
+
+import { Product } from "../models/fakeProduct";
+
 const Products = require('../product.json');
 
 export class HeroRouter {
@@ -47,7 +50,27 @@ export class HeroRouter {
      * POST Add Product.
      */
     public addProduct(req: Request, res: Response) {
-        res.send(req);
+        if(req) {
+            res.send({
+                message: "ok",
+                productName: req.body.productName,
+                productCompanyName: req.body.productCompanyName,
+            })
+        } else {
+            res.send({
+                error: "chujowo, nie dostalem niczego",
+            })
+        }
+
+
+        // else {
+        //     res.status(404)
+        //         .send({
+        //             message: 'Nie udalo się dodac do bazy danych',
+        //             status: res.status
+        //         });
+        // }
+        // res.send(req);
     }
 
     /**

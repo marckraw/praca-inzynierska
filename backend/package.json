@@ -12,8 +12,10 @@
     "coverage": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")"
   },
   "dependencies": {
+    "@types/cors": "^2.8.1",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "morgan": "~1.9.0",
@@ -32,6 +34,7 @@
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-typescript": "^3.1.1",
     "mocha": "^4.0.1",
     "ts-node": "^3.3.0",
