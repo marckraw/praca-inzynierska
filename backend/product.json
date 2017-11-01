@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "name": "Serek wiejski",
         "company": "Piątnica",
         "image": "piatnica.png",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "id": 2,
+        "id": 1,
         "name": "Snickers",
         "company": "Mars and CO",
         "image": "snickers.png",
@@ -32,7 +32,7 @@
         ]
     },
     {
-        "id": 3,
+        "id": 2,
         "name": "Czekolada",
         "company": "Wedel",
         "image": "czekolada-wedel.png",
@@ -46,7 +46,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 3,
         "name": "Nestea",
         "company": "Coca-Cola",
         "image": "nestea.png",
@@ -61,7 +61,7 @@
         ]
     },
     {
-        "id": 5,
+        "id": 4,
         "name": "Ser żółty",
         "company": "Edamski",
         "image": "ser-zolty_edamski.png",
