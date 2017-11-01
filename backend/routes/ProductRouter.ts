@@ -1,3 +1,4 @@
+import { IProduct } from "./../models/product";
 import {Router, Request, Response, NextFunction} from 'express';
 
 import { Product } from "../models/fakeProduct";
@@ -51,10 +52,30 @@ export class HeroRouter {
      */
     public addProduct(req: Request, res: Response) {
         if(req) {
+
+            const product: IProduct = {
+                id: Products.length,
+                name: req.body.productName,
+                company: req.body.productCompanyName,
+                image: req.body.productImage,
+                price: req.body.productPrice,
+                weight: req.body.productWeight,
+                category: req.body.productCategory,
+                quantitativeType: req.body.productQuantitativeType,
+                tags: req.body.productTags,
+            }
+
+            let ProductsTemp = Products;
+
+            console.log(ProductsTemp[0]);
+
+            ProductsTemp.push(product);
+
+
+
             res.send({
-                message: "ok",
-                productName: req.body.productName,
-                productCompanyName: req.body.productCompanyName,
+                message: "Dodano do bazy danych",
+                products: Products,
             })
         } else {
             res.send({

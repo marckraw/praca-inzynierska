@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { Product } from './models/product';
+import { Product } from "./models/product";
 
 @Injectable()
 export class ProductService {
+    private apiUrl: string = "http://localhost:8080/api/";
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  addProduct(product: Product) {
-      console.dir(product);
-      console.log('Dodaje do bazy produktow');
+    public addProduct(product: Product) {
+        console.dir(product);
+        console.log("Dodaje do bazy produktow");
 
-      return this.http.post('http://localhost:8080/api/product/add', product);
-  }
+        return this.http.post(`${this.apiUrl}product/add`, product);
+    }
 
-  showProducts() {
-      return this.http.get('http://localhost:8080/api/product');
-  }
+    public showProducts() {
+        return this.http.get(`${this.apiUrl}product`);
+    }
 
 }

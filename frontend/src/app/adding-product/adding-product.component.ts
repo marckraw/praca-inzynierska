@@ -1,5 +1,5 @@
 import { Component } from "@angular/core/";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { Product } from "../models/product";
 import { ProductService } from "../product.service";
@@ -67,12 +67,19 @@ import { MaterialModule } from "./../material.module";
                     <button class="add-btn" mat-raised-button color="primary" (click)="addProduct(formGroup.value)">Add</button>
                 </div>
             </div>
+
+            <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+                <mat-card-content>
+                    <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+                </mat-card-content>
+            </mat-card>
         </div>
 `,
     styleUrls: ["./adding-product.component.scss"],
 })
 export class AddingProductComponent {
 
+    public isErrorMsgVisible = false;
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
@@ -97,7 +104,11 @@ export class AddingProductComponent {
     }
 
     public addProduct(product: Product) {
-        this.product.addProduct(product).subscribe( (data) => console.dir(data));
+        if(this.formGroup.valid) {
+            this.product.addProduct(product).subscribe( (data) => console.dir(data));
+        } else {
+            this.isErrorMsgVisible = true;
+        }
     }
 
     public showAllProducts() {
@@ -106,14 +117,14 @@ export class AddingProductComponent {
 
     private createForm() {
         this.formGroup = this.formBuilder.group({
-            productName: [""],
-            productPrice: [""],
-            productCompanyName: [""],
-            productWeight: [""],
-            productTags: [""],
-            productQuantitativeType: [""],
-            productImage: [""],
-            productCategory: [""],
+            productName: ["", [Validators.required]],
+            productPrice: ["", [Validators.required]],
+            productCompanyName: ["", [Validators.required]],
+            productWeight: ["", [Validators.required]],
+            productTags: ["", [Validators.required]],
+            productQuantitativeType: ["", [Validators.required]],
+            productImage: ["", [Validators.required]],
+            productCategory: ["", [Validators.required]],
         });
     }
 }
