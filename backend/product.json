@@ -1,0 +1,76 @@
+[
+    {
+        "id": 1,
+        "name": "Serek wiejski",
+        "company": "Piątnica",
+        "image": "piatnica.png",
+        "price": 2,
+        "weight": "200g",
+        "category": "Mleczne",
+        "type": "by_quantity",
+        "tags": [
+            "sery",
+            "piątnica",
+            "mleczne",
+            "zajebiste"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Snickers",
+        "company": "Mars and CO",
+        "image": "snickers.png",
+        "price": 5.65,
+        "weight": "100g",
+        "category": "Słodycze",
+        "type": "by_quantity",
+        "tags": [
+            "słodycze",
+            "czekolada",
+            "orzechy",
+            "zajebiste"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Czekolada",
+        "company": "Wedel",
+        "image": "czekolada-wedel.png",
+        "price": 14.12,
+        "weight": "500g",
+        "category": "Słodycze",
+        "type": "by_quantity",
+        "tags": [
+            "słodycze",
+            "czekolada"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Nestea",
+        "company": "Coca-Cola",
+        "image": "nestea.png",
+        "price": 3.2,
+        "weight": "350ml",
+        "category": "Napoje niegazowane",
+        "type": "by_quantity",
+        "tags": [
+            "słodycze",
+            "napoje niegazowane",
+            "napoje"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Ser żółty",
+        "company": "Edamski",
+        "image": "ser-zolty_edamski.png",
+        "price": 0.5,
+        "weight": "50mg",
+        "category": "Sery",
+        "type": "by_weight",
+        "tags": [
+            "sery"
+        ]
+    }
+]
