@@ -1,8 +1,11 @@
+import { IProduct } from "./../models/product";
 import {Router, Request, Response, NextFunction} from 'express';
+import * as fs from 'fs';
 
 import { Product } from "../models/fakeProduct";
 
 const Products = require('../product.json');
+
 
 export class HeroRouter {
     router: Router
@@ -51,26 +54,36 @@ export class HeroRouter {
      */
     public addProduct(req: Request, res: Response) {
         if(req) {
-            res.send({
-                message: "ok",
-                productName: req.body.productName,
-                productCompanyName: req.body.productCompanyName,
-            })
-        } else {
-            res.send({
-                error: "chujowo, nie dostalem niczego",
-            })
+
+            const product: IProduct = {
+                id: Products.length,
+                name: req.body.productName,
+                company: req.body.productCompanyName,
+                image: req.body.productImage,
+                price: req.body.productPrice,
+                weight: req.body.productWeight,
+                category: req.body.productCategory,
+                quantitativeType: req.body.productQuantitativeType,
+                tags: req.body.productTags,
+            }
+
+            let ProductsTemp = Products;
+
+            ProductsTemp.push(product);
+
+            fs.writeFile("product.json", JSON.stringify(ProductsTemp), (err) => {
+                if (err)  {
+                    res.send({
+                        message: "Nie udało się dodac do bazy danych",
+                    })
+                } else {
+                    res.send({
+                        message: "Dodano do bazy danych",
+                        products: ProductsTemp,
+                    })
+                }
+            });
         }
-
-
-        // else {
-        //     res.status(404)
-        //         .send({
-        //             message: 'Nie udalo się dodac do bazy danych',
-        //             status: res.status
-        //         });
-        // }
-        // res.send(req);
     }
 
     /**
