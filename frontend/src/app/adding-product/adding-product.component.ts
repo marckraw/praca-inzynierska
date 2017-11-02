@@ -104,7 +104,7 @@ export class AddingProductComponent {
     }
 
     public addProduct(product: Product) {
-        if(this.formGroup.valid) {
+        if (this.formGroup.valid) {
             this.product.addProduct(product).subscribe( (data) => console.dir(data));
         } else {
             this.isErrorMsgVisible = true;

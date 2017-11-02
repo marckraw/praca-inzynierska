@@ -1,9 +1,11 @@
 import { IProduct } from "./../models/product";
 import {Router, Request, Response, NextFunction} from 'express';
+import * as fs from 'fs';
 
 import { Product } from "../models/fakeProduct";
 
 const Products = require('../product.json');
+
 
 export class HeroRouter {
     router: Router
@@ -67,31 +69,21 @@ export class HeroRouter {
 
             let ProductsTemp = Products;
 
-            console.log(ProductsTemp[0]);
-
             ProductsTemp.push(product);
 
-
-
-            res.send({
-                message: "Dodano do bazy danych",
-                products: Products,
-            })
-        } else {
-            res.send({
-                error: "chujowo, nie dostalem niczego",
-            })
+            fs.writeFile("product.json", JSON.stringify(ProductsTemp), (err) => {
+                if (err)  {
+                    res.send({
+                        message: "Nie udało się dodac do bazy danych",
+                    })
+                } else {
+                    res.send({
+                        message: "Dodano do bazy danych",
+                        products: ProductsTemp,
+                    })
+                }
+            });
         }
-
-
-        // else {
-        //     res.status(404)
-        //         .send({
-        //             message: 'Nie udalo się dodac do bazy danych',
-        //             status: res.status
-        //         });
-        // }
-        // res.send(req);
     }
 
     /**
