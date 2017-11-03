@@ -4,7 +4,11 @@ import { Component } from "@angular/core";
     selector: "app-root",
     template:
     `
-    <pi-adding-product></pi-adding-product>
+    <div class="main-nav-container">
+        <button class="cancel-btn" mat-raised-button color="primary" routerLink="/adding-products">Add Product</button>
+        <button class="cancel-btn" mat-raised-button color="primary" routreLink="/show-products">Show Product</button>
+    </div>
+    <router-outlet></router-outlet>
     `,
     styleUrls: ["./app.component.scss"],
 })

@@ -1,3 +1,4 @@
+import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -17,6 +18,7 @@ import { DisplayProductsComponent } from './display-products/display-products.co
         DisplayProductsComponent,
     ],
     imports: [
+        AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
