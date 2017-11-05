@@ -1,5 +1,6 @@
 import { IProduct } from "./../models/product";
 import {Router, Request, Response, NextFunction} from 'express';
+import * as path from 'path';
 import * as fs from 'fs';
 
 import { Product } from "../models/fakeProduct";
@@ -16,13 +17,22 @@ export class HeroRouter {
     constructor() {
         this.router = Router();
         this.init();
+
     }
 
     /**
      * GET all Heroes.
      */
     public getAll(req: Request, res: Response, next: NextFunction) {
-        res.send(Products);
+        let Products2 = {};
+        // fs.readFile('../product.json', (err, data) => {
+        //     if (err) throw err;
+        //     Products2 = data.toJSON;
+
+        // });
+        console.log(path);
+
+        res.send(Products2);
     }
 
 
@@ -87,12 +97,56 @@ export class HeroRouter {
     }
 
     /**
+     * POST Remove Product.
+     */
+    public removeProduct(req: Request, res: Response) {
+        if(req) {
+
+            let productId = req.body.id;
+            console.log(productId);
+
+            // const product: IProduct = {
+            //     id: Products[Products.length - 1].id + 1,
+            //     name: req.body.productName,
+            //     company: req.body.productCompanyName,
+            //     image: req.body.productImage,
+            //     price: req.body.productPrice,
+            //     weight: req.body.productWeight,
+            //     category: req.body.productCategory,
+            //     quantitativeType: req.body.productQuantitativeType,
+            //     tags: req.body.productTags,
+            // }
+
+            let ProductsTemp = Products
+                .filter( (product) => {
+                    return product.id !== productId;
+                });
+
+            console.log(ProductsTemp);
+
+            fs.writeFile("product.json", JSON.stringify(ProductsTemp), (err) => {
+                if (err)  {
+                    res.send({
+                        message: "Nie udało się usunac z bazy danych",
+                    })
+                } else {
+                    res.send({
+                        message: "Removed from database",
+                        products: ProductsTemp,
+                    })
+                }
+            });
+        }
+    }
+
+    /**
      * Take each handler, and attach to one of the Express.Router's
      * endpoints.
      */
     init() {
         this.router.get('/', this.getAll);
         this.router.post('/add', this.addProduct);
+        this.router.post('/remove', this.removeProduct);
     }
 
 }

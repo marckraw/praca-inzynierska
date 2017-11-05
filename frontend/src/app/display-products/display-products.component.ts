@@ -49,7 +49,7 @@ import { IProduct } from "./../models/product";
 })
 export class DisplayProductsComponent implements OnInit {
 
-    public products: IProduct;
+    public products: IProduct[];
 
     constructor(private productService: ProductService) {}
 
@@ -59,15 +59,30 @@ export class DisplayProductsComponent implements OnInit {
     }
 
     public showAllProducts() {
-        this.productService.showProducts().subscribe( (data: IProduct) => this.products = data);
+        this.productService.showProducts().subscribe( (data: IProduct[]) => this.products = data);
     }
 
     public edit() {
         console.log("editing");
     }
 
-    public remove(id) {
+    public remove(i) {
+        // this.products = this.products
+        //     .filter( (product) => {
+        //         return product.id !== id;
+        //     });
+
+        this.productService.removeProduct(i)
+            .subscribe( (res) => {
+                console.dir(res);
+                this.products = this.products
+                .filter( (prod) => {
+                    return prod.id !== i;
+                });
+            });
+
+        console.dir(this.products);
+
         console.log("removing");
-        console.log(id);
     }
  }
