@@ -13,6 +13,7 @@ import { IProduct } from "./../models/product";
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>index</th>
                     <th>Name</th>
                     <th>Company name</th>
                     <th>Image</th>
@@ -26,8 +27,9 @@ import { IProduct } from "./../models/product";
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products">
+                <tr *ngFor="let product of products; let i = index">
                     <td><strong>{{ product.id }}</strong></td>
+                    <td><strong>{{ i }}</strong></td>
                     <td>{{ product.name }} </td>
                     <td>{{ product.company }}</td>
                     <td>{{ product.image }}</td>
@@ -37,7 +39,7 @@ import { IProduct } from "./../models/product";
                     <td>{{ product.quantitativeType }}</td>
                     <td>{{ product.tags }}</td>
                     <td><button mat-raised-button color="primary" (click)="edit()">EDIT</button></td>
-                    <td><button mat-raised-button color="primary" (click)="remove()">DELETE</button></td>
+                    <td><button mat-raised-button color="primary" (click)="remove(i)">DELETE</button></td>
                 </tr>
             </tbody>
         </table>
@@ -64,7 +66,8 @@ export class DisplayProductsComponent implements OnInit {
         console.log("editing");
     }
 
-    public remove() {
+    public remove(id) {
         console.log("removing");
+        console.log(id);
     }
  }

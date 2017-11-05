@@ -56,7 +56,7 @@ export class HeroRouter {
         if(req) {
 
             const product: IProduct = {
-                id: Products.length,
+                id: Products[Products.length - 1].id + 1,
                 name: req.body.productName,
                 company: req.body.productCompanyName,
                 image: req.body.productImage,
