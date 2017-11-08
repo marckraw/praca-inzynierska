@@ -5,8 +5,8 @@ import { Component } from "@angular/core";
     template:
     `
     <div class="main-nav-container">
-        <button class="cancel-btn" mat-raised-button color="primary" routerLink="/adding-products">Add Product</button>
-        <button class="cancel-btn" mat-raised-button color="primary" routreLink="/show-products">Show Product</button>
+        <a mat-raised-button color="primary" routerLink="/adding-product">Add Product</a>
+        <a mat-raised-button color="primary" routerLink="/show-products">Show Product</a>
     </div>
     <router-outlet></router-outlet>
     `,

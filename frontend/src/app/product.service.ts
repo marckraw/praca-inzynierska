@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Product } from "./models/product";
+import { Product, IProduct } from "./models/product";
 
 @Injectable()
 export class ProductService {
@@ -18,6 +18,11 @@ export class ProductService {
 
     public showProducts() {
         return this.http.get(`${this.apiUrl}product`);
+    }
+
+    public removeProduct(i: number) {
+
+        return this.http.post(`${this.apiUrl}product/remove`, {id: i});
     }
 
 }
