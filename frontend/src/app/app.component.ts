@@ -5,6 +5,7 @@ import { Component } from "@angular/core";
     template:
     `
     <div class="main-nav-container">
+        <a mat-raised-button color="primary" routerLink="/dashboard">Dashboard</a>
         <a mat-raised-button color="primary" routerLink="/adding-product">Add Product</a>
         <a mat-raised-button color="primary" routerLink="/show-products">Show Product</a>
     </div>

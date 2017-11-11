@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { Product, IProduct } from "./models/product";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ProductService {
@@ -16,7 +17,7 @@ export class ProductService {
         return this.http.post(`${this.apiUrl}product/add`, product);
     }
 
-    public showProducts() {
+    public showProducts(): Observable<any> {
         return this.http.get(`${this.apiUrl}product`);
     }
 
