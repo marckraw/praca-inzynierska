@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { ProductService } from "./../product.service";
 import { IProduct } from "./../models/product";
+import { Observable } from "rxjs/Observable";
 
 @Component({
     selector: "pi-display-products",
@@ -9,7 +10,7 @@ import { IProduct } from "./../models/product";
     `
     <div class="display-product-container">
         <h1>Wszystkie produkty</h1>
-        <table>
+        <table *ngIf="(products | async) as products; else loading">
             <thead>
                 <tr>
                     <th>id</th>
@@ -43,43 +44,56 @@ import { IProduct } from "./../models/product";
                 </tr>
             </tbody>
         </table>
+
+        <ng-template #loading>loading data...</ng-template>
+
     </div>
     `,
     styleUrls: ["./display-products.component.scss"],
 })
 export class DisplayProductsComponent implements OnInit {
 
-    public products: IProduct[];
+    public products: Observable<IProduct[]>;
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService) {
+        this.products = this.productService.showProducts();
+    }
 
     public ngOnInit() {
-        this.showAllProducts();
+        // this.showAllProducts();
         console.dir(this.products);
     }
 
-    public showAllProducts() {
-        this.productService.showProducts().subscribe( (data: IProduct[]) => this.products = data);
-    }
+    // public fetchUserStatistics(): Observable<StatisticsTileData> {
+    //     return this.http.get<StatisticsTileData>('api/dashboard/call-statistics/' + this.accountId);
+    // }
+
+    // public showAllProducts() {
+    //     this.productService.showProducts()
+    //         .subscribe(
+    //             (data: IProduct[]) => {
+    //                 this.products = data;
+    //             },
+    //             (err) => {
+    //                 this.products = [];
+    //                 console.log(err);
+    //             },
+    //         );
+    // }
 
     public edit() {
         console.log("editing");
     }
 
     public remove(i) {
-        // this.products = this.products
-        //     .filter( (product) => {
-        //         return product.id !== id;
+        // this.productService.removeProduct(i)
+        //     .subscribe( (res) => {
+        //         console.dir(res);
+        //         this.products = this.products
+        //         .filter( (prod) => {
+        //             return prod.id !== i;
+        //         });
         //     });
-
-        this.productService.removeProduct(i)
-            .subscribe( (res) => {
-                console.dir(res);
-                this.products = this.products
-                .filter( (prod) => {
-                    return prod.id !== i;
-                });
-            });
 
         console.dir(this.products);
 
