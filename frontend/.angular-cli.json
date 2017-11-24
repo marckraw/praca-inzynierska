@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "pi",
       "styles": [
-        "styles.css",
-        "_theme.scss"
+        "_theme.scss",
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
