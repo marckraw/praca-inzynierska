@@ -7,6 +7,7 @@ import * as cors from "cors";
 
 import HeroRouter from './routes/HeroRouter';
 import ProductRouter from './routes/ProductRouter';
+import DatabaseTestRouter from './routes/DatabaseTestRouter';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -87,10 +88,10 @@ class App {
             })
         })
 
-
         this.express.use('/', router);
         this.express.use('/api/v1/heroes', HeroRouter);
         this.express.use('/api/product', ProductRouter);
+        this.express.use('/api/database/test/', DatabaseTestRouter);
 
         router.options("*", cors(this.options));
     }

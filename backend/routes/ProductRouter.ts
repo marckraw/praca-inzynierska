@@ -8,7 +8,7 @@ import { Product } from "../models/fakeProduct";
 const Products = require('../product.json');
 
 
-export class HeroRouter {
+export class ProductRouter {
     router: Router
 
     /**
@@ -129,7 +129,7 @@ export class HeroRouter {
 }
 
 // Create the HeroRouter, and export its configured Express.Router
-const heroRoutes = new HeroRouter();
-heroRoutes.init();
+const productRoutes = new ProductRouter();
+productRoutes.init();
 
-export default heroRoutes.router;
+export default productRoutes.router;
