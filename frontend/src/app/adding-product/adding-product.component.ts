@@ -97,10 +97,7 @@ export class AddingProductComponent {
         {value: "by_weight", viewValue: "Weight"},
     ];
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private product: ProductService,
-    ) {
+    constructor(private formBuilder: FormBuilder, private product: ProductService) {
         this.createForm();
     }
 
@@ -112,9 +109,9 @@ export class AddingProductComponent {
         }
     }
 
-    public showAllProducts() {
-        this.product.showProducts().subscribe( (data) => console.dir(data));
-    }
+    // public showAllProducts() {
+    //     this.product.showProducts().subscribe( (data) => console.dir(data));
+    // }
 
     private createForm() {
         this.formGroup = this.formBuilder.group({

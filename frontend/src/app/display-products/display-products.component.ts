@@ -56,17 +56,17 @@ export class DisplayProductsComponent implements OnInit {
     public products: Observable<IProduct[]>;
 
     constructor(private productService: ProductService) {
-        this.products = this.productService.showProducts();
+        // this.products = this.productService.showProducts();
     }
 
     public ngOnInit() {
-        // this.showAllProducts();
-        console.dir(this.products);
+        this.showAllProducts();
+        // console.dir(this.products);
     }
 
-    // public fetchUserStatistics(): Observable<StatisticsTileData> {
-    //     return this.http.get<StatisticsTileData>('api/dashboard/call-statistics/' + this.accountId);
-    // }
+    public showAllProducts() {
+        this.productService.showProducts().subscribe( (val) => console.log(val) );
+    }
 
     // public showAllProducts() {
     //     this.productService.showProducts()
@@ -81,9 +81,6 @@ export class DisplayProductsComponent implements OnInit {
     //         );
     // }
 
-    public edit() {
-        console.log("editing");
-    }
 
     public remove(i) {
         // this.productService.removeProduct(i)
@@ -95,7 +92,7 @@ export class DisplayProductsComponent implements OnInit {
         //         });
         //     });
 
-        console.dir(this.products);
+        // console.dir(this.products);
 
         console.log("removing");
     }

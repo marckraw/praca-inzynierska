@@ -10,11 +10,14 @@
         "start:prod": "node dist/server.js"
     },
     "dependencies": {
+        "@nest-middlewares/cors": "^1.0.2",
         "@nestjs/common": "^4.4.0",
         "@nestjs/core": "^4.4.0",
         "@nestjs/microservices": "^4.4.0",
         "@nestjs/testing": "^4.4.0",
         "@nestjs/websockets": "^4.4.0",
+        "cors": "^2.8.4",
+        "express": "^4.16.2",
         "mongoose": "^4.13.6",
         "redis": "^2.7.1",
         "reflect-metadata": "^0.1.10",
