@@ -1,7 +1,6 @@
 import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { Product } from "../models/product";
 import { ProductService } from "../product.service";
 import { MaterialModule } from "./../material.module";
 
@@ -63,8 +62,8 @@ import { MaterialModule } from "./../material.module";
             </mat-form-field>
 
             <div class="buttons">
-                <button class="cancel-btn" mat-raised-button>Cancel</button>
-                <button class="cancel-btn" mat-raised-button color="secondary" (click)="showAllProducts()">Show All products</button>
+                <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Cancel</button>
+                <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/show-products">Show All products</button>
                 <button class="add-btn" mat-raised-button color="primary" (click)="addProduct(formGroup.value)">Add</button>
             </div>
         </div>
@@ -97,14 +96,11 @@ export class AddingProductComponent {
         {value: "by_weight", viewValue: "Weight"},
     ];
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private product: ProductService,
-    ) {
+    constructor(private formBuilder: FormBuilder, private product: ProductService) {
         this.createForm();
     }
 
-    public addProduct(product: Product) {
+    public addProduct(product: any) {
         if (this.formGroup.valid) {
             this.product.addProduct(product).subscribe( (data) => console.dir(data));
         } else {
@@ -112,9 +108,9 @@ export class AddingProductComponent {
         }
     }
 
-    public showAllProducts() {
-        this.product.showProducts().subscribe( (data) => console.dir(data));
-    }
+    // public showAllProducts() {
+    //     this.product.showProducts().subscribe( (data) => console.dir(data));
+    // }
 
     private createForm() {
         this.formGroup = this.formBuilder.group({
