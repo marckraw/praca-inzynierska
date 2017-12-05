@@ -9,13 +9,13 @@ import { ApplicationModule } from "./modules/app.module";
 function addMiddleware(instance): void {
     instance.use(bodyParser.json());
     instance.use(cors());
-  }
+}
 
-  function setUpExpress(): void {
+function setUpExpress(): void {
     const instance = express();
     addMiddleware(instance);
     return instance;
-  }
+}
 
 async function bootstrap() {
 	const app = await NestFactory.create(ApplicationModule, setUpExpress());

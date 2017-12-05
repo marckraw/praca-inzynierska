@@ -10,7 +10,6 @@
         "start:prod": "node dist/server.js"
     },
     "dependencies": {
-        "@nest-middlewares/cors": "^1.0.2",
         "@nestjs/common": "^4.4.0",
         "@nestjs/core": "^4.4.0",
         "@nestjs/microservices": "^4.4.0",

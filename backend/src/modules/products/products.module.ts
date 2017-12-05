@@ -1,6 +1,5 @@
-import { CorsMiddleware } from "./../middleware/cors.middleware";
 import { ProductsController } from "./products.controller";
-import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 
 import { DatabaseModule } from "../database/database.module";
 
@@ -9,5 +8,4 @@ import { DatabaseModule } from "../database/database.module";
     controllers: [ProductsController],
     components: [],
 })
-// export class ProductsModule {}
 export class ProductsModule {}
