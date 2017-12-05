@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Product, IProduct } from "./models/product";
+import { IProduct } from "./models/product";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
@@ -10,7 +10,7 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    public addProduct(product: Product) {
+    public addProduct(product: any): Observable<any> {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
@@ -19,6 +19,6 @@ export class ProductService {
     }
 
     public showProducts(): Observable<any> {
-        return this.http.get(`${this.apiUrl}products/add`);
+        return this.http.get(`${this.apiUrl}products`);
     }
 }

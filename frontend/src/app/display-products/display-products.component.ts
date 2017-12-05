@@ -29,18 +29,18 @@ import { Observable } from "rxjs/Observable";
             </thead>
             <tbody>
                 <tr *ngFor="let product of products; let i = index">
-                    <td><strong>{{ product.id }}</strong></td>
+                    <td><strong>?</strong></td>
                     <td><strong>{{ i }}</strong></td>
-                    <td>{{ product.name }} </td>
-                    <td>{{ product.company }}</td>
-                    <td>{{ product.image }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.weight }}</td>
-                    <td>{{ product.category }}</td>
-                    <td>{{ product.quantitativeType }}</td>
-                    <td>{{ product.tags }}</td>
+                    <td>{{ product.productName }} </td>
+                    <td>{{ product.productCompany }}</td>
+                    <td>{{ product.productImage }}</td>
+                    <td>{{ product.productPrice }}</td>
+                    <td>{{ product.productWeight }}</td>
+                    <td>{{ product.productCategory }}</td>
+                    <td>{{ product.productQuantitativeType }}</td>
+                    <td>{{ product.productTags }}</td>
                     <td><button mat-raised-button color="primary" (click)="edit()">EDIT</button></td>
-                    <td><button mat-raised-button color="primary" (click)="remove(i)">DELETE</button></td>
+                    <td><button mat-raised-button color="primary" (click)="remove()">DELETE</button></td>
                 </tr>
             </tbody>
         </table>
@@ -55,45 +55,22 @@ export class DisplayProductsComponent implements OnInit {
 
     public products: Observable<IProduct[]>;
 
-    constructor(private productService: ProductService) {
-        // this.products = this.productService.showProducts();
-    }
+    constructor(private productService: ProductService) {}
 
     public ngOnInit() {
         this.showAllProducts();
-        // console.dir(this.products);
     }
 
     public showAllProducts() {
         this.productService.showProducts().subscribe( (val) => console.log(val) );
+        this.products = this.productService.showProducts();
     }
 
-    // public showAllProducts() {
-    //     this.productService.showProducts()
-    //         .subscribe(
-    //             (data: IProduct[]) => {
-    //                 this.products = data;
-    //             },
-    //             (err) => {
-    //                 this.products = [];
-    //                 console.log(err);
-    //             },
-    //         );
-    // }
-
+    public edit() {
+        console.log("Editing...");
+    }
 
     public remove(i) {
-        // this.productService.removeProduct(i)
-        //     .subscribe( (res) => {
-        //         console.dir(res);
-        //         this.products = this.products
-        //         .filter( (prod) => {
-        //             return prod.id !== i;
-        //         });
-        //     });
-
-        // console.dir(this.products);
-
-        console.log("removing");
+        console.log("Removing...");
     }
  }

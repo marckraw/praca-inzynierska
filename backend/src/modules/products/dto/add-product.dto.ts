@@ -1,4 +1,4 @@
-export class AddProduct {
+export class AddProductDto {
     readonly productName: string;
     readonly productCompany: string;
     readonly productImage: string;

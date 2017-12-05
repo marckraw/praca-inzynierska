@@ -1,30 +1,26 @@
-import { AddProduct } from "./dto/add-product.dto";
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { Observable } from "rxjs/Observable";
+
+// services
+import { ProductsService } from "./products.service";
+
+//interfaces
+import { IProduct } from "./interfaces/product.interface";
+
+// dto
+import { AddProductDto } from "./dto/add-product.dto";
 
 @Controller("products")
 export class ProductsController {
-    constructor() {}
+    constructor(private productService: ProductsService) {}
 
     @Post("add")
-    addProduct(@Body() addProduct: AddProduct) {
-        console.log(addProduct);
-        return addProduct;
-    }
-
-    @Get("add")
-    addProduct2(): Observable<any> {
-        return Observable.of({
-            dupa: 1,
-            dupa2: 2,
-        })
+    async addProduct(@Body() addProductDto: AddProductDto) {
+        console.log(addProductDto);
+        return this.productService.addProduct(addProductDto);
     }
 
     @Get()
-    findAll(): Observable<any> {
-        return Observable.of({
-            dupa: 1,
-            dupa2: 2,
-        })
+    async findAll(): Promise<IProduct[]> {
+        return this.productService.findAll();
     }
 }
