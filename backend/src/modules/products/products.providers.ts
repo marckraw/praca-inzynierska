@@ -4,7 +4,7 @@ import { ProductSchema } from './schemas/product.schema';
 export const productsProviders = [
     {
         provide: 'ProductModelToken',
-        useFactory: (connection: Connection) => connection.model('Cat', ProductSchema),
+        useFactory: (connection: Connection) => connection.model('Products', ProductSchema),
         inject: ['DbConnectionToken'],
     },
 ];

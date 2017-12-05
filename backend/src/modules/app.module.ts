@@ -9,10 +9,8 @@ import { ProductsModule } from "./products/products.module";
 export class ApplicationModule implements NestModule {
     configure(consumer: MiddlewaresConsumer): void {
         consumer.apply(LoggerMiddleware).forRoutes(
-            { path: '/cats', method: RequestMethod.GET },
-            { path: '/products', method: RequestMethod.GET },
-            { path: '/cats', method: RequestMethod.POST },
-            { path: '/products/add', method: RequestMethod.POST },
+            { path: '/products', method: RequestMethod.ALL },
+            { path: '/products/add', method: RequestMethod.ALL },
         );
     }
 }
