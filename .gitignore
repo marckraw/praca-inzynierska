@@ -1,5 +1,3 @@
 .DS_Store
 .idea
-data/mongodb/db/diagnostic.data
-data/mongodb/db/journal
-data/mongodb/db/*.turtle
+data/
