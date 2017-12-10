@@ -9,15 +9,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 export class ConfirmationModalComponent {
 
     constructor(
-        public dialogRef: MatDialogRef<ConfirmationModalComponent>, @Inject(MAT_DIALOG_DATA) public expense: any,
+        public dialogRef: MatDialogRef<ConfirmationModalComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
     ) { }
 
     public cancel() {
-        this.dialogRef.close(this.expense);
+        this.dialogRef.close(this.data);
     }
 
     public confirm() {
-        this.expense.confirmed = true;
-        this.dialogRef.close(this.expense);
+        this.data.confirmed = true;
+        this.dialogRef.close(this.data);
     }
 }

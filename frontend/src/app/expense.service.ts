@@ -1,26 +1,26 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
 import { Observable } from "rxjs/Observable";
-import { IProduct } from "./models/product";
 
 import { API_URL } from "./shared/constants";
 
+import { IExpense } from "./models/expense";
+
 @Injectable()
-export class ProductService {
+export class ExpenseService {
     private apiUrl: string = API_URL;
 
     constructor(private http: HttpClient) { }
 
-    public addProduct(product: any): Observable<any> {
+    public addExpense(expense: IExpense) {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        console.log("Dodaje do bazy produktów: ", product);
-        return this.http.post(`${this.apiUrl}products/add`, product, { headers } );
+        return this.http.post(`${this.apiUrl}expenses/add`, expense, { headers });
     }
 
-    public showProducts(): Observable<IProduct[]> {
-        return this.http.get<IProduct[]>(`${this.apiUrl}products`);
+    public showExpenses(): Observable<IExpense[]> {
+        return this.http.get<IExpense[]>(`${this.apiUrl}expenses`);
     }
+
 }

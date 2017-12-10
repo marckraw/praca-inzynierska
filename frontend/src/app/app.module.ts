@@ -17,6 +17,7 @@ import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.compo
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
 import { MaterialModule } from "./material.module";
 import { ProductService } from "./product.service";
+import { ExpenseService } from './expense.service';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,7 @@ import { ProductService } from "./product.service";
         HttpClientModule,
         MaterialModule,
     ],
-    providers: [ ProductService ],
+    providers: [ ProductService, ExpenseService ],
     bootstrap: [ AppComponent ],
     entryComponents: [ ConfirmationModalComponent ],
 })

@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
+
 import { ConfirmationModalComponent } from "./../confirmation-modal/confirmation-modal.component";
+import { ExpenseService } from "./../expense.service";
+import { IExpense } from "./../models/expense";
 
 @Component({
   selector: "pi-add-expense",
@@ -19,11 +22,16 @@ export class AddExpenseComponent {
         {value: "cash", viewValue: "Gotówka"},
     ];
 
-    constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private dialog: MatDialog,
+        private expenseService: ExpenseService,
+    ) {
+        this.expenseService.showExpenses().subscribe( data => console.log("Wszystkie wydatki: ", data));
         this.createForm();
     }
 
-    public addExpense(expense: any) {
+    public addExpense(expense: IExpense) {
         if (this.formGroup.valid) {
             const dialogRef = this.dialog.open(ConfirmationModalComponent, {
                 width: "500px",
@@ -33,6 +41,10 @@ export class AddExpenseComponent {
                 console.log("Dialog was closed", result);
                 if (result.confirmed) {
                     console.log("Dane gotowe do wysłania do końcówki, ", result.expense);
+                    this.expenseService.addExpense(result.expense)
+                        .subscribe( (data) => {
+                            console.log("Dodano dane: ", data);
+                        });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
