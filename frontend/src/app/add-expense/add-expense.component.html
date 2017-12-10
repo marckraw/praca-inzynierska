@@ -1,3 +1,31 @@
-<p>
-  add-expense works!
-</p>
+<div class="add-expense-container" [formGroup]="formGroup">
+    <h1>Adding products Module</h1>
+    <div class="add-expense-form">
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productCompanyName'" placeholder="Product Company Name">
+            <mat-hint align="end">Insert product Company name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Product Category" name="category" [formControlName]="'productCategory'">
+                <mat-option *ngFor="let category of categories" [value]="category.value">
+                    {{ category.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint align="end">Choose proudct Category</mat-hint>
+        </mat-form-field>
+
+        <div class="buttons">
+            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Cancel</button>
+            <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/show-products">Show All products</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="addProduct(formGroup.value)">Add</button>
+        </div>
+    </div>
+
+    <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+        <mat-card-content>
+            <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+        </mat-card-content>
+    </mat-card>
+</div>
