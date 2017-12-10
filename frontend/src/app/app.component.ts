@@ -10,14 +10,12 @@ import { Component } from "@angular/core";
         <a mat-raised-button color="primary" routerLink="/show-products">Show Product</a>
         <a mat-raised-button color="accent">Manage monthly fees</a>
         <a mat-raised-button color="warn" routerLink="/add-expense">Add Expense</a>
-        <a mat-raised-button color="secondary" routerLink="/add-revenue">Add Revenue</a>
+        <a mat-raised-button color="secondary" routerLink="/add-income">Add Income</a>
         <a mat-raised-button color="secondary" routerLink="/manage-expenses">Manage Expenses</a>
-        <a mat-raised-button color="secondary" routerLink="/manage-revenues">Manage Revenues</a>
+        <a mat-raised-button color="secondary" routerLink="/manage-incomes">Manage Incomes</a>
     </div>
     <router-outlet></router-outlet>
     `,
     styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
-    public title = "app";
-}
+export class AppComponent {}

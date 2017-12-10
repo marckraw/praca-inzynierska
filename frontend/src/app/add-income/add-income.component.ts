@@ -5,11 +5,11 @@ import { MatDialog } from "@angular/material";
 import { ConfirmationModalComponent } from "./../confirmation-modal/confirmation-modal.component";
 
 @Component({
-    selector: "pi-add-revenue",
-    templateUrl: "./add-revenue.component.html",
-    styleUrls: ["./add-revenue.component.scss"],
+    selector: "pi-add-income",
+    templateUrl: "./add-income.component.html",
+    styleUrls: ["./add-income.component.scss"],
 })
-export class AddRevenueComponent {
+export class AddIncomeComponent {
     public isErrorMsgVisible = false;
     public formGroup: FormGroup;
     public selectedCategory: string;
