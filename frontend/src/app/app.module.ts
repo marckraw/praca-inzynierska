@@ -12,6 +12,10 @@ import { ProductService } from "./product.service";
 import { DisplayProductsComponent } from './display-products/display-products.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CurrencyPlnPipe } from './currency-pln.pipe';
+import { AddExpenseComponent } from './add-expense/add-expense.component';
+import { AddRevenueComponent } from './add-revenue/add-revenue.component';
+import { ManageExpensesComponent } from './manage-expenses/manage-expenses.component';
+import { ManageRevenuesComponent } from './manage-revenues/manage-revenues.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +24,10 @@ import { CurrencyPlnPipe } from './currency-pln.pipe';
         DisplayProductsComponent,
         DashboardComponent,
         CurrencyPlnPipe,
+        AddExpenseComponent,
+        AddRevenueComponent,
+        ManageExpensesComponent,
+        ManageRevenuesComponent,
     ],
     imports: [
         AppRoutingModule,
