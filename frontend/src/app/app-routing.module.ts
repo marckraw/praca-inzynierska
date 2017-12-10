@@ -1,3 +1,7 @@
+import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.component";
+import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
+import { AddRevenueComponent } from "./add-revenue/add-revenue.component";
+import { AddExpenseComponent } from "./add-expense/add-expense.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -8,6 +12,10 @@ import { DisplayProductsComponent } from "./display-products/display-products.co
 const appRoutes: Routes = [
     { path: "adding-product", component: AddingProductComponent },
     { path: "show-products", component: DisplayProductsComponent },
+    { path: "add-expense", component: AddExpenseComponent },
+    { path: "add-revenue", component: AddRevenueComponent },
+    { path: "manage-expenses", component: ManageExpensesComponent },
+    { path: "manage-revenues", component: ManageRevenuesComponent },
     { path: "dashboard", component: DashboardComponent },
     { path: "",   redirectTo: "/dashboard", pathMatch: "full" },
     { path: "**", component: DashboardComponent },
