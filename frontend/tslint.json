@@ -9,7 +9,6 @@
         "object-literal-sort-keys" : false,
         "no-empty" : false,
         "one-line" : [false],
-        "ordered-imports": false,
         "max-line-length": 160,
         "arrow-parens": false
     },

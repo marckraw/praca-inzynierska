@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { TestBed, inject } from "@angular/core/testing";
+import { inject, TestBed } from "@angular/core/testing";
 
 import { ProductService } from "./product.service";
 

@@ -1,11 +1,11 @@
 import { HttpClientModule } from "@angular/common/http";
-import { ProductService } from "./../product.service";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ProductService } from "./../product.service";
 
-import { AddingProductComponent } from "./adding-product.component";
-import { DebugElement } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { DebugElement } from "@angular/core";
+import { AddingProductComponent } from "./adding-product.component";
 
 describe("AddingProductComponent", () => {
     let component: AddingProductComponent;

@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { Component, Inject, OnInit } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 
 @Component({
     selector: "pi-confirmation-modal",
-    templateUrl: "./confirmationmodal.component.html",
-    styleUrls: ["./confirmationmodal.component.scss"],
+    templateUrl: "./confirmation-modal.component.html",
+    styleUrls: ["./confirmation-modal.component.scss"],
 })
 export class ConfirmationModalComponent {
 

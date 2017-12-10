@@ -1,9 +1,9 @@
-import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.component";
-import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
-import { AddRevenueComponent } from "./add-revenue/add-revenue.component";
-import { AddExpenseComponent } from "./add-expense/add-expense.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AddExpenseComponent } from "./add-expense/add-expense.component";
+import { AddRevenueComponent } from "./add-revenue/add-revenue.component";
+import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
+import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.component";
 
 import { AddingProductComponent } from "./adding-product/adding-product.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";

@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { ProductService } from "./product.service";
+import { async, TestBed } from "@angular/core/testing";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddingProductComponent } from "./adding-product/adding-product.component";
-import { TestBed, async } from "@angular/core/testing";
+import { ProductService } from "./product.service";
 
 import { AppComponent } from "./app.component";
 

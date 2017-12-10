@@ -1,10 +1,10 @@
-import { MatDialog } from "@angular/material";
 import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from "@angular/material";
 
+import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-modal.component";
 import { ProductService } from "../product.service";
 import { MaterialModule } from "./../material.module";
-import { ConfirmationModalComponent } from "../confirmationmodal/confirmationmodal.component";
 
 @Component({
     selector: "pi-adding-product",

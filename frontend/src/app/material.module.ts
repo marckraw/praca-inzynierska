@@ -2,10 +2,10 @@ import { NgModule } from "@angular/core";
 import {
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatDialogModule,
  } from "@angular/material";
 
 @NgModule({

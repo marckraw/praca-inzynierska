@@ -1,15 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "pi-manage-revenues",
-  templateUrl: "./manage-revenues.component.html",
-  styleUrls: ["./manage-revenues.component.scss"],
+    selector: "pi-manage-revenues",
+    templateUrl: "./manage-revenues.component.html",
+    styleUrls: ["./manage-revenues.component.scss"],
 })
-export class ManageRevenuesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class ManageRevenuesComponent {}
