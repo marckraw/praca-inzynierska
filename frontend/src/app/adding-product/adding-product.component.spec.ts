@@ -1,11 +1,11 @@
-import { HttpClientModule } from '@angular/common/http';
-import { ProductService } from './../product.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ProductService } from "./../product.service";
 
-import { AddingProductComponent } from "./adding-product.component";
+import { HttpClient } from "@angular/common/http";
 import { DebugElement } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { AddingProductComponent } from "./adding-product.component";
 
 describe("AddingProductComponent", () => {
     let component: AddingProductComponent;
@@ -27,9 +27,9 @@ describe("AddingProductComponent", () => {
                 providers: [
                     ProductService,
                     HttpClient,
-                ]
+                ],
             }).compileComponents();
-        })
+        }),
     );
 
     beforeEach(() => {
@@ -41,8 +41,8 @@ describe("AddingProductComponent", () => {
         fixture.detectChanges();
     });
 
-    describe('Initial display', () => {
-        it('should create', () => {
+    describe("Initial display", () => {
+        it("should create", () => {
             expect(component).toBeTruthy();
         });
     });

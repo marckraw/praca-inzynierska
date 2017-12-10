@@ -1,6 +1,8 @@
 import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from "@angular/material";
 
+import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-modal.component";
 import { ProductService } from "../product.service";
 import { MaterialModule } from "./../material.module";
 
@@ -96,21 +98,28 @@ export class AddingProductComponent {
         {value: "by_weight", viewValue: "Weight"},
     ];
 
-    constructor(private formBuilder: FormBuilder, private product: ProductService) {
+    constructor(private dialog: MatDialog, private formBuilder: FormBuilder, private product: ProductService) {
         this.createForm();
     }
 
     public addProduct(product: any) {
         if (this.formGroup.valid) {
-            this.product.addProduct(product).subscribe( (data) => console.dir(data));
+            const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+                width: "500px",
+                data: { product, confirmed: false },
+            });
+            dialogRef.afterClosed().subscribe( result => {
+                console.log("Dialog was closed", result);
+                if (result.confirmed) {
+                    this.product.addProduct(result.product).subscribe( (data) => console.dir(data));
+                } else {
+                    console.log("Nie potwierdziles danych. Popraw je...");
+                }
+            });
         } else {
             this.isErrorMsgVisible = true;
         }
     }
-
-    // public showAllProducts() {
-    //     this.product.showProducts().subscribe( (data) => console.dir(data));
-    // }
 
     private createForm() {
         this.formGroup = this.formBuilder.group({

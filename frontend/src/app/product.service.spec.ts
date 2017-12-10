@@ -1,19 +1,19 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TestBed, inject } from '@angular/core/testing';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { inject, TestBed } from "@angular/core/testing";
 
-import { ProductService } from './product.service';
+import { ProductService } from "./product.service";
 
-describe('ProductService', () => {
+describe("ProductService", () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                HttpClientModule
+                HttpClientModule,
             ],
-            providers: [ProductService, HttpClient]
+            providers: [ProductService, HttpClient],
         });
     });
 
-    it('should be created', inject([ProductService], (service: ProductService) => {
+    it("should be created", inject([ProductService], (service: ProductService) => {
         expect(service).toBeTruthy();
     }));
 });

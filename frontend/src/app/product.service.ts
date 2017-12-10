@@ -1,12 +1,14 @@
-import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
-import { IProduct } from "./models/product";
 import { Observable } from "rxjs/Observable";
+import { IProduct } from "./models/product";
+
+import { API_URL } from "./shared/constants";
 
 @Injectable()
 export class ProductService {
-    private apiUrl: string = "http://localhost:8080/";
+    private apiUrl: string = API_URL;
 
     constructor(private http: HttpClient) { }
 
@@ -18,7 +20,7 @@ export class ProductService {
         return this.http.post(`${this.apiUrl}products/add`, product, { headers } );
     }
 
-    public showProducts(): Observable<any> {
-        return this.http.get(`${this.apiUrl}products`);
+    public showProducts(): Observable<IProduct[]> {
+        return this.http.get<IProduct[]>(`${this.apiUrl}products`);
     }
 }

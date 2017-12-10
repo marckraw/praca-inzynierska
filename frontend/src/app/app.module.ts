@@ -1,17 +1,23 @@
-import { AppRoutingModule } from "./app-routing.module";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from "./app-routing.module";
 
+import { AddExpenseComponent } from "./add-expense/add-expense.component";
+import { AddIncomeComponent } from "./add-income/add-income.component";
 import { AddingProductComponent } from "./adding-product/adding-product.component";
 import { AppComponent } from "./app.component";
+import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
+import { CurrencyPlnPipe } from "./currency-pln.pipe";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { DisplayProductsComponent } from "./display-products/display-products.component";
+import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
+import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
 import { MaterialModule } from "./material.module";
 import { ProductService } from "./product.service";
-import { DisplayProductsComponent } from './display-products/display-products.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CurrencyPlnPipe } from './currency-pln.pipe';
+import { ExpenseService } from './expense.service';
 
 @NgModule({
     declarations: [
@@ -20,6 +26,11 @@ import { CurrencyPlnPipe } from './currency-pln.pipe';
         DisplayProductsComponent,
         DashboardComponent,
         CurrencyPlnPipe,
+        AddExpenseComponent,
+        AddIncomeComponent,
+        ManageExpensesComponent,
+        ManageIncomesComponent,
+        ConfirmationModalComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -30,7 +41,8 @@ import { CurrencyPlnPipe } from './currency-pln.pipe';
         HttpClientModule,
         MaterialModule,
     ],
-    providers: [ ProductService ],
-    bootstrap: [AppComponent],
+    providers: [ ProductService, ExpenseService ],
+    bootstrap: [ AppComponent ],
+    entryComponents: [ ConfirmationModalComponent ],
 })
 export class AppModule { }

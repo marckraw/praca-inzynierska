@@ -2,9 +2,18 @@ import { LoggerMiddleware } from "./middleware/logger.middleware";
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
 
 import { ProductsModule } from "./products/products.module";
+import { RevenuesModule } from "./revenues/revenues.module";
+import { ExpensesModule } from "./expenses/expenses.module";
+
+import { AppController } from "./app.controller";
 
 @Module({
-    modules: [ProductsModule],
+    controllers:[ AppController ],
+    modules: [
+        ProductsModule,
+        RevenuesModule,
+        ExpensesModule,
+    ],
 })
 export class ApplicationModule implements NestModule {
     configure(consumer: MiddlewaresConsumer): void {
