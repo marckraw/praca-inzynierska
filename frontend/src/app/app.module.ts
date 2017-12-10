@@ -16,6 +16,7 @@ import { AddExpenseComponent } from "./add-expense/add-expense.component";
 import { AddRevenueComponent } from "./add-revenue/add-revenue.component";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.component";
+import { ConfirmationModalComponent } from "./confirmationmodal/confirmationmodal.component";
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.compo
         AddRevenueComponent,
         ManageExpensesComponent,
         ManageRevenuesComponent,
+        ConfirmationModalComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -39,6 +41,7 @@ import { ManageRevenuesComponent } from "./manage-revenues/manage-revenues.compo
         MaterialModule,
     ],
     providers: [ ProductService ],
-    bootstrap: [AppComponent],
+    bootstrap: [ AppComponent ],
+    entryComponents: [ ConfirmationModalComponent ],
 })
 export class AppModule { }

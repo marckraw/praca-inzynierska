@@ -1,5 +1,7 @@
+import { ConfirmationModalComponent } from "./../confirmationmodal/confirmationmodal.component";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material";
 
 @Component({
   selector: "pi-add-expense",
@@ -11,30 +13,38 @@ export class AddExpenseComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public categories = [
-        {value: "miesa_wedliny", viewValue: "Mięsa i wędliny"},
-        {value: "pieczywo", viewValue: "Pieczywo"},
-        {value: "przyprawy", viewValue: "Przyprawy"},
-        {value: "kawa_i_herbata", viewValue: "Kawa i herbata"},
-        {value: "sery_jogurty_i_mleczne", viewValue: "Sery, jogurty i mleczne"},
-        {value: "dania_gotowe_i_sosy", viewValue: "Dania gotowe i sosy"},
-    ];
-    public qType = [
-        {value: "by_quantity", viewValue: "Quantity"},
-        {value: "by_weight", viewValue: "Weight"},
+    public paymentMethods = [
+        {value: "visa", viewValue: "Karta bankowa"},
+        {value: "transfer", viewValue: "Przelew"},
+        {value: "cash", viewValue: "Gotówka"},
     ];
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {
         this.createForm();
     }
 
-    public addExpense(product: any) {
+    public addExpense(expense: any) {
         if (this.formGroup.valid) {
-            console.log("add expense");
-            // this.product.addProduct(product).subscribe( (data) => console.dir(data));
+            const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+                width: "500px",
+                data: { expense, confirmed: false },
+            });
+            dialogRef.afterClosed().subscribe( result => {
+                console.log("Dialog was closed", result);
+                if (result.confirmed) {
+                    console.log("Dane gotowe do wysłania do końcówki, ", result.expense);
+                } else {
+                    console.log("Nie potwierdziles danych. Popraw je...");
+                }
+            });
+
         } else {
             this.isErrorMsgVisible = true;
         }
+    }
+
+    public calcTotal() {
+        return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
     }
 
     private createForm() {
@@ -45,6 +55,7 @@ export class AddExpenseComponent {
             qt: ["", [Validators.required]],
             paymentMethod: ["", [Validators.required]],
             cost: ["", [Validators.required]],
+            totalCost: [{value: "", disabled: true}],
         });
     }
 }
