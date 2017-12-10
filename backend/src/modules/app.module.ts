@@ -5,7 +5,10 @@ import { ProductsModule } from "./products/products.module";
 import { RevenuesModule } from "./revenues/revenues.module";
 import { ExpensesModule } from "./expenses/expenses.module";
 
+import { AppController } from "./app.controller";
+
 @Module({
+    controllers:[ AppController ],
     modules: [
         ProductsModule,
         RevenuesModule,

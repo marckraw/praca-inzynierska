@@ -1,5 +1,11 @@
 import * as mongoose from "mongoose";
 
-export const ProductSchema = new mongoose.Schema({
+export const ExpenseSchema = new mongoose.Schema({
     name: String,
+    where: String,
+    when: String,
+    qt: Number,
+    paymentMethod: String,
+    cost: Number,
+    totalCost: Number,
 })
