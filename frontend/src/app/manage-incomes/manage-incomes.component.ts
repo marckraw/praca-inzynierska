@@ -12,5 +12,14 @@ import { IncomeService } from "../services/income.service";
 export class ManageIncomesComponent {
     public incomes: Observable<IIncome[]>;
 
-    constructor(private incomeServie: IncomeService) { }
+    constructor(private incomeService: IncomeService) { }
+
+    public ngOnInit() {
+        this.showAllIncomes();
+    }
+
+    public showAllIncomes() {
+        this.incomeService.showIncomes().subscribe(val => console.log(val)); // only for console log, temporary
+        this.incomes = this.incomeService.showIncomes();
+    }
 }
