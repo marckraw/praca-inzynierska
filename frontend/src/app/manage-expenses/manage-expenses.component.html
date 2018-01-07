@@ -1,28 +1,34 @@
-<!-- <div class="display-product-container">
+<div class="display-expense-container">
     <h1>Wszystkie produkty</h1>
-    <table *ngIf="(products | async) as products; else loading">
+    <table *ngIf="(expenses | async) as expenses; else loading">
         <thead>
             <tr>
                 <th>id</th>
                 <th>index</th>
-                <th>Income name</th>
+                <th>Name</th>
+                <th>Place</th>
                 <th>Date</th>
-                <th>List</th>
-                <th>Income amount</th>
+                <th>Quantity</th>
+                <th>Payment method</th>
+                <th>Cost</th>
+                <th>Total Cost</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products; let i = index">
+            <tr *ngFor="let expense of expenses; let i = index">
                 <td>
                     <strong>?</strong>
                 </td>
                 <td>
                     <strong>{{ i }}</strong>
                 </td>
-                <td>{{ product.productName }} </td>
-                <td>{{ product.productCompany }}</td>
-                <td>{{ product.productImage }}</td>
-                <td>{{ product.productPrice }}</td>
+                <td>{{ expense.name }}</td>
+                <td>{{ expense.where }}</td>
+                <td>{{ expense.when }}</td>
+                <td>{{ expense.qt }}</td>
+                <td>{{ expense.paymentMethod }}</td>
+                <td>{{ expense.cost }}</td>
+                <td>{{ expense.totalCost }}</td>
                 <td>
                     <button mat-raised-button color="primary" (click)="edit()">EDIT</button>
                 </td>
@@ -37,4 +43,4 @@
         <mat-spinner></mat-spinner>
     </ng-template>
 
-</div> -->
+</div>

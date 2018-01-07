@@ -11,7 +11,7 @@ import { Component } from "@angular/core";
         <a mat-raised-button color="secondary">Manage monthly fees</a>
         <a mat-raised-button color="primary" routerLink="/add-expense">Add Expense</a>
         <a mat-raised-button color="primary" routerLink="/add-income">Add Income</a>
-        <a mat-raised-button color="secondary" routerLink="/manage-expenses">Manage Expenses</a>
+        <a mat-raised-button color="accent" routerLink="/manage-expenses">Manage Expenses</a>
         <a mat-raised-button color="accent" routerLink="/manage-incomes">Manage Incomes</a>
     </div>
     <router-outlet></router-outlet>
