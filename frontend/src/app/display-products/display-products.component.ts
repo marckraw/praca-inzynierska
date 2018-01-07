@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
-import { IProduct } from "./../models/product";
+import { IProduct } from "./../models/product.interface";
 import { ProductService } from "./../product.service";
 
 @Component({
     selector: "pi-display-products",
     template:
-    `
+        `
     <div class="display-product-container">
         <h1>Wszystkie produkty</h1>
         <table *ngIf="(products | async) as products; else loading">
@@ -55,14 +55,14 @@ export class DisplayProductsComponent implements OnInit {
 
     public products: Observable<IProduct[]>;
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService) { }
 
     public ngOnInit() {
         this.showAllProducts();
     }
 
     public showAllProducts() {
-        this.productService.showProducts().subscribe( (val) => console.log(val) );
+        this.productService.showProducts().subscribe((val) => console.log(val));
         this.products = this.productService.showProducts();
     }
 
@@ -73,4 +73,4 @@ export class DisplayProductsComponent implements OnInit {
     public remove(i) {
         console.log("Removing...");
     }
- }
+}

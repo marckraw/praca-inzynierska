@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
-import { IProduct } from "./models/product";
+import { IProduct } from "./models/product.interface";
 
 import { API_URL } from "./shared/constants";
 
@@ -17,7 +17,7 @@ export class ProductService {
         headers.set("Content-Type", "applications/json");
 
         console.log("Dodaje do bazy produktów: ", product);
-        return this.http.post(`${this.apiUrl}products/add`, product, { headers } );
+        return this.http.post(`${this.apiUrl}products/add`, product, { headers });
     }
 
     public showProducts(): Observable<IProduct[]> {

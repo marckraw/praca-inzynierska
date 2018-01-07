@@ -1,3 +1,40 @@
-<p>
-  manage-expenses works!
-</p>
+<!-- <div class="display-product-container">
+    <h1>Wszystkie produkty</h1>
+    <table *ngIf="(products | async) as products; else loading">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>index</th>
+                <th>Income name</th>
+                <th>Date</th>
+                <th>List</th>
+                <th>Income amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <td>
+                    <strong>?</strong>
+                </td>
+                <td>
+                    <strong>{{ i }}</strong>
+                </td>
+                <td>{{ product.productName }} </td>
+                <td>{{ product.productCompany }}</td>
+                <td>{{ product.productImage }}</td>
+                <td>{{ product.productPrice }}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="edit()">EDIT</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="remove()">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+
+</div> -->

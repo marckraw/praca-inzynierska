@@ -13,11 +13,12 @@ import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-mo
 import { CurrencyPlnPipe } from "./currency-pln.pipe";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DisplayProductsComponent } from "./display-products/display-products.component";
+import { ExpenseService } from "./expense.service";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
 import { MaterialModule } from "./material.module";
 import { ProductService } from "./product.service";
-import { ExpenseService } from './expense.service';
+import { IncomeService } from "./services/income.service";
 
 @NgModule({
     declarations: [
@@ -41,8 +42,8 @@ import { ExpenseService } from './expense.service';
         HttpClientModule,
         MaterialModule,
     ],
-    providers: [ ProductService, ExpenseService ],
-    bootstrap: [ AppComponent ],
-    entryComponents: [ ConfirmationModalComponent ],
+    providers: [ProductService, ExpenseService, IncomeService],
+    bootstrap: [AppComponent],
+    entryComponents: [ConfirmationModalComponent],
 })
 export class AppModule { }
