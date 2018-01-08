@@ -19,12 +19,12 @@
                 <td>
                     <strong>{{ i }}</strong>
                 </td>
-                <td>{{ income.name }} </td>
+                <td>{{ income.name }} -> income._v </td>
                 <td>{{ income.when }}</td>
                 <td>{{ income.paymentMethod }}</td>
                 <td>{{ income.value }}</td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="edit()">EDIT</button>
+                    <button mat-raised-button color="primary" (click)="edit(income)">EDIT</button>
                 </td>
                 <td>
                     <button mat-raised-button color="primary" (click)="remove()">DELETE</button>
