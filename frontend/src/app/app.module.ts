@@ -3,11 +3,12 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app-routing.module";
+import { ChartsModule } from "ng2-charts";
 
 import { AddExpenseComponent } from "./add-expense/add-expense.component";
 import { AddIncomeComponent } from "./add-income/add-income.component";
 import { AddingProductComponent } from "./adding-product/adding-product.component";
+import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
 import { CurrencyPlnPipe } from "./currency-pln.pipe";
@@ -43,6 +44,7 @@ import { IncomeService } from "./services/income.service";
         ReactiveFormsModule,
         HttpClientModule,
         MaterialModule,
+        ChartsModule,
     ],
     providers: [ProductService, ExpenseService, IncomeService],
     bootstrap: [AppComponent],
