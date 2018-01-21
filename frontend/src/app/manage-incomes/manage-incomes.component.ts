@@ -39,8 +39,5 @@ export class ManageIncomesComponent {
         });
     }
 
-    public remove(income) {
-        console.log("Removing...", income);
-        this.incomeService.removeIncome(income).subscribe( removedIncome => this.showAllIncomes());
-    }
+    public remove(income) { this.incomeService.removeIncome(income).subscribe( removedIncome => this.showAllIncomes()); }
 }
