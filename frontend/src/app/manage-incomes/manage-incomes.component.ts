@@ -40,43 +40,7 @@ export class ManageIncomesComponent {
     }
 
     public remove(income) {
-        const dialogRef = this.dialog.open(GenericEditComponent, {
-            width: "500px,",
-            data: income,
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log("GenericEditDialog was closed", result);
-        });
+        console.log("Removing...", income);
+        this.incomeService.removeIncome(income).subscribe( removedIncome => this.showAllIncomes());
     }
 }
-
-// public addIncome(income: any) {
-//     if (this.formGroup.valid) {
-//         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-//             width: "500px",
-//             data: { income, confirmed: false },
-//         });
-//         dialogRef.afterClosed().subscribe(result => {
-//             console.log("Dialog was closed", result);
-//             if (result.confirmed) {
-//                 this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-//                 console.log("Dane gotowe do wysłania do końcówki, ", result.income);
-//             } else {
-//                 console.log("Nie potwierdziles danych. Popraw je...");
-//             }
-//         });
-
-//     } else {
-//         this.isErrorMsgVisible = true;
-//     }
-// }
-
-// private createForm() {
-//     this.formGroup = this.formBuilder.group({
-//         name: ["", [Validators.required]],
-//         when: ["", [Validators.required]],
-//         paymentMethod: ["", [Validators.required]],
-//         value: ["", [Validators.required]],
-//     });
-// }

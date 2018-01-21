@@ -7,6 +7,7 @@ import { IIncome } from "./interfaces/income.interface";
 
 // dto
 import { AddIncomeDto } from "./dto/add-income.dto";
+import { RemoveIncomeDto } from "./dto/remove-income.dto";
 
 @Component()
 export class IncomesService {
@@ -21,5 +22,14 @@ export class IncomesService {
 
     async findAll(): Promise<IIncome[]> {
         return this.incomeModel.find().exec();
+    }
+
+    // async findById(id): Promise<IIncome> {
+    //     return this.incomeModel.findById(id).exec();
+    // }
+
+    async removeById(removeIncomeDto: RemoveIncomeDto): Promise<IIncome> {
+        console.log(removeIncomeDto);
+        return this.incomeModel.findByIdAndRemove(removeIncomeDto._id).exec();
     }
 }

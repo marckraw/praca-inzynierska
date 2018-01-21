@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
-import { API_URL } from "./shared/constants";
+import { API_URL } from "../shared/constants";
 
-import { IExpense } from "./models/expense.interface";
+import { IExpense } from "../models/expense.interface";
 
 @Injectable()
 export class ExpenseService {

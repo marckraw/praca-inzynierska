@@ -7,3 +7,10 @@ export const IncomeSchema = new mongoose.Schema({
     paymentMethod: String,
     value: Number,
 });
+
+/*
+
+schema types:
+String, Number, Date, Buffer, Boolean, Mixed (any?), ObjectId, Array
+
+*/

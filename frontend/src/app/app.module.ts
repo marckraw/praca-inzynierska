@@ -14,13 +14,13 @@ import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-mo
 import { CurrencyPlnPipe } from "./currency-pln.pipe";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DisplayProductsComponent } from "./display-products/display-products.component";
-import { ExpenseService } from "./expense.service";
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
 import { MaterialModule } from "./material.module";
-import { ProductService } from "./product.service";
+import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
+import { ProductService } from "./services/product.service";
 
 @NgModule({
     declarations: [

@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
-import { IProduct } from "./models/product.interface";
+import { IProduct } from "../models/product.interface";
 
-import { API_URL } from "./shared/constants";
+import { API_URL } from "../shared/constants";
 
 @Injectable()
 export class ProductService {

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
 import { ConfirmationModalComponent } from "./../confirmation-modal/confirmation-modal.component";
-import { ExpenseService } from "./../expense.service";
 import { IExpense } from "./../models/expense.interface";
+import { ExpenseService } from "./../services/expense.service";
 
 @Component({
     selector: "pi-add-expense",

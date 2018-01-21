@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
 import { IProduct } from "./../models/product.interface";
-import { ProductService } from "./../product.service";
+import { ProductService } from "./../services/product.service";
 
 @Component({
     selector: "pi-display-products",

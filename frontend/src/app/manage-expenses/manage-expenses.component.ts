@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
-import { ExpenseService } from "../expense.service";
 import { IExpense } from "../models/expense.interface";
+import { ExpenseService } from "../services/expense.service";
 
 @Component({
     selector: "pi-manage-expenses",
@@ -19,7 +19,7 @@ export class ManageExpensesComponent {
     }
 
     public showAllExpenses() {
-        this.expenseService.showExpenses().subscribe(val => console.log(val)) // this is only for loggin, temporary
+        this.expenseService.showExpenses().subscribe(val => console.log(val)); // this is only for loggin, temporary
         this.expenses = this.expenseService.showExpenses();
     }
 }
