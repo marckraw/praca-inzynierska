@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 
 // services
 import { ProductsService } from "./products.service";
@@ -8,6 +8,7 @@ import { IProduct } from "./interfaces/product.interface";
 
 // dto
 import { AddProductDto } from "./dto/add-product.dto";
+import { RemoveProductDto } from "./dto/remove-product.dto";
 
 @Controller("products")
 export class ProductsController {
@@ -17,6 +18,12 @@ export class ProductsController {
     async addProduct( @Body() addProductDto: AddProductDto) {
         console.log(addProductDto);
         return this.productService.addProduct(addProductDto);
+    }
+
+    @Delete("remove")
+    async removeProduct( @Body() removeProductDto: RemoveProductDto) {
+        console.log("From backend controller", removeProductDto);
+        this.productService.removeById(removeProductDto);
     }
 
     @Get()

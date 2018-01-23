@@ -23,4 +23,10 @@ export class ProductService {
     public showProducts(): Observable<IProduct[]> {
         return this.http.get<IProduct[]>(`${this.apiUrl}products`);
     }
+
+    public removeProduct(product: any): Observable<any>  {
+        console.log("Service frontend: Usuwam z bazy produktow: ", product);
+
+        return this.http.request("delete", `${this.apiUrl}products/remove`, { body: product });
+    }
 }

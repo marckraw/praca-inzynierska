@@ -40,7 +40,7 @@ import { ProductService } from "./../services/product.service";
                     <td>{{ product.productQuantitativeType }}</td>
                     <td>{{ product.productTags }}</td>
                     <td><button mat-raised-button color="primary" (click)="edit()">EDIT</button></td>
-                    <td><button mat-raised-button color="primary" (click)="remove()">DELETE</button></td>
+                    <td><button mat-raised-button color="primary" (click)="remove(product)">DELETE</button></td>
                 </tr>
             </tbody>
         </table>
@@ -70,7 +70,5 @@ export class ManageProductsComponent implements OnInit {
         console.log("Editing...");
     }
 
-    public remove(i) {
-        console.log("Removing...");
-    }
+    public remove(product) { this.productService.removeProduct(product).subscribe( () => this.showAllProducts()); }
 }
