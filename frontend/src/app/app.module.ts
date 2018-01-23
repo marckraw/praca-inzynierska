@@ -13,6 +13,9 @@ import { AppComponent } from "./app.component";
 import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
 import { CurrencyPlnPipe } from "./currency-pln.pipe";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { EditExpenseComponent } from "./edit-expense/edit-expense.component";
+import { EditIncomeComponent } from "./edit-income/edit-income.component";
+import { EditProductComponent } from "./edit-product/edit-product.component";
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
@@ -35,6 +38,9 @@ import { ProductService } from "./services/product.service";
         ManageIncomesComponent,
         ConfirmationModalComponent,
         GenericEditComponent,
+        EditIncomeComponent,
+        EditExpenseComponent,
+        EditProductComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -48,6 +54,12 @@ import { ProductService } from "./services/product.service";
     ],
     providers: [ProductService, ExpenseService, IncomeService],
     bootstrap: [AppComponent],
-    entryComponents: [ConfirmationModalComponent, GenericEditComponent],
+    entryComponents: [
+        ConfirmationModalComponent,
+        GenericEditComponent,
+        EditIncomeComponent,
+        EditExpenseComponent,
+        EditProductComponent,
+    ],
 })
 export class AppModule { }

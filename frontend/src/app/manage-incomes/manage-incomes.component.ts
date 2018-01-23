@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs/Observable";
 
+import { EditIncomeComponent } from "../edit-income/edit-income.component";
 import { GenericEditComponent } from "../generic-edit/generic-edit.component";
 import { IIncome } from "../models/income.interface";
 import { IncomeService } from "../services/income.service";
@@ -29,13 +30,23 @@ export class ManageIncomesComponent {
     }
 
     public edit(income) {
-        const dialogRef = this.dialog.open(GenericEditComponent, {
-            width: "500px,",
-            data: income,
+        const dialogRef = this.dialog.open(EditIncomeComponent, {
+            width: "600px",
+            data: { income, confirmed: false },
         });
-
         dialogRef.afterClosed().subscribe(result => {
-            console.log("GenericEditDialog was closed", result);
+            if (result !== undefined) {
+                if (result.confirmed) {
+                    console.log("teraz powinienem zaktualizowac dane");
+                    console.log("This is changed income: ", result);
+                    // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
+                    // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                } else {
+                    console.log("Nie potwierdziles danych. Popraw je...");
+                }
+            } else {
+                console.log("poszedles w pizdu");
+            }
         });
     }
 

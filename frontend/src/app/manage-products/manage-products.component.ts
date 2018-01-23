@@ -39,7 +39,7 @@ import { ProductService } from "./../services/product.service";
                     <td>{{ product.productCategory }}</td>
                     <td>{{ product.productQuantitativeType }}</td>
                     <td>{{ product.productTags }}</td>
-                    <td><button mat-raised-button color="primary" (click)="edit()">EDIT</button></td>
+                    <td><button mat-raised-button color="primary" (click)="edit(product)">EDIT</button></td>
                     <td><button mat-raised-button color="primary" (click)="remove(product)">DELETE</button></td>
                 </tr>
             </tbody>
@@ -66,8 +66,8 @@ export class ManageProductsComponent implements OnInit {
         this.products = this.productService.showProducts();
     }
 
-    public edit() {
-        console.log("Editing...");
+    public edit(product) {
+        console.log("Editing...", product);
     }
 
     public remove(product) { this.productService.removeProduct(product).subscribe( () => this.showAllProducts()); }
