@@ -5,10 +5,10 @@ import { IProduct } from "./../models/product.interface";
 import { ProductService } from "./../services/product.service";
 
 @Component({
-    selector: "pi-display-products",
+    selector: "pi-manage-products",
     template:
         `
-    <div class="display-product-container">
+    <div class="manage-product-container">
         <h1>Wszystkie produkty</h1>
         <table *ngIf="(products | async) as products; else loading">
             <thead>
@@ -49,9 +49,9 @@ import { ProductService } from "./../services/product.service";
 
     </div>
     `,
-    styleUrls: ["./display-products.component.scss"],
+    styleUrls: ["./manage-products.component.scss"],
 })
-export class DisplayProductsComponent implements OnInit {
+export class ManageProductsComponent implements OnInit {
 
     public products: Observable<IProduct[]>;
 

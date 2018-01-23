@@ -1,15 +1,15 @@
 import { HttpClientModule } from "@angular/common/http";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ProductService } from "./../product.service";
+import { ProductService } from "./../services/product.service";
 
 import { HttpClient } from "@angular/common/http";
 import { DebugElement } from "@angular/core";
-import { AddingProductComponent } from "./adding-product.component";
+import { AddProductComponent } from "./add-product.component";
 
 describe("AddingProductComponent", () => {
-    let component: AddingProductComponent;
-    let fixture: ComponentFixture<AddingProductComponent>;
+    let component: AddProductComponent;
+    let fixture: ComponentFixture<AddProductComponent>;
     let element: HTMLElement;
     let debugEl: DebugElement;
 
@@ -22,7 +22,7 @@ describe("AddingProductComponent", () => {
                     HttpClientModule,
                 ],
                 declarations: [
-                    AddingProductComponent,
+                    AddProductComponent,
                 ],
                 providers: [
                     ProductService,
@@ -33,7 +33,7 @@ describe("AddingProductComponent", () => {
     );
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AddingProductComponent);
+        fixture = TestBed.createComponent(AddProductComponent);
         component = fixture.componentInstance;
         debugEl = fixture.debugElement;
         element = fixture.nativeElement;

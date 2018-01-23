@@ -5,13 +5,13 @@ import { AddIncomeComponent } from "./add-income/add-income.component";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
 
-import { AddingProductComponent } from "./adding-product/adding-product.component";
+import { AddProductComponent } from "./add-product/add-product.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { DisplayProductsComponent } from "./display-products/display-products.component";
+import { ManageProductsComponent } from "./manage-products/manage-products.component";
 
 const appRoutes: Routes = [
-    { path: "adding-product", component: AddingProductComponent },
-    { path: "show-products", component: DisplayProductsComponent },
+    { path: "adding-product", component: AddProductComponent },
+    { path: "show-products", component: ManageProductsComponent },
     { path: "add-expense", component: AddExpenseComponent },
     { path: "add-income", component: AddIncomeComponent },
     { path: "manage-expenses", component: ManageExpensesComponent },

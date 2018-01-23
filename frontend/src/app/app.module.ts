@@ -7,16 +7,16 @@ import { ChartsModule } from "ng2-charts";
 
 import { AddExpenseComponent } from "./add-expense/add-expense.component";
 import { AddIncomeComponent } from "./add-income/add-income.component";
-import { AddingProductComponent } from "./adding-product/adding-product.component";
+import { AddProductComponent } from "./add-product/add-product.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
 import { CurrencyPlnPipe } from "./currency-pln.pipe";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { DisplayProductsComponent } from "./display-products/display-products.component";
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
 import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
 import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
+import { ManageProductsComponent } from "./manage-products/manage-products.component";
 import { MaterialModule } from "./material.module";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
@@ -25,8 +25,8 @@ import { ProductService } from "./services/product.service";
 @NgModule({
     declarations: [
         AppComponent,
-        AddingProductComponent,
-        DisplayProductsComponent,
+        AddProductComponent,
+        ManageProductsComponent,
         DashboardComponent,
         CurrencyPlnPipe,
         AddExpenseComponent,
