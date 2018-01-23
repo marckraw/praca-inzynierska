@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
+import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs/Observable";
+import { EditProductComponent } from "../edit-product/edit-product.component";
 import { IProduct } from "./../models/product.interface";
 import { ProductService } from "./../services/product.service";
 
@@ -32,7 +34,7 @@ import { ProductService } from "./../services/product.service";
                     <td><strong>?</strong></td>
                     <td><strong>{{ i }}</strong></td>
                     <td>{{ product.productName }} </td>
-                    <td>{{ product.productCompany }}</td>
+                    <td>{{ product.productCompanyName }}</td>
                     <td>{{ product.productImage }}</td>
                     <td>{{ product.productPrice }}</td>
                     <td>{{ product.productWeight }}</td>
@@ -55,7 +57,10 @@ export class ManageProductsComponent implements OnInit {
 
     public products: Observable<IProduct[]>;
 
-    constructor(private productService: ProductService) { }
+    constructor(
+        private productService: ProductService,
+        private dialog: MatDialog,
+    ) { }
 
     public ngOnInit() {
         this.showAllProducts();
@@ -67,7 +72,24 @@ export class ManageProductsComponent implements OnInit {
     }
 
     public edit(product) {
-        console.log("Editing...", product);
+        const dialogRef = this.dialog.open(EditProductComponent, {
+            width: "600px",
+            data: { product, confirmed: false },
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result !== undefined) {
+                if (result.confirmed) {
+                    console.log("teraz powinienem zaktualizowac dane");
+                    console.log("This is changed product: ", result);
+                    // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
+                    // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                } else {
+                    console.log("Nie potwierdziles danych. Popraw je...");
+                }
+            } else {
+                console.log("poszedles w pizdu");
+            }
+        });
     }
 
     public remove(product) { this.productService.removeProduct(product).subscribe( () => this.showAllProducts()); }
