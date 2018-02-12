@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
 import { MatDialog } from "@angular/material";
+import { IExpense } from "../../models/expense.interface";
+import { ExpenseService } from "../../services/expense.service";
 import { EditExpenseComponent } from "../edit-expense/edit-expense.component";
-import { IExpense } from "../models/expense.interface";
-import { ExpenseService } from "../services/expense.service";
 
 @Component({
     selector: "pi-manage-expenses",

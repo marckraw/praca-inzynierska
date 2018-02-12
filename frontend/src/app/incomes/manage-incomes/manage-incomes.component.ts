@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs/Observable";
 
+import { GenericEditComponent } from "../../generic-edit/generic-edit.component";
+import { IIncome } from "../../models/income.interface";
+import { IncomeService } from "../../services/income.service";
 import { EditIncomeComponent } from "../edit-income/edit-income.component";
-import { GenericEditComponent } from "../generic-edit/generic-edit.component";
-import { IIncome } from "../models/income.interface";
-import { IncomeService } from "../services/income.service";
 
 @Component({
     selector: "pi-manage-incomes",

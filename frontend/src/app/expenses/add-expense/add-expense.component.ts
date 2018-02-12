@@ -2,15 +2,16 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
-import { IncomeService } from "../services/income.service";
-import { ConfirmationModalComponent } from "./../confirmation-modal/confirmation-modal.component";
+import { ConfirmationModalComponent } from "./../../confirmation-modal/confirmation-modal.component";
+import { IExpense } from "./../../models/expense.interface";
+import { ExpenseService } from "./../../services/expense.service";
 
 @Component({
-    selector: "pi-add-income",
-    templateUrl: "./add-income.component.html",
-    styleUrls: ["./add-income.component.scss"],
+    selector: "pi-add-expense",
+    templateUrl: "./add-expense.component.html",
+    styleUrls: ["./add-expense.component.scss"],
 })
-export class AddIncomeComponent {
+export class AddExpenseComponent {
     public isErrorMsgVisible = false;
     public formGroup: FormGroup;
     public selectedCategory: string;
@@ -24,22 +25,26 @@ export class AddIncomeComponent {
     constructor(
         private formBuilder: FormBuilder,
         private dialog: MatDialog,
-        private incomeService: IncomeService,
+        private expenseService: ExpenseService,
     ) {
+        this.expenseService.showExpenses().subscribe(data => console.log("Wszystkie wydatki: ", data));
         this.createForm();
     }
 
-    public addIncome(income: any) {
+    public addExpense(expense: IExpense) {
         if (this.formGroup.valid) {
             const dialogRef = this.dialog.open(ConfirmationModalComponent, {
                 width: "500px",
-                data: { income, confirmed: false },
+                data: { expense, confirmed: false },
             });
             dialogRef.afterClosed().subscribe(result => {
                 console.log("Dialog was closed", result);
                 if (result.confirmed) {
-                    this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-                    console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                    console.log("Dane gotowe do wysłania do końcówki, ", result.expense);
+                    this.expenseService.addExpense(result.expense)
+                        .subscribe((data) => {
+                            console.log("Dodano dane: ", data);
+                        });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
@@ -50,12 +55,19 @@ export class AddIncomeComponent {
         }
     }
 
+    public calcTotal() {
+        return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
+    }
+
     private createForm() {
         this.formGroup = this.formBuilder.group({
             name: ["", [Validators.required]],
+            where: ["", [Validators.required]],
             when: ["", [Validators.required]],
+            qt: ["", [Validators.required]],
             paymentMethod: ["", [Validators.required]],
-            value: ["", [Validators.required]],
+            cost: ["", [Validators.required]],
+            totalCost: [{ value: "", disabled: true }],
         });
     }
 }

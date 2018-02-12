@@ -5,22 +5,28 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ChartsModule } from "ng2-charts";
 
-import { AddExpenseComponent } from "./add-expense/add-expense.component";
-import { AddIncomeComponent } from "./add-income/add-income.component";
-import { AddProductComponent } from "./add-product/add-product.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ConfirmationModalComponent } from "./confirmation-modal/confirmation-modal.component";
-import { CurrencyPlnPipe } from "./currency-pln.pipe";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { EditExpenseComponent } from "./edit-expense/edit-expense.component";
-import { EditIncomeComponent } from "./edit-income/edit-income.component";
-import { EditProductComponent } from "./edit-product/edit-product.component";
+
+import { AddExpenseComponent } from "./expenses/add-expense/add-expense.component";
+import { EditExpenseComponent } from "./expenses/edit-expense/edit-expense.component";
+import { ManageExpensesComponent } from "./expenses/manage-expenses/manage-expenses.component";
+
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
-import { ManageExpensesComponent } from "./manage-expenses/manage-expenses.component";
-import { ManageIncomesComponent } from "./manage-incomes/manage-incomes.component";
-import { ManageProductsComponent } from "./manage-products/manage-products.component";
+
+import { AddIncomeComponent } from "./incomes/add-income/add-income.component";
+import { EditIncomeComponent } from "./incomes/edit-income/edit-income.component";
+import { ManageIncomesComponent } from "./incomes/manage-incomes/manage-incomes.component";
+
 import { MaterialModule } from "./material.module";
+import { CurrencyPlnPipe } from "./pipes/currency-pln.pipe";
+
+import { AddProductComponent } from "./products/add-product/add-product.component";
+import { EditProductComponent } from "./products/edit-product/edit-product.component";
+import { ManageProductsComponent } from "./products/manage-products/manage-products.component";
+
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";

@@ -1,15 +1,14 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { IEditExpense } from "../models/edit-expense.interface";
+import { IEditIncome } from "../../models/edit-income.interface";
 
 @Component({
-  selector: "pi-edit-expense",
-  templateUrl: "./edit-expense.component.html",
-  styleUrls: ["./edit-expense.component.scss"],
+  selector: "pi-edit-income",
+  templateUrl: "./edit-income.component.html",
+  styleUrls: ["./edit-income.component.scss"],
 })
-export class EditExpenseComponent {
-
+export class EditIncomeComponent {
     public isErrorMsgVisible = false;
     public formGroup: FormGroup;
     public selectedCategory: string;
@@ -22,14 +21,13 @@ export class EditExpenseComponent {
 
     constructor(
         private formBuilder: FormBuilder,
-        public dialogRef: MatDialogRef<EditExpenseComponent>, @Inject(MAT_DIALOG_DATA) public data: IEditExpense,
+        public dialogRef: MatDialogRef<EditIncomeComponent>, @Inject(MAT_DIALOG_DATA) public data: IEditIncome,
     ) {}
 
     public ngOnInit() {
-        console.log("Dane do edycji z Manage Expense: ", this.data);
+        console.log("Dane do edycji z Manage Income: ", this.data);
 
         this.createForm();
-        this.calcTotal();
     }
 
     public onNoClick(): void {
@@ -43,27 +41,19 @@ export class EditExpenseComponent {
     public confirm(): void {
         if (this.formGroup.valid) {
             this.data.confirmed = true;
-            this.data.expense = this.formGroup.value;
+            this.data.income = this.formGroup.value;
             this.dialogRef.close(this.data);
         } else {
             this.isErrorMsgVisible = true;
         }
     }
 
-    public calcTotal() {
-        return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
-    }
-
     private createForm() {
         this.formGroup = this.formBuilder.group({
-            name: [this.data.expense.name, [Validators.required]],
-            where: [this.data.expense.where, [Validators.required]],
-            when: [this.data.expense.when, [Validators.required]],
-            qt: [this.data.expense.qt, [Validators.required]],
-            paymentMethod: [this.data.expense.paymentMethod, [Validators.required]],
-            cost: [this.data.expense.cost, [Validators.required]],
-            totalCost: [{ value: "", disabled: true }],
+            name: [this.data.income.name, [Validators.required]],
+            when: [this.data.income.when, [Validators.required]],
+            paymentMethod: [this.data.income.paymentMethod, [Validators.required]],
+            value: [this.data.income.value, [Validators.required]],
         });
     }
-
 }

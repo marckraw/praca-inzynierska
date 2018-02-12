@@ -2,9 +2,9 @@ import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
-import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-modal.component";
-import { ProductService } from "../services/product.service";
-import { MaterialModule } from "./../material.module";
+import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
+import { ProductService } from "../../services/product.service";
+import { MaterialModule } from "./../../material.module";
 
 @Component({
     selector: "pi-add-product",

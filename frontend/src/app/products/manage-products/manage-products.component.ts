@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 
 import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs/Observable";
-import { EditProductComponent } from "../edit-product/edit-product.component";
-import { IProduct } from "./../models/product.interface";
-import { ProductService } from "./../services/product.service";
+import { IProduct } from "./../../models/product.interface";
+import { ProductService } from "./../../services/product.service";
+import { EditProductComponent } from "./../edit-product/edit-product.component";
 
 @Component({
     selector: "pi-manage-products",

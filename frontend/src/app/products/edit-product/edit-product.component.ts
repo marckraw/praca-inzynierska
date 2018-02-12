@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { IEditProduct } from "../models/edit-product.interface";
+import { IEditProduct } from "../../models/edit-product.interface";
 
 @Component({
   selector: "pi-edit-product",
