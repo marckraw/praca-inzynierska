@@ -1,5 +1,5 @@
 <div class="add-income-container" [formGroup]="formGroup">
-    <h1>Add Revenue</h1>
+    <h1>Add Income</h1>
     <div class="add-income-form">
         <mat-form-field>
             <input matInput type="text" [formControlName]="'name'" placeholder="Income name">
@@ -21,7 +21,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'income'" placeholder="What is the income amount ?">
+            <input matInput type="number" [formControlName]="'value'" placeholder="What is the income amount ?">
             <span matPrefix>PLN&nbsp;</span>
             <mat-hint align="end">Insert income</mat-hint>
         </mat-form-field>

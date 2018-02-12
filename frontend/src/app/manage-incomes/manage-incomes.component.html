@@ -1,3 +1,40 @@
-<p>
-  manage-revenues works!
-</p>
+<div class="display-income-container">
+    <h1>Wszystkie produkty</h1>
+    <table *ngIf="(incomes | async) as incomes; else loading">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>index</th>
+                <th>Income name</th>
+                <th>Date</th>
+                <th>List</th>
+                <th>Income amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of incomes; let i = index">
+                <td>
+                    <strong>?</strong>
+                </td>
+                <td>
+                    <strong>{{ i }}</strong>
+                </td>
+                <td>{{ income.name }} -> income._v </td>
+                <td>{{ income.when }}</td>
+                <td>{{ income.paymentMethod }}</td>
+                <td>{{ income.value }}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="edit(income)">EDIT</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="remove(income)">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+
+</div>

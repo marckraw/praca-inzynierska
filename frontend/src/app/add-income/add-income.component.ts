@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
+import { IncomeService } from "../services/income.service";
 import { ConfirmationModalComponent } from "./../confirmation-modal/confirmation-modal.component";
 
 @Component({
@@ -15,12 +16,16 @@ export class AddIncomeComponent {
     public selectedCategory: string;
     public selectedType: string;
     public paymentMethods = [
-        {value: "visa", viewValue: "Karta bankowa"},
-        {value: "transfer", viewValue: "Przelew"},
-        {value: "cash", viewValue: "Gotówka"},
+        { value: "visa", viewValue: "Karta bankowa" },
+        { value: "transfer", viewValue: "Przelew" },
+        { value: "cash", viewValue: "Gotówka" },
     ];
 
-    constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private dialog: MatDialog,
+        private incomeService: IncomeService,
+    ) {
         this.createForm();
     }
 
@@ -30,9 +35,10 @@ export class AddIncomeComponent {
                 width: "500px",
                 data: { income, confirmed: false },
             });
-            dialogRef.afterClosed().subscribe( result => {
+            dialogRef.afterClosed().subscribe(result => {
                 console.log("Dialog was closed", result);
                 if (result.confirmed) {
+                    this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
                     console.log("Dane gotowe do wysłania do końcówki, ", result.income);
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
@@ -49,7 +55,7 @@ export class AddIncomeComponent {
             name: ["", [Validators.required]],
             when: ["", [Validators.required]],
             paymentMethod: ["", [Validators.required]],
-            income: ["", [Validators.required]],
+            value: ["", [Validators.required]],
         });
     }
 }

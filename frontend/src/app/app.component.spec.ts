@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { async, TestBed } from "@angular/core/testing";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AddingProductComponent } from "./adding-product/adding-product.component";
-import { ProductService } from "./product.service";
+import { AddProductComponent } from "./add-product/add-product.component";
+import { ProductService } from "./services/product.service";
 
 import { AppComponent } from "./app.component";
 
@@ -16,7 +16,7 @@ describe("AppComponent", () => {
         ],
         declarations: [
             AppComponent,
-            AddingProductComponent,
+            AddProductComponent,
         ],
         providers: [
             ProductService,

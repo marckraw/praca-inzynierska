@@ -2,9 +2,9 @@ import * as mongoose from "mongoose";
 
 export const databaseProviders = [
     {
-        provide: 'DbConnectionToken',
+        provide: "DbConnectionToken",
         useFactory: async (): Promise<mongoose.Connection> => {
             (mongoose as any).Promise = global.Promise;
-            return await mongoose.connect('mongodb://mongo/budget-dev', { useMongoClient: true });
+            return await mongoose.connect("mongodb://mongo/budget-dev", { useMongoClient: true });
     },
 }];

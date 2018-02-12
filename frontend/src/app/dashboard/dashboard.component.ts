@@ -7,6 +7,50 @@ import { Component } from "@angular/core";
 })
 export class DashboardComponent {
 
+    public doughnutChartLabels: string[] = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+    public doughnutChartData: number[] = [350, 450, 100];
+    public doughnutChartType: string = "doughnut";
+
+    public datasets = [
+        {
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+        },
+    ];
+
+    public datasets2 = [
+        {
+            label: "# of Months",
+            data: [2, 5, 50, 78, 2, 1, 2, 1, 90, 23, 42, 23],
+        },
+    ];
+
+    public labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
+    public labels2 = [
+        "Styczeń",
+        "Luty",
+        "Marzec",
+        "Kwiecień",
+        "Maj",
+        "Czerwiec",
+        "Lipiec",
+        "Sierpien",
+        "Wrzesień",
+        "Październik",
+        "Listopad",
+        "Grudzień",
+    ];
+
+    public options = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                },
+            }],
+        },
+    };
+
     public revenueSum: number;
     public expenseSum: number;
     public currentMoney: string;
@@ -80,15 +124,15 @@ export class DashboardComponent {
         },
     ];
 
-    constructor(){}
+    constructor() { }
 
     public ngOnInit() {
-        this.expenseSum = this.expenses.reduce( (prev, curr) => {
-                return prev + curr.expense;
+        this.expenseSum = this.expenses.reduce((prev, curr) => {
+            return prev + curr.expense;
         }, 0);
 
-        this.revenueSum = this.revenues.reduce( (prev, curr) => {
-                return prev + curr.revenue;
+        this.revenueSum = this.revenues.reduce((prev, curr) => {
+            return prev + curr.revenue;
         }, 0);
 
         this.currentMoney = (this.revenueSum - this.expenseSum).toFixed(2);

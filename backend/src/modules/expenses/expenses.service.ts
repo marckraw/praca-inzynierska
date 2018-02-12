@@ -1,5 +1,5 @@
-import { Model } from 'mongoose';
-import { Component, Inject } from '@nestjs/common';
+import { Component, Inject } from "@nestjs/common";
+import { Model } from "mongoose";
 import { Observable } from "rxjs/Observable";
 
 // interfaces
@@ -7,12 +7,12 @@ import { IExpense } from "./interfaces/expense.interface";
 
 // dto
 import { AddExpenseDto } from "./dto/add-expense.dto";
-
+import { RemoveExpenseDto } from "./dto/remove-expense.dto";
 
 @Component()
 export class ExpensesService {
     constructor(
-        @Inject('ExpenseModelToken') private readonly expenseModel: Model<IExpense>
+        @Inject("ExpenseModelToken") private readonly expenseModel: Model<IExpense>,
     ) {}
 
     async addExpense(addExpenseDto: AddExpenseDto): Promise<IExpense> {
@@ -22,5 +22,10 @@ export class ExpensesService {
 
     async getAllExpenses(): Promise<IExpense[]> {
         return this.expenseModel.find().exec();
+    }
+
+    async removeById(removeExpenseDto: RemoveExpenseDto): Promise<IExpense> {
+        console.log("From backend service: ", removeExpenseDto);
+        return this.expenseModel.findByIdAndRemove(removeExpenseDto._id).exec();
     }
 }
