@@ -36,10 +36,8 @@ export class AddIncomeComponent {
                 data: { income, confirmed: false },
             });
             dialogRef.afterClosed().subscribe(result => {
-                console.log("Dialog was closed", result);
                 if (result.confirmed) {
-                    this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-                    console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                    this.incomeService.addIncome(result.income).subscribe();
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }

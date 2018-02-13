@@ -26,8 +26,6 @@ export class EditExpenseComponent {
     ) {}
 
     public ngOnInit() {
-        console.log("Dane do edycji z Manage Expense: ", this.data);
-
         this.createForm();
         this.calcTotal();
     }

@@ -29,7 +29,6 @@ export class IncomesService {
     // }
 
     async removeById(removeIncomeDto: RemoveIncomeDto): Promise<IIncome> {
-        console.log(removeIncomeDto);
         return this.incomeModel.findByIdAndRemove(removeIncomeDto._id).exec();
     }
 }

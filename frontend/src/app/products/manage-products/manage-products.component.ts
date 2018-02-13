@@ -81,6 +81,7 @@ export class ManageProductsComponent implements OnInit {
                 if (result.confirmed) {
                     console.log("teraz powinienem zaktualizowac dane");
                     console.log("This is changed product: ", result);
+                    this.productService.updateProduct(result.product).subscribe((data) => console.dir(data));
                     // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
                     // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
                 } else {

@@ -27,7 +27,7 @@ export class AddExpenseComponent {
         private dialog: MatDialog,
         private expenseService: ExpenseService,
     ) {
-        this.expenseService.showExpenses().subscribe(data => console.log("Wszystkie wydatki: ", data));
+        this.expenseService.showExpenses().subscribe();
         this.createForm();
     }
 
@@ -38,13 +38,9 @@ export class AddExpenseComponent {
                 data: { expense, confirmed: false },
             });
             dialogRef.afterClosed().subscribe(result => {
-                console.log("Dialog was closed", result);
                 if (result.confirmed) {
-                    console.log("Dane gotowe do wysłania do końcówki, ", result.expense);
                     this.expenseService.addExpense(result.expense)
-                        .subscribe((data) => {
-                            console.log("Dodano dane: ", data);
-                        });
+                        .subscribe();
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }

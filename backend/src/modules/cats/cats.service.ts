@@ -1,5 +1,5 @@
-import { Model } from 'mongoose';
-import { Component, Inject } from '@nestjs/common';
+import { Component, Inject } from "@nestjs/common";
+import { Model } from "mongoose";
 
 // interfaces
 import { Cat } from "./interfaces/cat.interface";
@@ -7,15 +7,13 @@ import { Cat } from "./interfaces/cat.interface";
 // dto
 import { CreateCatDto } from "./dto/create-cat.dto";
 
-
 @Component()
 export class CatsService {
     constructor(
-        @Inject('CatModelToken') private readonly catModel: Model<Cat>) {}
+        @Inject("CatModelToken") private readonly catModel: Model<Cat>) {}
 
     async create(createCatDto: CreateCatDto): Promise<Cat> {
         const createdCat = new this.catModel(createCatDto);
-        console.log(createdCat);
         return await createdCat.save();
     }
 

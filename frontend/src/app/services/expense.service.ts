@@ -23,8 +23,6 @@ export class ExpenseService {
         return this.http.get<IExpense[]>(`${this.apiUrl}expenses`);
     }
     public removeExpense(expense: any): Observable<any> {
-        console.log("Service Frontend: Usuwam z bazy wydatkow: ", expense);
-
         return this.http.request("delete", `${this.apiUrl}expenses/remove`, { body: expense });
     }
 }

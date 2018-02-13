@@ -1,6 +1,7 @@
+import { GenericSnackbarComponent } from "./../../generic-snackbar/generic-snackbar.component";
 import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
 import { ProductService } from "../../services/product.service";
@@ -30,8 +31,20 @@ export class AddProductComponent {
         {value: "by_weight", viewValue: "Weight"},
     ];
 
-    constructor(private dialog: MatDialog, private formBuilder: FormBuilder, private product: ProductService) {
+    constructor(
+        private dialog: MatDialog,
+        private formBuilder: FormBuilder,
+        private product: ProductService,
+        public snackBar: MatSnackBar,
+    ) {
         this.createForm();
+    }
+
+    public openSnackBar(data) {
+        this.snackBar.openFromComponent(GenericSnackbarComponent, {
+            duration: 1000,
+            data,
+        });
     }
 
     public addProduct(product: any) {

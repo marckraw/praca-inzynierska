@@ -15,6 +15,7 @@ import { EditExpenseComponent } from "./expenses/edit-expense/edit-expense.compo
 import { ManageExpensesComponent } from "./expenses/manage-expenses/manage-expenses.component";
 
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
+import { GenericSnackbarComponent } from "./generic-snackbar/generic-snackbar.component";
 
 import { AddIncomeComponent } from "./incomes/add-income/add-income.component";
 import { EditIncomeComponent } from "./incomes/edit-income/edit-income.component";
@@ -47,6 +48,7 @@ import { ProductService } from "./services/product.service";
         EditIncomeComponent,
         EditExpenseComponent,
         EditProductComponent,
+        GenericSnackbarComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -63,6 +65,7 @@ import { ProductService } from "./services/product.service";
     entryComponents: [
         ConfirmationModalComponent,
         GenericEditComponent,
+        GenericSnackbarComponent,
         EditIncomeComponent,
         EditExpenseComponent,
         EditProductComponent,

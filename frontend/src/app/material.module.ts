@@ -7,10 +7,12 @@ import {
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatSnackBarModule,
 } from "@angular/material";
 
 @NgModule({
     exports: [
+        MatSnackBarModule,
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,

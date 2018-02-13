@@ -9,4 +9,4 @@ export const ProductSchema = new mongoose.Schema({
     productCategory: String,
     productQuantitativeType: String,
     productTags: Array,
-})
+});
