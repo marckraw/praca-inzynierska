@@ -12,25 +12,30 @@ import { RemoveProductDto } from "./dto/remove-product.dto";
 
 @Controller("products")
 export class ProductsController {
-    constructor(private productService: ProductsService) { }
+    constructor(private productsService: ProductsService) { }
 
     @Post("add")
     async addProduct( @Body() addProductDto: AddProductDto) {
-        return this.productService.addProduct(addProductDto);
+        return this.productsService.addProduct(addProductDto);
     }
 
     @Delete("remove")
     async removeProduct( @Body() removeProductDto: RemoveProductDto) {
-        this.productService.removeById(removeProductDto);
+        this.productsService.removeById(removeProductDto);
     }
 
     @Put("update")
     async updateProduct( @Body() removeProductDto: RemoveProductDto) {
-        this.productService.updateById(removeProductDto);
+        this.productsService.updateById(removeProductDto);
     }
+
+    // @Get(":id")
+    // async findById(id: number) {
+    //     // implement findById
+    // }
 
     @Get()
     async findAll(): Promise<IProduct[]> {
-        return this.productService.findAll();
+        return this.productsService.findAll();
     }
 }
