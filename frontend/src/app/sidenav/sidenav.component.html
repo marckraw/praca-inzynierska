@@ -1,6 +1,9 @@
 <mat-sidenav-container class="sidenav-container" (backdropClick)="close('backdrop')">
     <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
-        <button mat-raised-button color="primary" (click)="close('toggle button')">Close menu</button>
+        <button mat-icon-button (click)="close('toggle button')">
+            <mat-icon>menu</mat-icon>
+        </button>
+
         <nav class="main-nav-container">
             <ul>
                 <li><a mat-raised-button color="warn" routerLink="/dashboard">Dashboard</a></li>
@@ -16,7 +19,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <button mat-raised-button color="primary" (click)="sidenav.open()">Open menu</button>
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
 
         <router-outlet></router-outlet>
     </mat-sidenav-content>

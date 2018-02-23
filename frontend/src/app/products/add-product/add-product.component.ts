@@ -1,10 +1,10 @@
-import { GenericSnackbarComponent } from "./../../generic-snackbar/generic-snackbar.component";
 import { Component } from "@angular/core/";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
 import { ProductService } from "../../services/product.service";
+import { GenericSnackbarComponent } from "./../../generic-snackbar/generic-snackbar.component";
 import { MaterialModule } from "./../../material.module";
 
 @Component({

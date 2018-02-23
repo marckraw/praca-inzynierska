@@ -4,6 +4,7 @@ import {
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
@@ -13,6 +14,7 @@ import {
 
 @NgModule({
     exports: [
+        MatIconModule,
         MatSidenavModule,
         MatSnackBarModule,
         MatButtonModule,
