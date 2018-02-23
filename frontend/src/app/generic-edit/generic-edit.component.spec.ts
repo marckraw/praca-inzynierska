@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GenericEditComponent } from './generic-edit.component';
+import { GenericEditComponent } from "./generic-edit.component";
 
-describe('GenericEditComponent', () => {
+describe("GenericEditComponent", () => {
   let component: GenericEditComponent;
   let fixture: ComponentFixture<GenericEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericEditComponent ]
+      declarations: [ GenericEditComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('GenericEditComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

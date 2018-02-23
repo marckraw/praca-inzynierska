@@ -8,4 +8,4 @@ export const ExpenseSchema = new mongoose.Schema({
     paymentMethod: String,
     cost: Number,
     totalCost: Number,
-})
+});

@@ -12,7 +12,6 @@ export class SidenavComponent {
 
     public reason = "";
 
-
     public ngOnInit() {
         console.log(this.sidenav);
     }

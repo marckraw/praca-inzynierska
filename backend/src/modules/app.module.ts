@@ -1,5 +1,5 @@
-import { dupaMiddleware } from "./middleware/dupa.middleware";
 import { MiddlewaresConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+import { dupaMiddleware } from "./middleware/dupa.middleware";
 import { LoggerMiddleware } from "./middleware/logger.middleware";
 
 import { ExpensesModule } from "./expenses/expenses.module";

@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GenericSnackbarComponent } from './generic-snackbar.component';
+import { GenericSnackbarComponent } from "./generic-snackbar.component";
 
-describe('GenericSnackbarComponent', () => {
+describe("GenericSnackbarComponent", () => {
   let component: GenericSnackbarComponent;
   let fixture: ComponentFixture<GenericSnackbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericSnackbarComponent ]
+      declarations: [ GenericSnackbarComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('GenericSnackbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

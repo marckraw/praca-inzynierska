@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EditIncomeComponent } from './edit-income.component';
+import { EditIncomeComponent } from "./edit-income.component";
 
-describe('EditIncomeComponent', () => {
+describe("EditIncomeComponent", () => {
   let component: EditIncomeComponent;
   let fixture: ComponentFixture<EditIncomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditIncomeComponent ]
+      declarations: [ EditIncomeComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('EditIncomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
