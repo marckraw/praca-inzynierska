@@ -31,6 +31,7 @@ import { ManageProductsComponent } from "./products/manage-products/manage-produ
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
+import { SidenavComponent } from "./sidenav/sidenav.component";
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { ProductService } from "./services/product.service";
         EditExpenseComponent,
         EditProductComponent,
         GenericSnackbarComponent,
+        SidenavComponent,
     ],
     imports: [
         AppRoutingModule,
