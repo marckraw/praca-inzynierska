@@ -23,7 +23,7 @@
 
         <mat-form-field>
             <mat-select placeholder="Payment list" name="paymentMethod" [formControlName]="'paymentMethod'">
-                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.value">
+                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.viewValue">
                     {{ paymentMethod.viewValue }}
                 </mat-option>
             </mat-select>

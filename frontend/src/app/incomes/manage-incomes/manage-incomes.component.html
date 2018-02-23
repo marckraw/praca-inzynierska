@@ -1,5 +1,5 @@
 <div class="display-income-container">
-    <h1>Wszystkie produkty</h1>
+    <h1>Przychody</h1>
     <table *ngIf="(incomes | async) as incomes; else loading">
         <thead>
             <tr>
@@ -9,6 +9,8 @@
                 <th>Date</th>
                 <th>List</th>
                 <th>Income amount</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
