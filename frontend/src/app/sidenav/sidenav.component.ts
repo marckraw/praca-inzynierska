@@ -7,18 +7,7 @@ import { MatSidenav } from "@angular/material";
     styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent {
-
     @ViewChild("sidenav") public sidenav: MatSidenav;
 
-    public reason = "";
-
-    public ngOnInit() {
-        console.log(this.sidenav);
-    }
-
-    public close(reason: string) {
-      this.reason = reason;
-      this.sidenav.close();
-    }
-
+    public close(reason: string) { this.sidenav.close(); }
 }
