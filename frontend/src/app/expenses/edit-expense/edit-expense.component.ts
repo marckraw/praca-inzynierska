@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { IEditExpense } from "../../models/edit-expense.interface";
 
 @Component({
@@ -14,11 +15,8 @@ export class EditExpenseComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public paymentMethods = [
-        { value: "visa", viewValue: "Karta bankowa" },
-        { value: "transfer", viewValue: "Przelew" },
-        { value: "cash", viewValue: "Gotówka" },
-    ];
+    public paymentMethods = HardcodedData.paymentMethods;
+    public expenseCategories = HardcodedData.expenseCategories;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -26,6 +24,7 @@ export class EditExpenseComponent {
     ) {}
 
     public ngOnInit() {
+        console.log(this.data);
         this.createForm();
         this.calcTotal();
     }
@@ -60,6 +59,7 @@ export class EditExpenseComponent {
             qt: [this.data.expense.qt, [Validators.required]],
             paymentMethod: [this.data.expense.paymentMethod, [Validators.required]],
             cost: [this.data.expense.cost, [Validators.required]],
+            expenseCategory: [this.data.expense.expenseCategory, [Validators.required]],
             totalCost: [{ value: "", disabled: true }],
         });
     }

@@ -28,13 +28,15 @@ import { AddProductComponent } from "./products/add-product/add-product.componen
 import { EditProductComponent } from "./products/edit-product/edit-product.component";
 import { ManageProductsComponent } from "./products/manage-products/manage-products.component";
 
+import { AddBudgetComponent } from "./add-budget/add-budget.component";
+import { ManageBudgetsComponent } from "./manage-budgets/manage-budgets.component";
+import { ManageMonthlyFeesComponent } from "./manage-monthly-fees/manage-monthly-fees.component";
+import { SidenavComponent } from "./sidenav/sidenav.component";
+
+import { BudgetService } from "./services/budget.service";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
-import { SidenavComponent } from "./sidenav/sidenav.component";
-import { AddBudgetComponent } from './add-budget/add-budget.component';
-import { ManageBudgetsComponent } from './manage-budgets/manage-budgets.component';
-import { ManageMonthlyFeesComponent } from './manage-monthly-fees/manage-monthly-fees.component';
 
 @NgModule({
     declarations: [
@@ -68,7 +70,7 @@ import { ManageMonthlyFeesComponent } from './manage-monthly-fees/manage-monthly
         MaterialModule,
         ChartsModule,
     ],
-    providers: [ProductService, ExpenseService, IncomeService],
+    providers: [ProductService, ExpenseService, IncomeService, BudgetService],
     bootstrap: [AppComponent],
     entryComponents: [
         ConfirmationModalComponent,

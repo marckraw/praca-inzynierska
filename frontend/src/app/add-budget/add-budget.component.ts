@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 import { ConfirmationModalComponent } from "../confirmation-modal/confirmation-modal.component";
+import { BudgetService } from "../services/budget.service";
 
 @Component({
     selector: "app-add-budget",
@@ -16,6 +17,7 @@ export class AddBudgetComponent {
     constructor(
         private formBuilder: FormBuilder,
         private dialog: MatDialog,
+        private budgetService: BudgetService,
     ) { this.createForm(); }
 
     public addBudget(budget: any) {
@@ -26,8 +28,8 @@ export class AddBudgetComponent {
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result.confirmed) {
-                    // this.incomeService.addIncome(result.income).subscribe();
-                    console.log(result.budget);
+                    this.budgetService.addBudget(result.budget).subscribe();
+                    console.log("frontend component: ", result.budget);
                     console.log("potwierdziles dane, czas zalozyc budzet po backendzie");
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");

@@ -9,6 +9,7 @@
     table {
         font-size: 12px;
         border-collapse: collapse;
+        width: 100%;
 
         tr {
             height: 80px;
@@ -18,6 +19,10 @@
         thead {
             tr {
                 border-bottom: 1px solid #ddd;
+
+                th {
+                    text-align: left;
+                }
             }
         }
 

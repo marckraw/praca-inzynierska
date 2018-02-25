@@ -4,7 +4,6 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>index</th>
                 <th>Income name</th>
                 <th>Date</th>
                 <th>List</th>
@@ -15,13 +14,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let income of incomes; let i = index">
-                <td>
-                    <strong>?</strong>
-                </td>
-                <td>
-                    <strong>{{ i }}</strong>
-                </td>
-                <td>{{ income.name }} -> income._v </td>
+                <td>{{ income._id }}</td>
+                <td>{{ income.name }} </td>
                 <td>{{ income.when }}</td>
                 <td>{{ income.paymentMethod }}</td>
                 <td>{{ income.value }}</td>
