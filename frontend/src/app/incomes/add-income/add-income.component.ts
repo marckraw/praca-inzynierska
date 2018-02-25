@@ -2,11 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { IncomeService } from "../../services/income.service";
 import { ConfirmationModalComponent } from "./../../confirmation-modal/confirmation-modal.component";
 
 @Component({
-    selector: "pi-add-income",
+    selector: "app-add-income",
     templateUrl: "./add-income.component.html",
     styleUrls: ["./add-income.component.scss"],
 })
@@ -15,11 +16,7 @@ export class AddIncomeComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public paymentMethods = [
-        { value: "visa", viewValue: "Karta bankowa" },
-        { value: "transfer", viewValue: "Przelew" },
-        { value: "cash", viewValue: "Gotówka" },
-    ];
+    public paymentMethods = HardcodedData.paymentMethods;
 
     constructor(
         private formBuilder: FormBuilder,

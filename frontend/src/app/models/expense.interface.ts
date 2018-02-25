@@ -8,4 +8,5 @@ export interface IExpense {
     paymentMethod: string;
     cost: number;
     totalCost: number;
+    expenseCategory: string;
 }

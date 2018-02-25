@@ -2,12 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { ConfirmationModalComponent } from "./../../confirmation-modal/confirmation-modal.component";
 import { IExpense } from "./../../models/expense.interface";
 import { ExpenseService } from "./../../services/expense.service";
 
 @Component({
-    selector: "pi-add-expense",
+    selector: "app-add-expense",
     templateUrl: "./add-expense.component.html",
     styleUrls: ["./add-expense.component.scss"],
 })
@@ -16,11 +17,8 @@ export class AddExpenseComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public paymentMethods = [
-        { value: "visa", viewValue: "Karta bankowa" },
-        { value: "transfer", viewValue: "Przelew" },
-        { value: "cash", viewValue: "Gotówka" },
-    ];
+    public paymentMethods = HardcodedData.paymentMethods;
+    public expenseCategories = HardcodedData.expenseCategories;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -39,6 +37,7 @@ export class AddExpenseComponent {
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result.confirmed) {
+                    console.log(result.expense);
                     this.expenseService.addExpense(result.expense)
                         .subscribe();
                 } else {
@@ -63,6 +62,7 @@ export class AddExpenseComponent {
             qt: ["", [Validators.required]],
             paymentMethod: ["", [Validators.required]],
             cost: ["", [Validators.required]],
+            expenseCategory: ["", [Validators.required]],
             totalCost: [{ value: "", disabled: true }],
         });
     }
