@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container" (backdropClick)="close('backdrop')">
+    <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+        <button mat-icon-button (click)="close('toggle button')">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <nav class="main-nav-container">
+            <ul>
+                <li><a mat-raised-button color="warn" routerLink="/dashboard">Dashboard</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-product">Add Product</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-expense">Add Expense</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-income">Add Income</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-budget">Add Budget</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-products">Manage Product</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-expenses">Manage Expenses</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-incomes">Manage Incomes</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-budgets">Manage Budgets</a></li>
+                <li><a mat-raised-button color="warn" routerLink="/manage-monthly-fees">Manage monthly fees</a></li>
+            </ul>
+        </nav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

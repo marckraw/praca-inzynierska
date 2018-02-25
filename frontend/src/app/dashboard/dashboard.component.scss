@@ -1,0 +1,15 @@
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &-module {
+        padding: 10px;
+        margin: 10px;
+        width: 500px;
+        height: 250px;
+        border: 1px solid #cccccc;
+        overflow: scroll;
+    }
+}

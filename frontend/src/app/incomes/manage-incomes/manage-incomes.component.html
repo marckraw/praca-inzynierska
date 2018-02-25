@@ -1,0 +1,36 @@
+<div class="display-income-container">
+    <h1>Przychody</h1>
+    <table *ngIf="(incomes | async) as incomes; else loading">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Income name</th>
+                <th>Date</th>
+                <th>List</th>
+                <th>Income amount</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of incomes; let i = index">
+                <td>{{ income._id }}</td>
+                <td>{{ income.name }} </td>
+                <td>{{ income.when }}</td>
+                <td>{{ income.paymentMethod }}</td>
+                <td>{{ income.value }}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="edit(income)">EDIT</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="remove(income)">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+
+</div>

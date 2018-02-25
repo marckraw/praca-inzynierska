@@ -1,0 +1,45 @@
+<div class="display-budgets-container">
+        <h1>Budżety</h1>
+        <table *ngIf="(budgets | async) as budgets; else loading">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nazwa</th>
+                    <th>Początek</th>
+                    <th>Koniec</th>
+                    <th>Kategorie</th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let budget of budgets; let i = index">
+                    <td>{{ budget._id }}</td>
+                    <td>{{ budget.name }}</td>
+                    <td>{{ budget.startDate }}</td>
+                    <td>{{ budget.endDate }}</td>
+
+                    <!-- {{ budget.category }} -->
+                    <td>
+                        <div class="single-budget-category" *ngFor="let singleCategory of budget.categories; let j = index">
+                            <p>id: {{ singleCategory._id }}</p>
+                            <p>Name: {{ singleCategory.name }}</p>
+                            <p>Declared amount (limit): {{ singleCategory.declaredAmount }}</p>
+                            <p>Entered amount: {{ singleCategory.enteredAmount }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="primary" (click)="edit(budget)">EDIT</button>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="primary" (click)="remove(budget)">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template #loading>
+            <mat-spinner></mat-spinner>
+        </ng-template>
+
+    </div>

@@ -1,0 +1,11 @@
+<ng-container *ngIf="isDataLoaded">
+    <div class="add-income-container" [formGroup]="editForm">
+        <h1>Add Income</h1>
+        <div class="add-income-form">
+            <mat-form-field>
+                <input matInput type="text" [formControlName]="formControls[1]" placeholder="Income name">
+                <mat-hint align="end">Insert income name</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+</ng-container>

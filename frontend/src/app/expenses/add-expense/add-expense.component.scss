@@ -1,0 +1,33 @@
+:host {
+    width: 100%;
+
+    .add-expense-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .add-expense-form {
+            margin: 0 20px;
+        }
+
+        mat-form-field {
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        mat-card {
+            margin-top: 40px;
+        }
+    }
+}
