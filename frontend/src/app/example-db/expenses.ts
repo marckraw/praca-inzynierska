@@ -1,4 +1,4 @@
-const expenses = [
+export const expenses = [
     {
         id: 0,
         name: "nowy wydatek",

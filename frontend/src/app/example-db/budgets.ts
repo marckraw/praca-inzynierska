@@ -1,4 +1,4 @@
-const budgets = [
+export const budgets = [
     {
         id: 0,
         name: "Budżet Luty 2018",

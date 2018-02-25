@@ -15,6 +15,24 @@
             <mat-hint align="end">Choose expense category</mat-hint>
         </mat-form-field>
 
+        Add to budgets ?
+        <button mat-icon-button (click)="addBudgets()">
+            <mat-icon>playlist_add</mat-icon>
+        </button>
+
+        <ng-container *ngIf="isBudgetsLoaded">
+            <mat-form-field>
+                <mat-select placeholder="Budgets" [formControlName]="'budgetsChoose'" multiple>
+                    <mat-option *ngFor="let budget of allBudgets" [value]="budget.id">
+                        {{ budget.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <ng-container *ngIf="formGroup.get('budgetsChoose').value !== null">
+                wybralem cos
+            </ng-container>
+        </ng-container>
+
         <mat-form-field>
             <input matInput type="text" [formControlName]="'where'" placeholder="Where bought">
             <mat-hint align="end">Insert where you bought item</mat-hint>
@@ -53,7 +71,8 @@
 
 
         <div class="buttons">
-            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Cancel</button>
+            <!-- <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Cancel</button> -->
+            <button class="cancel-btn" mat-raised-button (click)="checkFormValues()">check</button>
             <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/manage-expenses">Manage Expenses</button>
             <button class="add-btn" mat-raised-button color="primary" (click)="addExpense(formGroup.value)">Add expense</button>
         </div>
