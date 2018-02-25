@@ -8,4 +8,5 @@ export interface IExpense extends Document {
     paymentMethod: string;
     cost: number;
     totalCost: number;
+    expenseCategory: string;
 }

@@ -25,8 +25,6 @@ export class EditIncomeComponent {
     ) {}
 
     public ngOnInit() {
-        console.log("Dane do edycji z Manage Income: ", this.data);
-
         this.createForm();
     }
 

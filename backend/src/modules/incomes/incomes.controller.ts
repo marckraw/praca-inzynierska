@@ -16,13 +16,11 @@ export class IncomesController {
 
     @Post("add")
     async addIncome( @Body() addIncomeDto: AddIncomeDto) {
-        console.log(addIncomeDto);
         return this.incomesService.addIncome(addIncomeDto);
     }
 
     @Delete("remove")
     async removeIncome( @Body() removeIncomeDto: RemoveIncomeDto) {
-        console.log("From Controller", removeIncomeDto);
         return this.incomesService.removeById(removeIncomeDto);
     }
 

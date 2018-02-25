@@ -25,7 +25,6 @@ export class ExpensesService {
     }
 
     async removeById(removeExpenseDto: RemoveExpenseDto): Promise<IExpense> {
-        console.log("From backend service: ", removeExpenseDto);
         return this.expenseModel.findByIdAndRemove(removeExpenseDto._id).exec();
     }
 }

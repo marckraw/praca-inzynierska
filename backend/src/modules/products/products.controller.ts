@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 
 // services
 import { ProductsService } from "./products.service";
@@ -12,22 +12,30 @@ import { RemoveProductDto } from "./dto/remove-product.dto";
 
 @Controller("products")
 export class ProductsController {
-    constructor(private productService: ProductsService) { }
+    constructor(private productsService: ProductsService) { }
 
     @Post("add")
     async addProduct( @Body() addProductDto: AddProductDto) {
-        console.log(addProductDto);
-        return this.productService.addProduct(addProductDto);
+        return this.productsService.addProduct(addProductDto);
     }
 
     @Delete("remove")
     async removeProduct( @Body() removeProductDto: RemoveProductDto) {
-        console.log("From backend controller", removeProductDto);
-        this.productService.removeById(removeProductDto);
+        this.productsService.removeById(removeProductDto);
     }
+
+    @Put("update")
+    async updateProduct( @Body() removeProductDto: RemoveProductDto) {
+        this.productsService.updateById(removeProductDto);
+    }
+
+    // @Get(":id")
+    // async findById(id: number) {
+    //     // implement findById
+    // }
 
     @Get()
     async findAll(): Promise<IProduct[]> {
-        return this.productService.findAll();
+        return this.productsService.findAll();
     }
 }

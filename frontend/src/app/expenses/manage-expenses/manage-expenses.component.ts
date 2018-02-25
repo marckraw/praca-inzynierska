@@ -30,7 +30,6 @@ export class ManageExpensesComponent {
 
     public edit(expense) {
         const dialogRef = this.dialog.open(EditExpenseComponent, {
-            width: "600px",
             data: { expense, confirmed: false },
         });
         dialogRef.afterClosed().subscribe(result => {

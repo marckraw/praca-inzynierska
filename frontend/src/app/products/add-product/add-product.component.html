@@ -1,5 +1,5 @@
 <div class="add-products-container" [formGroup]="formGroup">
-    <h1>Adding products Module</h1>
+    <h1>Add product</h1>
     <div class="add-products-form">
         <mat-form-field>
             <input matInput type="text" [formControlName]="'productName'" placeholder="Product Name">
@@ -29,7 +29,7 @@
 
         <mat-form-field>
             <mat-select placeholder="Product Category" name="category" [formControlName]="'productCategory'">
-                <mat-option *ngFor="let category of categories" [value]="category.value">
+                <mat-option *ngFor="let category of categories" [value]="category.viewValue">
                     {{ category.viewValue }}
                 </mat-option>
             </mat-select>
@@ -38,7 +38,7 @@
 
         <mat-form-field>
             <mat-select placeholder="Product Quantitative Type" name="type" [formControlName]="'productQuantitativeType'">
-                <mat-option *ngFor="let type of qType" [value]="type.value">
+                <mat-option *ngFor="let type of qType" [value]="type.viewValue">
                     {{ type.viewValue }}
                 </mat-option>
             </mat-select>

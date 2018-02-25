@@ -31,7 +31,6 @@ export class ManageIncomesComponent {
 
     public edit(income) {
         const dialogRef = this.dialog.open(EditIncomeComponent, {
-            width: "600px",
             data: { income, confirmed: false },
         });
         dialogRef.afterClosed().subscribe(result => {

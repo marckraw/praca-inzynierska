@@ -18,7 +18,6 @@ export class ExpensesController {
 
     @Delete("remove")
     async removeIncome( @Body() removeExpenseDto: RemoveExpenseDto) {
-        console.log("From Controller", removeExpenseDto);
         return this.expenseService.removeById(removeExpenseDto);
     }
 

@@ -22,15 +22,12 @@ export class GenericEditComponent {
     }
 
     public ngOnInit() {
-        console.log(this.data);
         this.formControls = Object.keys(this.data)
             .filter(val => val[0] !== "__");
-        console.log(this.formControls);
 
         this.editForm = this.formBuilder.group({});
         this.editForm.setControl(this.formControls[1], this.formControls[1]);
 
-        console.log(this.editForm);
         this.isDataLoaded = true;
     }
 }

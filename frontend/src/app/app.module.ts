@@ -15,6 +15,7 @@ import { EditExpenseComponent } from "./expenses/edit-expense/edit-expense.compo
 import { ManageExpensesComponent } from "./expenses/manage-expenses/manage-expenses.component";
 
 import { GenericEditComponent } from "./generic-edit/generic-edit.component";
+import { GenericSnackbarComponent } from "./generic-snackbar/generic-snackbar.component";
 
 import { AddIncomeComponent } from "./incomes/add-income/add-income.component";
 import { EditIncomeComponent } from "./incomes/edit-income/edit-income.component";
@@ -30,6 +31,10 @@ import { ManageProductsComponent } from "./products/manage-products/manage-produ
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
+import { SidenavComponent } from "./sidenav/sidenav.component";
+import { AddBudgetComponent } from './add-budget/add-budget.component';
+import { ManageBudgetsComponent } from './manage-budgets/manage-budgets.component';
+import { ManageMonthlyFeesComponent } from './manage-monthly-fees/manage-monthly-fees.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +52,11 @@ import { ProductService } from "./services/product.service";
         EditIncomeComponent,
         EditExpenseComponent,
         EditProductComponent,
+        GenericSnackbarComponent,
+        SidenavComponent,
+        AddBudgetComponent,
+        ManageBudgetsComponent,
+        ManageMonthlyFeesComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -63,6 +73,7 @@ import { ProductService } from "./services/product.service";
     entryComponents: [
         ConfirmationModalComponent,
         GenericEditComponent,
+        GenericSnackbarComponent,
         EditIncomeComponent,
         EditExpenseComponent,
         EditProductComponent,

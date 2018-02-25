@@ -1,12 +1,18 @@
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as express from "express";
+import * as session from "express-session";
 
 import { NestFactory } from "@nestjs/core";
 import { ApplicationModule } from "./modules/app.module";
 
 function addMiddleware(instance): void {
     instance.use(bodyParser.json());
+    instance.use(session({
+        secret: "work hard",
+        resave: true,
+        saveUnitialized: false,
+    }));
     instance.use(cors());
 }
 

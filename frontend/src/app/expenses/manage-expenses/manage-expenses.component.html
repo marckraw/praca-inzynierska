@@ -1,5 +1,5 @@
 <div class="display-expense-container">
-    <h1>Wszystkie produkty</h1>
+    <h1>Wydatki</h1>
     <table *ngIf="(expenses | async) as expenses; else loading">
         <thead>
             <tr>
@@ -12,6 +12,8 @@
                 <th>Payment method</th>
                 <th>Cost</th>
                 <th>Total Cost</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>

@@ -16,7 +16,6 @@ export class ProductService {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        console.log("Dodaje do bazy produktów: ", product);
         return this.http.post(`${this.apiUrl}products/add`, product, { headers });
     }
 
@@ -24,9 +23,16 @@ export class ProductService {
         return this.http.get<IProduct[]>(`${this.apiUrl}products`);
     }
 
-    public removeProduct(product: any): Observable<any>  {
-        console.log("Service frontend: Usuwam z bazy produktow: ", product);
-
+    public removeProduct(product: any): Observable<any> {
         return this.http.request("delete", `${this.apiUrl}products/remove`, { body: product });
+    }
+
+    public updateProduct(product: any): Observable<any> {
+        const headers = new HttpHeaders();
+        headers.set("Content-Type", "applications/json");
+
+        console.log("produkt do zaktualizowania z frontendowego serwisu: ", product);
+
+        return this.http.put(`${this.apiUrl}products/update`, product, { headers });
     }
 }

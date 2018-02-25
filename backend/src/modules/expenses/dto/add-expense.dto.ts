@@ -6,4 +6,5 @@ export class AddExpenseDto {
     readonly paymentMethod: string;
     readonly cost: number;
     readonly totalCost: number;
+    readonly expenseCategory: string;
 }

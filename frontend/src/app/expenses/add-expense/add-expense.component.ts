@@ -2,12 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { ConfirmationModalComponent } from "./../../confirmation-modal/confirmation-modal.component";
 import { IExpense } from "./../../models/expense.interface";
 import { ExpenseService } from "./../../services/expense.service";
 
 @Component({
-    selector: "pi-add-expense",
+    selector: "app-add-expense",
     templateUrl: "./add-expense.component.html",
     styleUrls: ["./add-expense.component.scss"],
 })
@@ -16,18 +17,15 @@ export class AddExpenseComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public paymentMethods = [
-        { value: "visa", viewValue: "Karta bankowa" },
-        { value: "transfer", viewValue: "Przelew" },
-        { value: "cash", viewValue: "Gotówka" },
-    ];
+    public paymentMethods = HardcodedData.paymentMethods;
+    public expenseCategories = HardcodedData.expenseCategories;
 
     constructor(
         private formBuilder: FormBuilder,
         private dialog: MatDialog,
         private expenseService: ExpenseService,
     ) {
-        this.expenseService.showExpenses().subscribe(data => console.log("Wszystkie wydatki: ", data));
+        this.expenseService.showExpenses().subscribe();
         this.createForm();
     }
 
@@ -38,13 +36,10 @@ export class AddExpenseComponent {
                 data: { expense, confirmed: false },
             });
             dialogRef.afterClosed().subscribe(result => {
-                console.log("Dialog was closed", result);
                 if (result.confirmed) {
-                    console.log("Dane gotowe do wysłania do końcówki, ", result.expense);
+                    console.log(result.expense);
                     this.expenseService.addExpense(result.expense)
-                        .subscribe((data) => {
-                            console.log("Dodano dane: ", data);
-                        });
+                        .subscribe();
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
@@ -67,6 +62,7 @@ export class AddExpenseComponent {
             qt: ["", [Validators.required]],
             paymentMethod: ["", [Validators.required]],
             cost: ["", [Validators.required]],
+            expenseCategory: ["", [Validators.required]],
             totalCost: [{ value: "", disabled: true }],
         });
     }

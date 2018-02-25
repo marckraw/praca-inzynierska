@@ -25,7 +25,11 @@ export class ProductsService {
     }
 
     async removeById(removeProductDto: RemoveProductDto): Promise<IProduct> {
-        console.log("Remove from backend servie");
         return this.productModel.findByIdAndRemove(removeProductDto._id).exec();
+    }
+
+    async updateById(removeProductDto: RemoveProductDto): Promise<IProduct> {
+        console.log("Produkt do update z serwisu backendowego: ", removeProductDto);
+        return this.productModel.findByIdAndUpdate(removeProductDto._id, removeProductDto).exec();
     }
 }
