@@ -2,6 +2,7 @@ import { MiddlewaresConsumer, Module, NestModule, RequestMethod } from "@nestjs/
 import { dupaMiddleware } from "./middleware/dupa.middleware";
 import { LoggerMiddleware } from "./middleware/logger.middleware";
 
+import { BudgetsModule } from "./budgets/budgets.module";
 import { ExpensesModule } from "./expenses/expenses.module";
 import { IncomesModule } from "./incomes/incomes.module";
 import { ProductsModule } from "./products/products.module";
@@ -12,6 +13,7 @@ import { AppController } from "./app.controller";
 @Module({
     controllers: [AppController],
     modules: [
+        BudgetsModule,
         ProductsModule,
         ExpensesModule,
         IncomesModule,

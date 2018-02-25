@@ -18,6 +18,7 @@ export class AddExpenseComponent {
     public budgets: FormArray;
     public allBudgets;
     public isBudgetsLoaded: boolean = false;
+    public isBudgetChoosed: boolean = false;
     public isErrorMsgVisible = false;
     public formGroup: FormGroup;
     public selectedCategory: string;
