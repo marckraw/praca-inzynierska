@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material";
 
-import { budgets } from "../../example-db/budgets";
 import { expenses } from "../../example-db/expenses";
 import { HardcodedData } from "../../hardcoded-data/expense-category";
+import { BudgetService } from "../../services/budget.service";
 import { ConfirmationModalComponent } from "./../../confirmation-modal/confirmation-modal.component";
 import { IExpense } from "./../../models/expense.interface";
 import { ExpenseService } from "./../../services/expense.service";
@@ -16,7 +16,7 @@ import { ExpenseService } from "./../../services/expense.service";
 })
 export class AddExpenseComponent {
     public budgets: FormArray;
-    public allBudgets;
+    public allBudgets = [];
     public isBudgetsLoaded: boolean = false;
     public isBudgetChoosed: boolean = false;
     public isErrorMsgVisible = false;
@@ -33,9 +33,17 @@ export class AddExpenseComponent {
         private formBuilder: FormBuilder,
         private dialog: MatDialog,
         private expenseService: ExpenseService,
+        private budgetService: BudgetService,
     ) {
         this.expenseService.showExpenses().subscribe();
         this.createForm();
+    }
+
+    public ngOnInit() {
+        this.budgetService.showAllBudgets().subscribe(budgets => {
+            this.allBudgets = budgets;
+            console.log(this.allBudgets);
+        });
     }
 
     public addExpense(expense: IExpense) {
@@ -46,7 +54,6 @@ export class AddExpenseComponent {
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result.confirmed) {
-                    console.log(result.expense);
                     this.expenseService.addExpense(result.expense)
                         .subscribe();
                 } else {
@@ -76,13 +83,9 @@ export class AddExpenseComponent {
     }
 
     public addBudgets() {
-        this.allBudgets = budgets;
         this.isBudgetsLoaded = true;
 
         this.addBudgetToBudgetsControl();
-
-        console.log(this.allBudgets);
-        console.log(expenses);
     }
 
     public checkFormValues() {

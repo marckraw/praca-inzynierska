@@ -9,6 +9,5 @@ export interface IBudget {
     name: string;
     startDate: string;
     endDate: string;
-    isAlive: boolean;
     categories: ICategories[];
 }

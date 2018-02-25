@@ -16,16 +16,14 @@ export class BudgetService {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        console.log("Frontend service: ", budget);
         return this.http.post(`${this.apiUrl}budgets/add`, budget, { headers });
+    }
+
+    public showAllBudgets(): Observable<IBudget[]> {
+        return this.http.get<IBudget[]>(`${this.apiUrl}budgets`);
     }
 
     // public removeIncome(income: any): Observable<any> {
     //     return this.http.request("delete", `${this.apiUrl}incomes/remove`, { body: income });
     // }
-
-    // public showIncomes(): Observable<IIncome[]> {
-    //     return this.http.get<IIncome[]>(`${this.apiUrl}incomes`);
-    // }
-
 }

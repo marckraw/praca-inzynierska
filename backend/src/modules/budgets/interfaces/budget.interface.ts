@@ -1,16 +1,16 @@
 import { Document } from "mongoose";
 
 export interface Categories {
-    id: number;
+    _id: string;
     name: string;
     declaredAmount: number;
     enteredAmount: number;
 }
 
 export interface IBudget extends Document {
+    _id: string;
     name: string;
     startDate: string;
     endDate: string;
-    isAlive: boolean;
     categories: Categories[];
 }

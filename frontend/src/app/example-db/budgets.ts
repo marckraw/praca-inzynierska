@@ -12,7 +12,6 @@ export const budgets = [
         ],
         startDate: "2018-02-01",
         endDate: "2018-02-28",
-        isAlive: true,
         // timeToEnd: 999,
     },
     {
@@ -28,7 +27,6 @@ export const budgets = [
         ],
         startDate: "2018-03-01",
         endDate: "2018-03-31",
-        isAlive: true,
         // timeToEnd: 999,
     },
     {
@@ -44,7 +42,6 @@ export const budgets = [
         ],
         startDate: "2018-01-01",
         endDate: "2018-12-31",
-        isAlive: true,
         // timeToEnd: 999,
     },
 ]

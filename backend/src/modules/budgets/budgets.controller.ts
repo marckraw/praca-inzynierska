@@ -12,17 +12,16 @@ export class BudgetsController {
 
     @Post("add")
     async addExpense(@Body() addBudgetDto: AddBudgetDto) {
-        // console.log(addBudgetDto);
         return this.budgetsService.addBudget(addBudgetDto);
+    }
+
+    @Get()
+    async getAllBudgets(): Promise<IBudget[]> {
+        return this.budgetsService.getAllBudgets();
     }
 
     // @Delete("remove")
     // async removeIncome( @Body() removeExpenseDto: RemoveExpenseDto) {
     //     return this.expenseService.removeById(removeExpenseDto);
-    // }
-
-    // @Get()
-    // async getAllExpenses(): Promise<IExpense[]> {
-    //     return this.expenseService.getAllExpenses();
     // }
 }
