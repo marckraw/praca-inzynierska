@@ -37,6 +37,8 @@ import { BudgetService } from "./services/budget.service";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +61,8 @@ import { ProductService } from "./services/product.service";
         AddBudgetComponent,
         ManageBudgetsComponent,
         ManageMonthlyFeesComponent,
+        LoginComponent,
+        SignUpComponent,
     ],
     imports: [
         AppRoutingModule,
