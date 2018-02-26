@@ -18,4 +18,18 @@ export class HardcodedData {
         { value: "transfer", viewValue: "Przelew" },
         { value: "gotowka", viewValue: "Gotówka" },
     ];
+
+    public static productsCategories = [
+        {value: "miesa_wedliny", viewValue: "Mięsa i wędliny"},
+        {value: "pieczywo", viewValue: "Pieczywo"},
+        {value: "przyprawy", viewValue: "Przyprawy"},
+        {value: "kawa_i_herbata", viewValue: "Kawa i herbata"},
+        {value: "sery_jogurty_i_mleczne", viewValue: "Sery, jogurty i mleczne"},
+        {value: "dania_gotowe_i_sosy", viewValue: "Dania gotowe i sosy"},
+    ];
+
+    public static productsQType = [
+        {value: "by_quantity", viewValue: "Quantity"},
+        {value: "by_weight", viewValue: "Weight"},
+    ];
 }

@@ -4,10 +4,10 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>Income name</th>
-                <th>Date</th>
-                <th>List</th>
-                <th>Income amount</th>
+                <th>Nazwa przychodu</th>
+                <th>Data</th>
+                <th>Metoda uzyskania przychodu</th>
+                <th>Kwota przychodu</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
@@ -20,10 +20,10 @@
                 <td>{{ income.paymentMethod }}</td>
                 <td>{{ income.value }}</td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="edit(income)">EDIT</button>
+                    <button mat-raised-button color="primary" (click)="edit(income)">EDYTUJ</button>
                 </td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="remove(income)">DELETE</button>
+                    <button mat-raised-button color="primary" (click)="remove(income)">USUŃ</button>
                 </td>
             </tr>
         </tbody>

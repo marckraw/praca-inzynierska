@@ -2,33 +2,33 @@
     <h1>Update Income</h1>
     <div class="add-income-form">
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'name'" placeholder="Income name">
-            <mat-hint align="end">Insert income name</mat-hint>
+            <input matInput type="text" [formControlName]="'name'" placeholder="Nazwa przychodu">
+            <mat-hint align="end">Wprowadź nazwę przychodu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="date" [formControlName]="'when'" placeholder="When you got income">
-            <mat-hint align="end">Insert when you got income</mat-hint>
+            <input matInput type="date" [formControlName]="'when'" placeholder="Data uzyskania przychodu">
+            <mat-hint align="end">Wprowadź datę uzyskania przychodu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Income list" name="paymentMethod" [formControlName]="'paymentMethod'">
-                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.value">
+            <mat-select placeholder="Metoda uzyskania przychodu" name="paymentMethod" [formControlName]="'paymentMethod'">
+                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.viewValue">
                     {{ paymentMethod.viewValue }}
                 </mat-option>
             </mat-select>
-            <mat-hint align="end">Choose payment method</mat-hint>
+            <mat-hint align="end">Wybierz metodę uzyskania przychodu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'value'" placeholder="What is the income amount ?">
+            <input matInput type="number" [formControlName]="'value'" placeholder="Kwota przychodu">
             <span matPrefix>PLN&nbsp;</span>
-            <mat-hint align="end">Insert income</mat-hint>
+            <mat-hint align="end">Wprowadź kwotę przychodu</mat-hint>
         </mat-form-field>
 
         <div class="buttons">
-            <button class="cancel-btn" mat-raised-button (click)="cancel()">Cancel</button>
-            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Update</button>
+            <button class="cancel-btn" mat-raised-button (click)="cancel()">Zakończ</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Aktualizuj</button>
         </div>
     </div>
 
