@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 
 // services
 import { IncomesService } from "./incomes.service";
@@ -8,6 +8,7 @@ import { IIncome } from "./interfaces/income.interface";
 
 // dto
 import { AddIncomeDto } from "./dto/add-income.dto";
+import { EditIncomeDto } from "./dto/edit-income.dto";
 import { RemoveIncomeDto } from "./dto/remove-income.dto";
 
 @Controller("incomes")
@@ -17,6 +18,11 @@ export class IncomesController {
     @Post("add")
     async addIncome( @Body() addIncomeDto: AddIncomeDto) {
         return this.incomesService.addIncome(addIncomeDto);
+    }
+
+    @Put("edit")
+    async editIncome( @Body() editIncomeDto: EditIncomeDto) {
+        return this.incomesService.editIncome(editIncomeDto);
     }
 
     @Delete("remove")

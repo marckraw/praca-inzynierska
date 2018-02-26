@@ -1,6 +1,7 @@
 import * as mongoose from "mongoose";
 
 export const IncomeSchema = new mongoose.Schema({
+    // _id: String,
     name: String,
     productCompanyName: String,
     when: String,

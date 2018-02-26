@@ -7,6 +7,7 @@ import { IProduct } from "./interfaces/product.interface";
 
 // dto
 import { AddProductDto } from "./dto/add-product.dto";
+import { EditProductDto } from "./dto/edit-product.dto";
 import { RemoveProductDto } from "./dto/remove-product.dto";
 
 @Component()
@@ -28,8 +29,9 @@ export class ProductsService {
         return this.productModel.findByIdAndRemove(removeProductDto._id).exec();
     }
 
-    async updateById(removeProductDto: RemoveProductDto): Promise<IProduct> {
-        console.log("Produkt do update z serwisu backendowego: ", removeProductDto);
-        return this.productModel.findByIdAndUpdate(removeProductDto._id, removeProductDto).exec();
+    async editProduct(editProductDto: EditProductDto) {
+        const id = editProductDto._id;
+
+        return await this.productModel.findByIdAndUpdate(id, editProductDto);
     }
 }

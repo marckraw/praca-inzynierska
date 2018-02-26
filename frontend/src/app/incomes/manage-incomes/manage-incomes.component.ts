@@ -8,7 +8,7 @@ import { IncomeService } from "../../services/income.service";
 import { EditIncomeComponent } from "../edit-income/edit-income.component";
 
 @Component({
-    selector: "pi-manage-incomes",
+    selector: "app-manage-incomes",
     templateUrl: "./manage-incomes.component.html",
     styleUrls: ["./manage-incomes.component.scss"],
 })
@@ -38,8 +38,9 @@ export class ManageIncomesComponent {
                 if (result.confirmed) {
                     console.log("teraz powinienem zaktualizowac dane");
                     console.log("This is changed income: ", result);
-                    // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-                    // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                    this.incomeService.editIncome(result.income).subscribe( (data) => {
+                        this.incomes = this.incomeService.showIncomes();
+                    });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }

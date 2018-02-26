@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { IEditProduct } from "../../models/edit-product.interface";
 
 @Component({
-  selector: "pi-edit-product",
+  selector: "app-edit-product",
   templateUrl: "./edit-product.component.html",
   styleUrls: ["./edit-product.component.scss"],
 })
@@ -31,19 +31,9 @@ export class EditProductComponent {
         public dialogRef: MatDialogRef<EditProductComponent>, @Inject(MAT_DIALOG_DATA) public data: IEditProduct,
     ) {}
 
-    public ngOnInit() {
-        console.log("Dane do edycji z Manage Products: ", this.data);
-
-        this.createForm();
-    }
-
-    public onNoClick(): void {
-        this.dialogRef.close(this.data);
-    }
-
-    public cancel(): void {
-        this.dialogRef.close(this.data);
-    }
+    public ngOnInit(): void { this.createForm(); }
+    public onNoClick(): void { this.dialogRef.close(this.data); }
+    public cancel(): void { this.dialogRef.close(this.data); }
 
     public confirm(): void {
         if (this.formGroup.valid) {
@@ -57,6 +47,7 @@ export class EditProductComponent {
 
     private createForm() {
         this.formGroup = this.formBuilder.group({
+            _id: [this.data.product._id],
             productName: [this.data.product.productName, [Validators.required]],
             productPrice: [this.data.product.productPrice, [Validators.required]],
             productCompanyName: [this.data.product.productCompanyName, [Validators.required]],

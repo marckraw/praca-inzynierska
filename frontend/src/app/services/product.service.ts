@@ -27,12 +27,10 @@ export class ProductService {
         return this.http.request("delete", `${this.apiUrl}products/remove`, { body: product });
     }
 
-    public updateProduct(product: any): Observable<any> {
+    public editProduct(product: any): Observable<any> {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        console.log("produkt do zaktualizowania z frontendowego serwisu: ", product);
-
-        return this.http.put(`${this.apiUrl}products/update`, product, { headers });
+        return this.http.put(`${this.apiUrl}products/edit`, product, { headers });
     }
 }
