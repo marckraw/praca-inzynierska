@@ -5,13 +5,13 @@
             <tr>
                 <th>id</th>
                 <th>index</th>
-                <th>Name</th>
-                <th>Place</th>
-                <th>Date</th>
-                <th>Quantity</th>
-                <th>Payment method</th>
-                <th>Cost</th>
-                <th>Total Cost</th>
+                <th>Nazwa wydatku</th>
+                <th>Miejsce</th>
+                <th>Data</th>
+                <th>Ilość sztuk</th>
+                <th>Metoda płatności</th>
+                <th>Cena</th>
+                <th>Łączny koszt</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
@@ -32,10 +32,10 @@
                 <td>{{ expense.cost }}</td>
                 <td>{{ expense.totalCost }}</td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="edit(expense)">EDIT</button>
+                    <button mat-raised-button color="primary" (click)="edit(expense)">EDYTUJ</button>
                 </td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="remove(expense)">DELETE</button>
+                    <button mat-raised-button color="primary" (click)="remove(expense)">USUŃ</button>
                 </td>
             </tr>
         </tbody>

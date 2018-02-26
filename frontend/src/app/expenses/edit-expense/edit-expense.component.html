@@ -1,60 +1,60 @@
 <div class="add-expense-container" [formGroup]="formGroup">
-    <h1>Add expense</h1>
+    <h1>Dodaj wydatek</h1>
     <div class="add-expense-form">
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'name'" placeholder="Expense name">
-            <mat-hint align="end">Insert expense name</mat-hint>
+            <input matInput type="text" [formControlName]="'name'" placeholder="Nazwa wydatku">
+            <mat-hint align="end">Wporowadź nazwę wydatku</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Category list" name="expenseCategory" [formControlName]="'expenseCategory'">
+            <mat-select placeholder="Kategoria wydatku" name="expenseCategory" [formControlName]="'expenseCategory'">
                 <mat-option *ngFor="let expenseCategory of expenseCategories" [value]="expenseCategory.viewValue">
                     {{ expenseCategory.viewValue }}
                 </mat-option>
             </mat-select>
-            <mat-hint align="end">Choose expense category</mat-hint>
+            <mat-hint align="end">Wybierz kategorię wydatku</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'where'" placeholder="Where bought">
-            <mat-hint align="end">Insert where you bought item</mat-hint>
+            <input matInput type="text" [formControlName]="'where'" placeholder="Gdzie">
+            <mat-hint align="end">Wprowadź miejsce zakupu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="date" [formControlName]="'when'" placeholder="When bought">
-            <mat-hint align="end">Insert when you bought item</mat-hint>
+            <input matInput type="date" [formControlName]="'when'" placeholder="Kiedy">
+            <mat-hint align="end">Wprowadź datę zakupu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'qt'" placeholder="How many qt ?">
-            <mat-hint align="end">Insert number of items</mat-hint>
+            <input matInput type="number" [formControlName]="'qt'" placeholder="Ilość sztuk">
+            <mat-hint align="end">Wprowadz ilość sztuk</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Payment list" name="paymentMethod" [formControlName]="'paymentMethod'">
+            <mat-select placeholder="Metody płatności" name="paymentMethod" [formControlName]="'paymentMethod'">
                 <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.viewValue">
                     {{ paymentMethod.viewValue }}
                 </mat-option>
             </mat-select>
-            <mat-hint align="end">Choose payment method</mat-hint>
+            <mat-hint align="end">Wybierz metodę płatności</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'cost'" placeholder="What is the cost of item ?">
+            <input matInput type="number" [formControlName]="'cost'" placeholder="Cena zakupu">
             <span matPrefix>PLN&nbsp;</span>
-            <mat-hint align="end">Insert cost</mat-hint>
+            <mat-hint align="end">Wprowadź cenę</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
             <input matInput type="number" [formControlName]="'totalCost'" [value]="calcTotal()">
             <span matPrefix>PLN&nbsp;</span>
-            <mat-hint align="end">Total cost</mat-hint>
+            <mat-hint align="end">Łączny koszt</mat-hint>
         </mat-form-field>
 
 
         <div class="buttons">
-            <button class="cancel-btn" mat-raised-button (click)="cancel()">Cancel</button>
-            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Update</button>
+            <button class="cancel-btn" mat-raised-button (click)="cancel()">Zakończ</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Aktualizuj</button>
         </div>
     </div>
 
