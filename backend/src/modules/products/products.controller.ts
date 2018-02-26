@@ -8,6 +8,7 @@ import { IProduct } from "./interfaces/product.interface";
 
 // dto
 import { AddProductDto } from "./dto/add-product.dto";
+import { EditProductDto } from "./dto/edit-product.dto";
 import { RemoveProductDto } from "./dto/remove-product.dto";
 
 @Controller("products")
@@ -24,9 +25,9 @@ export class ProductsController {
         this.productsService.removeById(removeProductDto);
     }
 
-    @Put("update")
-    async updateProduct( @Body() removeProductDto: RemoveProductDto) {
-        this.productsService.updateById(removeProductDto);
+    @Put("edit")
+    async editProduct( @Body() editProductDto: EditProductDto) {
+        this.productsService.editProduct(editProductDto);
     }
 
     // @Get(":id")

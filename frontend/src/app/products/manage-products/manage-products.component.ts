@@ -7,7 +7,7 @@ import { ProductService } from "./../../services/product.service";
 import { EditProductComponent } from "./../edit-product/edit-product.component";
 
 @Component({
-    selector: "pi-manage-products",
+    selector: "app-manage-products",
     templateUrl: "manage-products.component.html",
     styleUrls: ["./manage-products.component.scss"],
 })
@@ -25,7 +25,6 @@ export class ManageProductsComponent implements OnInit {
     }
 
     public showAllProducts() {
-        this.productService.showProducts().subscribe((val) => console.log(val));
         this.products = this.productService.showProducts();
     }
 
@@ -36,11 +35,8 @@ export class ManageProductsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result !== undefined) {
                 if (result.confirmed) {
-                    console.log("teraz powinienem zaktualizowac dane");
-                    console.log("This is changed product: ", result);
-                    this.productService.updateProduct(result.product).subscribe((data) => console.dir(data));
-                    // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-                    // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                    this.productService.editProduct(result.product)
+                        .subscribe(() => this.showAllProducts());
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
@@ -50,5 +46,8 @@ export class ManageProductsComponent implements OnInit {
         });
     }
 
-    public remove(product) { this.productService.removeProduct(product).subscribe( () => this.showAllProducts()); }
+    public remove(product) {
+        this.productService.removeProduct(product)
+            .subscribe(() => this.showAllProducts());
+    }
 }
