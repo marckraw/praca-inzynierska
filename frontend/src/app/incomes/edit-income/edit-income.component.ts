@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+
 import { IEditIncome } from "../../models/edit-income.interface";
 
 @Component({
-  selector: "pi-edit-income",
+  selector: "app-edit-income",
   templateUrl: "./edit-income.component.html",
   styleUrls: ["./edit-income.component.scss"],
 })
@@ -48,6 +49,7 @@ export class EditIncomeComponent {
 
     private createForm() {
         this.formGroup = this.formBuilder.group({
+            _id: [this.data.income._id],
             name: [this.data.income.name, [Validators.required]],
             when: [this.data.income.when, [Validators.required]],
             paymentMethod: [this.data.income.paymentMethod, [Validators.required]],

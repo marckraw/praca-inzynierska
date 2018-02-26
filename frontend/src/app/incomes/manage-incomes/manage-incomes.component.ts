@@ -38,6 +38,9 @@ export class ManageIncomesComponent {
                 if (result.confirmed) {
                     console.log("teraz powinienem zaktualizowac dane");
                     console.log("This is changed income: ", result);
+                    this.incomeService.editIncome(result.income).subscribe( (data) => {
+                        this.incomes = this.incomeService.showIncomes();
+                    });
                     // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
                     // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
                 } else {
