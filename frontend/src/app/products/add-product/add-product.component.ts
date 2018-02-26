@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { ConfirmationModalComponent } from "../../confirmation-modal/confirmation-modal.component";
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { ProductService } from "../../services/product.service";
 import { GenericSnackbarComponent } from "./../../generic-snackbar/generic-snackbar.component";
 import { MaterialModule } from "./../../material.module";
@@ -18,18 +19,8 @@ export class AddProductComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public categories = [
-        {value: "miesa_wedliny", viewValue: "Mięsa i wędliny"},
-        {value: "pieczywo", viewValue: "Pieczywo"},
-        {value: "przyprawy", viewValue: "Przyprawy"},
-        {value: "kawa_i_herbata", viewValue: "Kawa i herbata"},
-        {value: "sery_jogurty_i_mleczne", viewValue: "Sery, jogurty i mleczne"},
-        {value: "dania_gotowe_i_sosy", viewValue: "Dania gotowe i sosy"},
-    ];
-    public qType = [
-        {value: "by_quantity", viewValue: "Quantity"},
-        {value: "by_weight", viewValue: "Weight"},
-    ];
+    public categories = HardcodedData.productsCategories;
+    public qType = HardcodedData.productsQType;
 
     constructor(
         private dialog: MatDialog,

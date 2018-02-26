@@ -1,60 +1,60 @@
 <div class="add-products-container" [formGroup]="formGroup">
-    <h1>Add product</h1>
+    <h1>Dodaj produkt</h1>
     <div class="add-products-form">
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'productName'" placeholder="Product Name">
-            <mat-hint align="end">Insert product name</mat-hint>
+            <input matInput type="text" [formControlName]="'productName'" placeholder="Nazwa produktu">
+            <mat-hint align="end">Wprowadz nazwę produktu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'productPrice'" placeholder="Product price">
+            <input matInput type="number" [formControlName]="'productPrice'" placeholder="Cena produktu">
             <span matPrefix>PLN&nbsp;</span>
-            <mat-hint align="end">Insert cost</mat-hint>
+            <mat-hint align="end">Wprowadź cenę</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'productCompanyName'" placeholder="Product Company Name">
-            <mat-hint align="end">Insert product Company name</mat-hint>
+            <input matInput type="text" [formControlName]="'productCompanyName'" placeholder="Nazwa firmy">
+            <mat-hint align="end">Wprowadź nazwę firmy</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'productImage'" placeholder="Product Image">
-            <mat-hint align="end">Send picture of a product</mat-hint>
+            <input matInput type="text" [formControlName]="'productImage'" placeholder="Zdjęcie produktu">
+            <mat-hint align="end">Wprowadź link od zdjęcia</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'productWeight'" placeholder="Product Weight">
-            <mat-hint align="end">Insert product weight</mat-hint>
+            <input matInput type="text" [formControlName]="'productWeight'" placeholder="Waga produktu">
+            <mat-hint align="end">Wprowadź wagę produktu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Product Category" name="category" [formControlName]="'productCategory'">
+            <mat-select placeholder="Kategoria produktu" name="category" [formControlName]="'productCategory'">
                 <mat-option *ngFor="let category of categories" [value]="category.viewValue">
                     {{ category.viewValue }}
                 </mat-option>
             </mat-select>
-            <mat-hint align="end">Choose proudct Category</mat-hint>
+            <mat-hint align="end">Wybierz kategorie produktu</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Product Quantitative Type" name="type" [formControlName]="'productQuantitativeType'">
+            <mat-select placeholder="Rodzaj policzalności produktu" name="type" [formControlName]="'productQuantitativeType'">
                 <mat-option *ngFor="let type of qType" [value]="type.viewValue">
                     {{ type.viewValue }}
                 </mat-option>
             </mat-select>
-            <mat-hint align="end">Choose product Quantitative Type</mat-hint>
+            <mat-hint align="end">Wybierz rodzaj policzalności</mat-hint>
         </mat-form-field>
 
 
         <mat-form-field>
-            <input matInput type="text" [formControlName]="'productTags'" placeholder="Product Tags">
-            <mat-hint align="end">Select product tags</mat-hint>
+            <input matInput type="text" [formControlName]="'productTags'" placeholder="Tagi produktu">
+            <mat-hint align="end">Wprowadz tagi produktu</mat-hint>
         </mat-form-field>
 
         <div class="buttons">
-            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Cancel</button>
-            <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/manage-products">Show All products</button>
-            <button class="add-btn" mat-raised-button color="primary" (click)="addProduct(formGroup.value)">Add</button>
+            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Zakończ</button>
+            <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/manage-products">Pokaż wszystkie produkty</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="addProduct(formGroup.value)">Dodaj</button>
         </div>
     </div>
 

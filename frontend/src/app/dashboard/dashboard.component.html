@@ -2,7 +2,7 @@
     <h1>Dashboard</h1>
     <div class="dashboard">
         <div class="dashboard-module">
-            <h2>Module - Monthly Expenses</h2>
+            <h2>Moduł - Miesięczne wydatki</h2>
             <div class="monthly-expenses">
                 <ul>
                     <li *ngFor="let expense of expenses"> {{ expense?.name }}: <strong>{{ expense?.expense | currencyPln }}</strong></li>
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="dashboard-module">
-            <h2>Module - Monthly Revenues</h2>
+            <h2>Moduł - Miesięczne przychody</h2>
             <div class="monthly-expenses">
                 <ul>
                     <li *ngFor="let revenue of revenues"> {{ revenue?.name }}: <strong>{{ revenue?.revenue | currencyPln }}</strong></li>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="dashboard-module">
-                <h2>Module - Monthly money status after required fees</h2>
+                <h2>Moduł - Miesięczny status pieniężny po odjęciu wymaganych opłat</h2>
                 <div class="monthly-expenses">
                     <h1>{{ currentMoney | currencyPln }}</h1>
                 </div>
