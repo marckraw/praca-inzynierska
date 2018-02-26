@@ -7,10 +7,12 @@ import { AddExpenseComponent } from "./expenses/add-expense/add-expense.componen
 import { ManageExpensesComponent } from "./expenses/manage-expenses/manage-expenses.component";
 import { AddIncomeComponent } from "./incomes/add-income/add-income.component";
 import { ManageIncomesComponent } from "./incomes/manage-incomes/manage-incomes.component";
+import { LoginComponent } from "./login/login.component";
 import { ManageBudgetsComponent } from "./manage-budgets/manage-budgets.component";
 import { ManageMonthlyFeesComponent } from "./manage-monthly-fees/manage-monthly-fees.component";
 import { AddProductComponent } from "./products/add-product/add-product.component";
 import { ManageProductsComponent } from "./products/manage-products/manage-products.component";
+import { SignUpComponent } from "./sign-up/sign-up.component";
 
 const appRoutes: Routes = [
     { path: "add-product", component: AddProductComponent },
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
     { path: "manage-budgets", component: ManageBudgetsComponent },
     { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
     { path: "dashboard", component: DashboardComponent },
+    { path: "login", component: LoginComponent },
+    { path: "sign-up", component: SignUpComponent },
     { path: "",   redirectTo: "/dashboard", pathMatch: "full" },
     { path: "**", component: DashboardComponent },
 ];

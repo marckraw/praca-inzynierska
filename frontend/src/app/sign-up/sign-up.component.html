@@ -1,3 +1,32 @@
-<p>
-  sign-up works!
-</p>
+<div class="content">
+    <div class="sign-up-box" [formGroup]="formGroup">
+        <h1>Rejestracja</h1>
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'login'" placeholder="Login użytkownika">
+            <mat-hint align="end">Wprowadź login użytkownika</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'email'" placeholder="Email użytkownika">
+            <mat-hint align="end">Wprowadź email użytkownika</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'password'" placeholder="Hasło użytkownika">
+            <mat-hint align="end">Wprowadź hasło użytkownika</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'passwordRepeat'" placeholder="Hasło użytkownika">
+            <mat-hint align="end">Wprowadź ponownie hasło</mat-hint>
+        </mat-form-field>
+        <div class="buttons">
+            <button class="sign-up-btn" mat-raised-button color="secondary" routerLink="/login">Cancel</button>
+            <button class="sign-up-btn" mat-raised-button color="primary" (click)="signUp()">OK</button>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+        <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+            <mat-card-content>
+                <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+            </mat-card-content>
+        </mat-card>
+    </div>

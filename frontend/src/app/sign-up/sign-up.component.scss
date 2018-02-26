@@ -1,0 +1,36 @@
+:host {
+    height: calc(100vh - 40px - 10px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+
+        .sign-up-box {
+            width: calc(100% - 40px);
+            max-width: 400px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.35);
+
+            mat-form-field {
+                width: 100%;
+            }
+
+            .buttons {
+                width: 100%;
+                margin-top: 40px;
+
+                button {
+                    width: 50%;
+                    float: left;
+                }
+
+                .clear {
+                    clear: left;
+                }
+            }
+        }
+    }
+}

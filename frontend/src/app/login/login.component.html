@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<div class="content">
+    <div class="login-box" [formGroup]="formGroup">
+            <h1>Logowanie</h1>
+            <mat-form-field>
+                <input matInput type="text" [formControlName]="'login'" placeholder="Nazwa użytkownika">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" [formControlName]="'password'" placeholder="Hasło użytkownika">
+            </mat-form-field>
+            <div class="buttons">
+                <button class="login-btn" mat-raised-button color="primary" (click)="login()">OK</button>
+                <p>or <a routerLink="/sign-up">Sign up</a></p>
+            </div>
+        </div>
+
+        <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+            <mat-card-content>
+                <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+            </mat-card-content>
+        </mat-card>
+</div>
