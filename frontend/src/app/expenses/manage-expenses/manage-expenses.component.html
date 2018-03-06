@@ -1,0 +1,48 @@
+<div class="display-expense-container">
+    <h1>Wydatki</h1>
+    <table *ngIf="(expenses | async) as expenses; else loading">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>index</th>
+                <th>Nazwa wydatku</th>
+                <th>Miejsce</th>
+                <th>Data</th>
+                <th>Ilość sztuk</th>
+                <th>Metoda płatności</th>
+                <th>Cena</th>
+                <th>Łączny koszt</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let expense of expenses; let i = index">
+                <td>
+                    <strong>?</strong>
+                </td>
+                <td>
+                    <strong>{{ i }}</strong>
+                </td>
+                <td>{{ expense.name }}</td>
+                <td>{{ expense.where }}</td>
+                <td>{{ expense.when }}</td>
+                <td>{{ expense.qt }}</td>
+                <td>{{ expense.paymentMethod }}</td>
+                <td>{{ expense.cost }}</td>
+                <td>{{ expense.totalCost }}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="edit(expense)">EDYTUJ</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="remove(expense)">USUŃ</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+
+</div>

@@ -1,0 +1,65 @@
+<div class="add-products-container" [formGroup]="formGroup">
+    <h1>Edytuj produkt</h1>
+    <div class="add-products-form">
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productName'" placeholder="Nazwa produktu">
+            <mat-hint align="end">Wprowadz nazwę produktu</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" [formControlName]="'productPrice'" placeholder="Cena produktu">
+            <span matPrefix>PLN&nbsp;</span>
+            <mat-hint align="end">Wprowadź cenę</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productCompanyName'" placeholder="Nazwa firmy">
+            <mat-hint align="end">Wprowadź nazwę firmy</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productImage'" placeholder="Zdjęcie produktu">
+            <mat-hint align="end">Wprowadź link od zdjęcia</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productWeight'" placeholder="Waga produktu">
+            <mat-hint align="end">Wprowadź wagę produktu</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Kategoria produktu" name="category" [formControlName]="'productCategory'">
+                <mat-option *ngFor="let category of categories" [value]="category.viewValue">
+                    {{ category.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint align="end">Wybierz kategorie produktu</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Rodzaj policzalności produktu" name="type" [formControlName]="'productQuantitativeType'">
+                <mat-option *ngFor="let type of qType" [value]="type.viewValue">
+                    {{ type.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint align="end">Wybierz rodzaj policzalności</mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'productTags'" placeholder="Tagi produktu">
+            <mat-hint align="end">Wprowadz tagi produktu</mat-hint>
+        </mat-form-field>
+
+        <div class="buttons">
+            <button class="cancel-btn" mat-raised-button (click)="cancel()">Zakończ</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Aktualizuj</button>
+        </div>
+    </div>
+
+    <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+        <mat-card-content>
+            <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+        </mat-card-content>
+    </mat-card>
+</div>

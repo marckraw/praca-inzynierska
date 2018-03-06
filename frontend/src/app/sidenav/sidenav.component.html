@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container" (backdropClick)="close('backdrop')">
+    <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+        <button mat-icon-button (click)="close('toggle button')">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <nav class="main-nav-container">
+            <ul>
+                <li><a mat-raised-button color="warn" routerLink="/dashboard">Dashboard</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-product">Dodaj produkt</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-expense">Dodaj wydatek</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-income">Dodaj przychód</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/add-budget">Dodaj budżet</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-products">Zarządzaj produktami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-expenses">Zarządzaj wydatkami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-incomes">Zarządzaj przychodami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/manage-budgets">Zarządzaj budżetami</a></li>
+                <li><a mat-raised-button color="warn" routerLink="/manage-monthly-fees">Zarządaj miesięcznymi opłatami</a></li>
+            </ul>
+        </nav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

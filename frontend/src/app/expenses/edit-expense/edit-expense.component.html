@@ -1,0 +1,66 @@
+<div class="add-expense-container" [formGroup]="formGroup">
+    <h1>Dodaj wydatek</h1>
+    <div class="add-expense-form">
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'name'" placeholder="Nazwa wydatku">
+            <mat-hint align="end">Wporowadź nazwę wydatku</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Kategoria wydatku" name="expenseCategory" [formControlName]="'expenseCategory'">
+                <mat-option *ngFor="let expenseCategory of expenseCategories" [value]="expenseCategory.viewValue">
+                    {{ expenseCategory.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint align="end">Wybierz kategorię wydatku</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" [formControlName]="'where'" placeholder="Gdzie">
+            <mat-hint align="end">Wprowadź miejsce zakupu</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="date" [formControlName]="'when'" placeholder="Kiedy">
+            <mat-hint align="end">Wprowadź datę zakupu</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" [formControlName]="'qt'" placeholder="Ilość sztuk">
+            <mat-hint align="end">Wprowadz ilość sztuk</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Metody płatności" name="paymentMethod" [formControlName]="'paymentMethod'">
+                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.viewValue">
+                    {{ paymentMethod.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint align="end">Wybierz metodę płatności</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" [formControlName]="'cost'" placeholder="Cena zakupu">
+            <span matPrefix>PLN&nbsp;</span>
+            <mat-hint align="end">Wprowadź cenę</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" [formControlName]="'totalCost'" [value]="calcTotal()">
+            <span matPrefix>PLN&nbsp;</span>
+            <mat-hint align="end">Łączny koszt</mat-hint>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button class="cancel-btn" mat-raised-button (click)="cancel()">Zakończ</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="confirm()">Aktualizuj</button>
+        </div>
+    </div>
+
+    <mat-card *ngIf="isErrorMsgVisible && !formGroup.valid">
+        <mat-card-content>
+            <p style="text-align: center; color: red; font-size: 16px;">Wprowadź wszystkie dane</p>
+        </mat-card-content>
+    </mat-card>
+</div>

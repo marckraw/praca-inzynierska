@@ -1,0 +1,27 @@
+:host {
+    width: 100%;
+
+    .add-income-container {
+        width: 100%;
+        max-width: 500px;
+
+        margin: 0 auto;
+
+
+
+        mat-form-field {
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        mat-card {
+            margin-top: 40px;
+        }
+    }
+}
