@@ -15,6 +15,9 @@ import { ExpenseService } from "./../../services/expense.service";
     styleUrls: ["./add-expense.component.scss"],
 })
 export class AddExpenseComponent {
+    private _totalCost;
+
+    public formNotSubmitted = true;
     public budgets: FormArray;
     public allBudgets = [];
     public budgetCategories = [];
@@ -29,6 +32,14 @@ export class AddExpenseComponent {
 
     public toppings = new FormControl();
     public toppingList = ["Extra cheese", "Mushroom", "Onion", "Pepperoni", "Sausage", "Tomato"];
+
+    get totalCost() {
+        return this._totalCost;
+    }
+
+    set totalCost(totalCost: number) {
+        this._totalCost = totalCost;
+    }
 
     constructor(
         private formBuilder: FormBuilder,
@@ -69,7 +80,8 @@ export class AddExpenseComponent {
     }
 
     public calcTotal() {
-        return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
+        const sum = this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
+        this.formGroup.controls.totalCost.setValue(sum);
     }
 
     public addBudgets() {
@@ -87,8 +99,9 @@ export class AddExpenseComponent {
     }
 
     public checkFormValues() {
-        console.log(this.formGroup.controls);
-        console.log(this.formGroup.value);
+        this.calcTotal();
+
+        console.log(this.formGroup.getRawValue());
     }
 
     private createForm() {
@@ -100,7 +113,7 @@ export class AddExpenseComponent {
             paymentMethod: ["", [Validators.required]],
             cost: ["", [Validators.required]],
             expenseCategory: ["", [Validators.required]],
-            totalCost: [{ value: "", disabled: true }],
+            totalCost: [{value: 0, disabled: true}],
             choosedBudget: [""],
             choosedBudgetCategory: [""],
         });
