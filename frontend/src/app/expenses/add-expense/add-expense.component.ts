@@ -59,7 +59,8 @@ export class AddExpenseComponent {
         this.budgetCategories = [];
     }
 
-    public addExpense(expense: IExpense) {
+    public addExpense() {
+        const expense = this.formGroup.getRawValue();
         if (this.formGroup.valid) {
             const dialogRef = this.dialog.open(ConfirmationModalComponent, {
                 width: "500px",
@@ -96,12 +97,6 @@ export class AddExpenseComponent {
         const filteredSingleBudget = this.allBudgets.filter( (budget) => budget._id === choosedBudgetId);
         this.budgetCategories = filteredSingleBudget[0].categories;
         console.log(this.budgetCategories);
-    }
-
-    public checkFormValues() {
-        this.calcTotal();
-
-        console.log(this.formGroup.getRawValue());
     }
 
     private createForm() {

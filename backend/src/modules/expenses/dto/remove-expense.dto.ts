@@ -7,4 +7,7 @@ export class RemoveExpenseDto {
     readonly paymentMethod: string;
     readonly cost: number;
     readonly totalCost: number;
+    readonly expenseCategory: string;
+    readonly choosedBudget: string;
+    readonly choosedBudgetCategory: string;
 }

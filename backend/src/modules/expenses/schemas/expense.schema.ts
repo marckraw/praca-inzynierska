@@ -9,4 +9,6 @@ export const ExpenseSchema = new mongoose.Schema({
     cost: Number,
     totalCost: Number,
     expenseCategory: String,
+    choosedBudget: String,
+    choosedBudgetCategory: String,
 });

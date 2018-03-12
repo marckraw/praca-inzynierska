@@ -75,10 +75,9 @@
 
 
         <div class="buttons">
-            <!-- <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Zakończ</button> -->
-            <button class="cancel-btn" mat-raised-button (click)="checkFormValues()">Sprawdź</button>
+            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Zakończ</button>
             <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/manage-expenses">Zarządzaj</button>
-            <button class="add-btn" mat-raised-button color="primary" (click)="addExpense(formGroup.value)">Dodaj</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="addExpense()">Dodaj</button>
         </div>
     </div>
 
