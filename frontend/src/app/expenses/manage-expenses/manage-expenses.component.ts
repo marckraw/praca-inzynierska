@@ -7,7 +7,7 @@ import { ExpenseService } from "../../services/expense.service";
 import { EditExpenseComponent } from "../edit-expense/edit-expense.component";
 
 @Component({
-    selector: "pi-manage-expenses",
+    selector: "app-manage-expenses",
     templateUrl: "./manage-expenses.component.html",
     styleUrls: ["./manage-expenses.component.scss"],
 })

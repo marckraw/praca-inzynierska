@@ -37,6 +37,7 @@ import { BudgetService } from "./services/budget.service";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
+import { CalculateService } from "./services/calculate.service";
 
 @NgModule({
     declarations: [
@@ -70,7 +71,7 @@ import { ProductService } from "./services/product.service";
         MaterialModule,
         ChartsModule,
     ],
-    providers: [ProductService, ExpenseService, IncomeService, BudgetService],
+    providers: [ProductService, ExpenseService, IncomeService, BudgetService, CalculateService],
     bootstrap: [AppComponent],
     entryComponents: [
         ConfirmationModalComponent,
