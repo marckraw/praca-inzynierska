@@ -19,6 +19,15 @@ export class ExpenseService {
         return this.http.post(`${this.apiUrl}expenses/add`, expense, { headers });
     }
 
+    public editExpense(expense: any): Observable<any> {
+        const headers = new HttpHeaders();
+        headers.set("Content-Type", "applications/json");
+
+        console.log(expense);
+
+        return this.http.put(`${this.apiUrl}expenses/edit`, expense, { headers });
+    }
+
     public showExpenses(): Observable<IExpense[]> {
         return this.http.get<IExpense[]>(`${this.apiUrl}expenses`);
     }

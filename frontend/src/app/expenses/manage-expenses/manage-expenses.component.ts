@@ -37,8 +37,9 @@ export class ManageExpensesComponent {
                 if (result.confirmed) {
                     console.log("teraz powinienem zaktualizowac dane");
                     console.log("This is changed expense: ", result);
-                    // this.incomeService.addIncome(result.income).subscribe((data) => console.dir(data));
-                    // console.log("Dane gotowe do wysłania do końcówki, ", result.income);
+                    this.expenseService.editExpense(result.expense).subscribe( (data) => {
+                        this.expenses = this.expenseService.showExpenses();
+                    });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }

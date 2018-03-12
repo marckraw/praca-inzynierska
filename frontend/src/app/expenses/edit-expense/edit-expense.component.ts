@@ -40,7 +40,7 @@ export class EditExpenseComponent {
     public confirm(): void {
         if (this.formGroup.valid) {
             this.data.confirmed = true;
-            this.data.expense = this.formGroup.value;
+            this.data.expense = this.formGroup.getRawValue();
             this.dialogRef.close(this.data);
         } else {
             this.isErrorMsgVisible = true;
@@ -48,11 +48,13 @@ export class EditExpenseComponent {
     }
 
     public calcTotal() {
-        return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
+        const sum = this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
+        this.formGroup.controls.totalCost.setValue(sum);
     }
 
     private createForm() {
         this.formGroup = this.formBuilder.group({
+            _id: [this.data.expense._id],
             name: [this.data.expense.name, [Validators.required]],
             where: [this.data.expense.where, [Validators.required]],
             when: [this.data.expense.when, [Validators.required]],
@@ -61,6 +63,8 @@ export class EditExpenseComponent {
             cost: [this.data.expense.cost, [Validators.required]],
             expenseCategory: [this.data.expense.expenseCategory, [Validators.required]],
             totalCost: [{ value: "", disabled: true }],
+            choosedBudget: [this.data.expense.choosedBudget],
+            choosedBudgetCategory: [this.data.expense.choosedBudgetCategory],
         });
     }
 

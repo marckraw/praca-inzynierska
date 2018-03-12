@@ -15,8 +15,6 @@ import { ExpenseService } from "./../../services/expense.service";
     styleUrls: ["./add-expense.component.scss"],
 })
 export class AddExpenseComponent {
-    private _totalCost;
-
     public formNotSubmitted = true;
     public budgets: FormArray;
     public allBudgets = [];
@@ -29,17 +27,6 @@ export class AddExpenseComponent {
     public selectedType: string;
     public paymentMethods = HardcodedData.paymentMethods;
     public expenseCategories = HardcodedData.expenseCategories;
-
-    public toppings = new FormControl();
-    public toppingList = ["Extra cheese", "Mushroom", "Onion", "Pepperoni", "Sausage", "Tomato"];
-
-    get totalCost() {
-        return this._totalCost;
-    }
-
-    set totalCost(totalCost: number) {
-        this._totalCost = totalCost;
-    }
 
     constructor(
         private formBuilder: FormBuilder,
