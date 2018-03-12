@@ -17,6 +17,7 @@ import { ExpenseService } from "./../../services/expense.service";
 export class AddExpenseComponent {
     public budgets: FormArray;
     public allBudgets = [];
+    public budgetCategories = [];
     public isBudgetsLoaded: boolean = false;
     public isBudgetChoosed: boolean = false;
     public isErrorMsgVisible = false;
@@ -44,6 +45,7 @@ export class AddExpenseComponent {
             this.allBudgets = budgets;
             console.log(this.allBudgets);
         });
+        this.budgetCategories = [];
     }
 
     public addExpense(expense: IExpense) {
@@ -70,22 +72,18 @@ export class AddExpenseComponent {
         return this.formGroup.controls.cost.value * this.formGroup.controls.qt.value;
     }
 
-    public createBudgets(): FormGroup {
-        return this.formBuilder.group({
-            budgetId: [],
-            categoryId: [],
-        });
-    }
-
-    public addBudgetToBudgetsControl() {
-        this.budgets = this.formGroup.get("budgets") as FormArray;
-        this.budgets.push(this.createBudgets());
-    }
-
     public addBudgets() {
         this.isBudgetsLoaded = true;
+    }
 
-        this.addBudgetToBudgetsControl();
+    public selectionChange() {
+        const choosedBudgetId = this.formGroup.controls['choosedBudget'].value;
+
+        console.log(choosedBudgetId);
+
+        const filteredSingleBudget = this.allBudgets.filter( (budget) => budget._id === choosedBudgetId);
+        this.budgetCategories = filteredSingleBudget[0].categories;
+        console.log(this.budgetCategories);
     }
 
     public checkFormValues() {
@@ -102,9 +100,9 @@ export class AddExpenseComponent {
             paymentMethod: ["", [Validators.required]],
             cost: ["", [Validators.required]],
             expenseCategory: ["", [Validators.required]],
-            budgets: this.formBuilder.array([]),
             totalCost: [{ value: "", disabled: true }],
-            budgetsChoose: [],
+            choosedBudget: [""],
+            choosedBudgetCategory: [""],
         });
     }
 }

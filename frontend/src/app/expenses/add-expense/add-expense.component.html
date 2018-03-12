@@ -22,14 +22,18 @@
 
         <ng-container *ngIf="isBudgetsLoaded">
             <mat-form-field>
-                <mat-select placeholder="Dostępne budżety" [formControlName]="'budgetsChoose'" multiple>
-                    <mat-option *ngFor="let budget of allBudgets" [value]="budget.id">
+                <mat-select (selectionChange)="selectionChange()"placeholder="Dostępne budżety" [formControlName]="'choosedBudget'">
+                    <mat-option *ngFor="let budget of allBudgets" [value]="budget._id">
                         {{ budget.name }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <ng-container *ngIf="formGroup.get('budgetsChoose').value !== null">
-                wybralem cos
+            <ng-container *ngIf="formGroup.get('choosedBudget').value !== null">
+                <mat-select placeholder="Dostępne kategorie budżetu" [formControlName]="'choosedBudgetCategory'">
+                    <mat-option *ngFor="let budgetCategory of budgetCategories" [value]="budgetCategory._id">
+                        {{ budgetCategory.name }}
+                    </mat-option>
+                </mat-select>
             </ng-container>
         </ng-container>
 
