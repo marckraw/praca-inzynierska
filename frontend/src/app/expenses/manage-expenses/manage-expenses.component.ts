@@ -24,7 +24,6 @@ export class ManageExpensesComponent {
     }
 
     public showAllExpenses() {
-        this.expenseService.showExpenses().subscribe(val => console.log(val)); // this is only for loggin, temporary
         this.expenses = this.expenseService.showExpenses();
     }
 
