@@ -9,4 +9,6 @@ export interface IExpense extends Document {
     cost: number;
     totalCost: number;
     expenseCategory: string;
+    choosedBudget: string;
+    choosedBudgetCategory: string;
 }

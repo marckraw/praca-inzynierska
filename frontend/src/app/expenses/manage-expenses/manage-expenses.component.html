@@ -3,9 +3,10 @@
     <table *ngIf="(expenses | async) as expenses; else loading">
         <thead>
             <tr>
-                <th>id</th>
-                <th>index</th>
-                <th>Nazwa wydatku</th>
+                <th>Nazwa</th>
+                <th>Kategoria</th>
+                <th>Budżet</th>
+                <th>Kategoria budżetu</th>
                 <th>Miejsce</th>
                 <th>Data</th>
                 <th>Ilość sztuk</th>
@@ -18,13 +19,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let expense of expenses; let i = index">
-                <td>
-                    <strong>?</strong>
-                </td>
-                <td>
-                    <strong>{{ i }}</strong>
-                </td>
                 <td>{{ expense.name }}</td>
+                <td>{{ expense.expenseCategory }}</td>
+                <td>{{ expense.choosedBudget }}</td>
+                <td>{{ expense.choosedBudgetCategory }}</td>
                 <td>{{ expense.where }}</td>
                 <td>{{ expense.when }}</td>
                 <td>{{ expense.qt }}</td>

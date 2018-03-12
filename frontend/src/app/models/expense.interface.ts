@@ -9,4 +9,6 @@ export interface IExpense {
     cost: number;
     totalCost: number;
     expenseCategory: string;
+    choosedBudget: string;
+    choosedBudgetCategory: string;
 }

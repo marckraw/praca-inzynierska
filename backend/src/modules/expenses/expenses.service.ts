@@ -8,6 +8,7 @@ import { IExpense } from "./interfaces/expense.interface";
 // dto
 import { AddExpenseDto } from "./dto/add-expense.dto";
 import { RemoveExpenseDto } from "./dto/remove-expense.dto";
+import { EditExpenseDto } from "./dto/edit-expense.dto";
 
 @Component()
 export class ExpensesService {
@@ -18,6 +19,12 @@ export class ExpensesService {
     async addExpense(addExpenseDto: AddExpenseDto): Promise<IExpense> {
         const addedExpense = new this.expenseModel(addExpenseDto);
         return await addedExpense.save();
+    }
+
+    async editExpense(editExpenseDto: EditExpenseDto) {
+        const id = editExpenseDto._id;
+
+        return await this.expenseModel.findByIdAndUpdate(id, editExpenseDto);
     }
 
     async getAllExpenses(): Promise<IExpense[]> {

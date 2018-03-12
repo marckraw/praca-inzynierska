@@ -1,4 +1,5 @@
-export class AddExpenseDto {
+export class EditExpenseDto {
+    readonly _id: string;
     readonly name: string;
     readonly where: string;
     readonly when: string;
@@ -10,3 +11,4 @@ export class AddExpenseDto {
     readonly choosedBudget: string;
     readonly choosedBudgetCategory: string;
 }
+

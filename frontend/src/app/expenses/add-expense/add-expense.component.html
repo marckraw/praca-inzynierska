@@ -22,14 +22,18 @@
 
         <ng-container *ngIf="isBudgetsLoaded">
             <mat-form-field>
-                <mat-select placeholder="Dostępne budżety" [formControlName]="'budgetsChoose'" multiple>
-                    <mat-option *ngFor="let budget of allBudgets" [value]="budget.id">
+                <mat-select (selectionChange)="selectionChange()"placeholder="Dostępne budżety" [formControlName]="'choosedBudget'">
+                    <mat-option *ngFor="let budget of allBudgets" [value]="budget._id">
                         {{ budget.name }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <ng-container *ngIf="formGroup.get('budgetsChoose').value !== null">
-                wybralem cos
+            <ng-container *ngIf="formGroup.get('choosedBudget').value !== null">
+                <mat-select placeholder="Dostępne kategorie budżetu" [formControlName]="'choosedBudgetCategory'">
+                    <mat-option *ngFor="let budgetCategory of budgetCategories" [value]="budgetCategory._id">
+                        {{ budgetCategory.name }}
+                    </mat-option>
+                </mat-select>
             </ng-container>
         </ng-container>
 
@@ -44,7 +48,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'qt'" placeholder="Ilość sztuk">
+            <input matInput type="number" [formControlName]="'qt'" placeholder="Ilość sztuk" (keyup)="calcTotal()">
             <mat-hint align="end">Wprowadź ilość sztuk</mat-hint>
         </mat-form-field>
 
@@ -58,23 +62,22 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'cost'" placeholder="Cena zakupu">
+            <input matInput type="number" [formControlName]="'cost'" placeholder="Cena zakupu" (keyup)="calcTotal()">
             <span matPrefix>PLN&nbsp;</span>
             <mat-hint align="end">Wprowadź cenę</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="number" [formControlName]="'totalCost'" [value]="calcTotal()">
+            <input matInput type="number" [formControlName]="'totalCost'">
             <span matPrefix>PLN&nbsp;</span>
             <mat-hint align="end">Łączny koszt</mat-hint>
         </mat-form-field>
 
 
         <div class="buttons">
-            <!-- <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Zakończ</button> -->
-            <button class="cancel-btn" mat-raised-button (click)="checkFormValues()">Sprawdź</button>
+            <button class="cancel-btn" mat-raised-button routerLink="/dashboard">Zakończ</button>
             <button class="cancel-btn" mat-raised-button color="secondary" routerLink="/manage-expenses">Zarządzaj</button>
-            <button class="add-btn" mat-raised-button color="primary" (click)="addExpense(formGroup.value)">Dodaj</button>
+            <button class="add-btn" mat-raised-button color="primary" (click)="addExpense()">Dodaj</button>
         </div>
     </div>
 

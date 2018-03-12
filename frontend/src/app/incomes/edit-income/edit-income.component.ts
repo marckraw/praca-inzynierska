@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 
 import { IEditIncome } from "../../models/edit-income.interface";
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 
 @Component({
   selector: "app-edit-income",
@@ -14,11 +15,7 @@ export class EditIncomeComponent {
     public formGroup: FormGroup;
     public selectedCategory: string;
     public selectedType: string;
-    public paymentMethods = [
-        { value: "visa", viewValue: "Karta bankowa" },
-        { value: "transfer", viewValue: "Przelew" },
-        { value: "cash", viewValue: "Gotówka" },
-    ];
+    public paymentMethods = HardcodedData.paymentMethods;
 
     constructor(
         private formBuilder: FormBuilder,
