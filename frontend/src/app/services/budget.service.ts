@@ -23,7 +23,7 @@ export class BudgetService {
         return this.http.get<IBudget[]>(`${this.apiUrl}budgets`);
     }
 
-    // public removeIncome(income: any): Observable<any> {
-    //     return this.http.request("delete", `${this.apiUrl}incomes/remove`, { body: income });
-    // }
+    public removeBudget(budget: any) {
+        return this.http.request("delete", `${this.apiUrl}budgets/remove`, { body: budget });
+    }
 }

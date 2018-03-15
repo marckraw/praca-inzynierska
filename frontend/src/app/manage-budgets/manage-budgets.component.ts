@@ -24,8 +24,10 @@ export class ManageBudgetsComponent {
         console.log("editing...: ", budget);
     }
 
-    public remove(budget: IBudget) {
-        console.log("removing...: ", budget);
+    public remove(budget: IBudget) { 
+        this.budgetService.removeBudget(budget).subscribe( removedBudget => {
+            this.budgets = this.budgetService.showAllBudgets();
+        }); 
     }
 
 }

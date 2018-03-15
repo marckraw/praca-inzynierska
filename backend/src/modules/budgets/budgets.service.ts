@@ -7,7 +7,7 @@ import { IBudget } from "./interfaces/budget.interface";
 
 // dto
 import { AddBudgetDto } from "./dto/add-budget.dto";
-// import { RemoveExpenseDto } from "./dto/remove-expense.dto";
+import { RemoveBudgetDto } from "./dto/remove-budget.dto";
 
 @Component()
 export class BudgetsService {
@@ -24,12 +24,7 @@ export class BudgetsService {
         return this.budgetsModel.find().exec();
     }
 
-    // async addExpense(addExpenseDto: AddExpenseDto): Promise<IExpense> {
-    //     const addedExpense = new this.expenseModel(addExpenseDto);
-    //     return await addedExpense.save();
-    // }
-
-    // async removeById(removeExpenseDto: RemoveExpenseDto): Promise<IExpense> {
-    //     return this.expenseModel.findByIdAndRemove(removeExpenseDto._id).exec();
-    // }
+    async removeById(removeBudgetDto: RemoveBudgetDto): Promise<IBudget> {
+        return this.budgetsModel.findByIdAndRemove(removeBudgetDto._id).exec();
+    }
 }

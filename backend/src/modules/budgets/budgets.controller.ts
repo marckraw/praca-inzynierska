@@ -5,6 +5,7 @@ import { BudgetsService } from "./budgets.service";
 import { IBudget } from "./interfaces/budget.interface";
 
 import { AddBudgetDto } from "./dto/add-budget.dto";
+import { RemoveBudgetDto } from "./dto/remove-budget.dto";
 
 @Controller("budgets")
 export class BudgetsController {
@@ -20,8 +21,8 @@ export class BudgetsController {
         return this.budgetsService.getAllBudgets();
     }
 
-    // @Delete("remove")
-    // async removeIncome( @Body() removeExpenseDto: RemoveExpenseDto) {
-    //     return this.expenseService.removeById(removeExpenseDto);
-    // }
+    @Delete("remove")
+    async removeBudget( @Body() removeBudgetDto: RemoveBudgetDto) {
+        return this.budgetsService.removeById(removeBudgetDto);
+    }
 }
