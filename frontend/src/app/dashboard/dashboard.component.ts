@@ -57,7 +57,7 @@ export class DashboardComponent {
 
     public revenues: any = [
         {
-            name: "Rockwell Automation",
+            name: "Testowa firma",
             revenue: 4275.00,
             when: "10 kazdego miesiaca",
             currency: "PLN",
