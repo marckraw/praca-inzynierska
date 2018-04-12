@@ -77,7 +77,7 @@ export class AddExpenseComponent {
     }
 
     public selectionChange() {
-        const choosedBudgetId = this.formGroup.controls['choosedBudget'].value;
+        const choosedBudgetId = this.formGroup.controls.choosedBudget.value;
 
         console.log(choosedBudgetId);
 
