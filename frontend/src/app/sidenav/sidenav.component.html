@@ -16,6 +16,11 @@
                 <li><a mat-raised-button color="accent" routerLink="/manage-incomes">Zarządzaj przychodami</a></li>
                 <li><a mat-raised-button color="accent" routerLink="/manage-budgets">Zarządzaj budżetami</a></li>
                 <li><a mat-raised-button color="warn" routerLink="/manage-monthly-fees">Zarządaj miesięcznymi opłatami</a></li>
+                <li></li>
+                <li><a mat-raised-button color="warn" routerLink="/">Wyloguj</a></li>
+                <li><a mat-raised-button (click)="setLocalStorage()">zapisz do localstorage</a></li>
+                <li><a mat-raised-button (click)="getLocalStorage()">pobierz localstorage</a></li>
+                <li><a mat-raised-button (click)="removeLocalStorage()">usun local storagr</a></li>
             </ul>
         </nav>
     </mat-sidenav>

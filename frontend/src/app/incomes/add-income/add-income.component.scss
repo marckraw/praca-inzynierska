@@ -4,7 +4,7 @@
     .add-income-container {
         box-sizing: border-box;
         width: 100%;
-        height: 100vh; // TODO: I have to change it - in different place should be information how big it is
+        height: calc(100vh - 60px); // TODO: I have to change it - in different place should be information how big it is
         max-width: 500px;
         margin: 20px auto;
 

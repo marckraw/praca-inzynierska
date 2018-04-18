@@ -1,0 +1,23 @@
+:host {
+    .login-component {
+        height: calc(100vh - 60px); // TODO: I have to change it - in different place should be information how big it is
+
+        display: flex;
+        flex: 1 1 0;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-bottom: 30px;
+        }
+
+        .login-wrapper {
+            height: 300px;
+            margin: 0 auto;
+            max-width: 400px;
+            width: 90%;
+        }
+    }
+}

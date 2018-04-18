@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
     // { path: "dashboard", component: DashboardComponent },
     // { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
-    { path: "",   redirectTo: "/dashboard", pathMatch: "full" },
+    { path: "",   redirectTo: "/login", pathMatch: "full" },
     { path: "**", component: DashboardComponent },
 ];
 

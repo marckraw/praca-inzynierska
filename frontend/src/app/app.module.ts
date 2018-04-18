@@ -41,6 +41,8 @@ import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
 
+import { LocalStorage } from "./services/localstorage.service";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -75,7 +77,13 @@ import { ProductService } from "./services/product.service";
         MaterialModule,
         ChartsModule,
     ],
-    providers: [ProductService, ExpenseService, IncomeService, BudgetService],
+    providers: [
+        ProductService,
+        ExpenseService,
+        IncomeService,
+        BudgetService,
+        LocalStorage,
+    ],
     bootstrap: [AppComponent],
     entryComponents: [
         ConfirmationModalComponent,
