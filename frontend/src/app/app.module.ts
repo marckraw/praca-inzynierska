@@ -33,6 +33,9 @@ import { ManageBudgetsComponent } from "./manage-budgets/manage-budgets.componen
 import { ManageMonthlyFeesComponent } from "./manage-monthly-fees/manage-monthly-fees.component";
 import { SidenavComponent } from "./sidenav/sidenav.component";
 
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+
 import { BudgetService } from "./services/budget.service";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
@@ -59,6 +62,8 @@ import { ProductService } from "./services/product.service";
         AddBudgetComponent,
         ManageBudgetsComponent,
         ManageMonthlyFeesComponent,
+        LoginComponent,
+        RegisterComponent,
     ],
     imports: [
         AppRoutingModule,
