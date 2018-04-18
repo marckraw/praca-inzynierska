@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material";
+import { Observable } from "rxjs/Observable";
 import { LocalStorage } from "../services/localstorage.service";
+import { UserDataRepository } from "../services/user-data.repository";
 
 @Component({
     selector: "app-sidenav",
@@ -10,24 +12,20 @@ import { LocalStorage } from "../services/localstorage.service";
 export class SidenavComponent implements OnInit {
     @ViewChild("sidenav") public sidenav: MatSidenav;
 
-    public loggedIn: boolean;
+    public loggedIn: string;
 
-    constructor(private localStorage: LocalStorage) {}
+    constructor(private localStorage: LocalStorage, private userDataRepository: UserDataRepository) {}
 
     public ngOnInit() {
         console.log("ngoninit");
     }
 
-    public setLocalStorage() {
-        this.localStorage.setItem({ name: "isLoggedIn", content: "yes"});
+    public logout() {
+        this.localStorage.removeItem("isLoggedIn");
     }
 
-    public getLocalStorage() {
-        console.log(this.localStorage.getItem("isLoggedIn"));
-    }
-
-    public removeLocalStorage() {
-        console.log(this.localStorage.removeItem("isLoggedIn");
+    public login() {
+        this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
     }
 
     public close(reason: string) { this.sidenav.close(); }

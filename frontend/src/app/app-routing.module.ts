@@ -14,22 +14,32 @@ import { AddProductComponent } from "./products/add-product/add-product.componen
 import { ManageProductsComponent } from "./products/manage-products/manage-products.component";
 import { RegisterComponent } from "./register/register.component";
 
+import { HomeComponent } from "./home/home.component";
+import { AuthGuard } from "./services/auth.guard";
+
 const appRoutes: Routes = [
+    {
+        path: "home",
+        component: HomeComponent,
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        children: [
+            { path: "dashboard", component: DashboardComponent },
+            { path: "add-product", component: AddProductComponent },
+            { path: "add-expense", component: AddExpenseComponent },
+            { path: "add-income", component: AddIncomeComponent },
+            { path: "add-budget", component: AddBudgetComponent },
+            { path: "manage-products", component: ManageProductsComponent },
+            { path: "manage-expenses", component: ManageExpensesComponent },
+            { path: "manage-incomes", component: ManageIncomesComponent },
+            { path: "manage-budgets", component: ManageBudgetsComponent },
+            { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
+        ],
+    },
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
-    { path: "add-product", component: AddProductComponent },
-    { path: "add-expense", component: AddExpenseComponent },
-    { path: "add-income", component: AddIncomeComponent },
-    { path: "add-budget", component: AddBudgetComponent },
-    { path: "manage-products", component: ManageProductsComponent },
-    { path: "manage-expenses", component: ManageExpensesComponent },
-    { path: "manage-incomes", component: ManageIncomesComponent },
-    { path: "manage-budgets", component: ManageBudgetsComponent },
-    { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
-    // { path: "dashboard", component: DashboardComponent },
-    // { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
     { path: "",   redirectTo: "/login", pathMatch: "full" },
-    { path: "**", component: DashboardComponent },
+    { path: "**", component: LoginComponent },
 ];
 
 @NgModule({

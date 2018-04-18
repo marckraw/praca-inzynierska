@@ -41,7 +41,11 @@ import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
 
+import { HomeComponent } from "./home/home.component";
+import { AuthGuard } from "./services/auth.guard";
+
 import { LocalStorage } from "./services/localstorage.service";
+import { UserDataRepository } from "./services/user-data.repository";
 
 @NgModule({
     declarations: [
@@ -66,6 +70,7 @@ import { LocalStorage } from "./services/localstorage.service";
         ManageMonthlyFeesComponent,
         LoginComponent,
         RegisterComponent,
+        HomeComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -83,6 +88,8 @@ import { LocalStorage } from "./services/localstorage.service";
         IncomeService,
         BudgetService,
         LocalStorage,
+        UserDataRepository,
+        AuthGuard,
     ],
     bootstrap: [AppComponent],
     entryComponents: [

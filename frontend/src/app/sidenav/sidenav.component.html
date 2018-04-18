@@ -6,21 +6,18 @@
 
         <nav class="main-nav-container">
             <ul>
-                <li><a mat-raised-button color="warn" routerLink="/dashboard">Dashboard</a></li>
-                <li><a mat-raised-button color="primary" routerLink="/add-product">Dodaj produkt</a></li>
-                <li><a mat-raised-button color="primary" routerLink="/add-expense">Dodaj wydatek</a></li>
-                <li><a mat-raised-button color="primary" routerLink="/add-income">Dodaj przychód</a></li>
-                <li><a mat-raised-button color="primary" routerLink="/add-budget">Dodaj budżet</a></li>
-                <li><a mat-raised-button color="accent" routerLink="/manage-products">Zarządzaj produktami</a></li>
-                <li><a mat-raised-button color="accent" routerLink="/manage-expenses">Zarządzaj wydatkami</a></li>
-                <li><a mat-raised-button color="accent" routerLink="/manage-incomes">Zarządzaj przychodami</a></li>
-                <li><a mat-raised-button color="accent" routerLink="/manage-budgets">Zarządzaj budżetami</a></li>
-                <li><a mat-raised-button color="warn" routerLink="/manage-monthly-fees">Zarządaj miesięcznymi opłatami</a></li>
+                <li><a mat-raised-button color="warn" routerLink="/home/dashboard">Dashboard</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/home/add-product">Dodaj produkt</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/home/add-expense">Dodaj wydatek</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/home/add-income">Dodaj przychód</a></li>
+                <li><a mat-raised-button color="primary" routerLink="/home/add-budget">Dodaj budżet</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/home/manage-products">Zarządzaj produktami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/home/manage-expenses">Zarządzaj wydatkami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/home/manage-incomes">Zarządzaj przychodami</a></li>
+                <li><a mat-raised-button color="accent" routerLink="/home/manage-budgets">Zarządzaj budżetami</a></li>
+                <li><a mat-raised-button color="warn" routerLink="/home/manage-monthly-fees">Zarządaj miesięcznymi opłatami</a></li>
                 <li></li>
-                <li><a mat-raised-button color="warn" routerLink="/">Wyloguj</a></li>
-                <li><a mat-raised-button (click)="setLocalStorage()">zapisz do localstorage</a></li>
-                <li><a mat-raised-button (click)="getLocalStorage()">pobierz localstorage</a></li>
-                <li><a mat-raised-button (click)="removeLocalStorage()">usun local storagr</a></li>
+                <li><a mat-raised-button color="warn" (click)="logout()">Wyloguj</a></li>
             </ul>
         </nav>
     </mat-sidenav>
