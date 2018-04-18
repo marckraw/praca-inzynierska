@@ -6,7 +6,7 @@ import { LocalStorage } from "./localstorage.service";
 
 @Injectable()
 export class UserDataRepository {
-    public loggedIn: Observable<string>;
+    public loggedIn: boolean = false;
 
     constructor(private localStorage: LocalStorage) {
         const loggedIn = this.localStorage.getItem("isLoggedIn");
@@ -17,13 +17,20 @@ export class UserDataRepository {
         this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
         const loggedIn = this.localStorage.getItem("isLoggedIn");
 
-        this.loggedIn = Observable.of(loggedIn);
+        if (loggedIn === "yes") {
+            this.loggedIn = true;
+        } else {
+            this.loggedIn = false;
+        }
     }
 
     public logout() {
         this.localStorage.removeItem("isLoggedIn");
+        this.loggedIn = false;
+    }
 
-        this.loggedIn = null;
+    public register() {
+        console.log("rejestrowanie...");
     }
 
 }

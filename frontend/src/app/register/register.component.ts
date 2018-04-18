@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 
 import { FormControl, Validators } from "@angular/forms";
 import { LocalStorage } from "../services/localstorage.service";
+import { UserDataRepository } from "../services/user-data.repository";
 import { MyErrorStateMatcher } from "../shared/my-error-state-matcher";
 
 @Component({
@@ -22,9 +23,15 @@ export class RegisterComponent {
 
     public matcher = new MyErrorStateMatcher();
 
-    constructor(private localStorage: LocalStorage) {}
+    constructor(
+        private userDataRepository: UserDataRepository,
+    ) {}
+
+    public ngOnInit() {
+        this.userDataRepository.logout();
+    }
 
     public register() {
-        console.log("rejestrowanie...");
+        this.userDataRepository.register();
     }
 }
