@@ -32,6 +32,17 @@ export class RegisterComponent {
     }
 
     public register() {
-        this.userDataRepository.register();
+        console.log("register from frontend component");
+        const user = {
+            email: "marckraw@icloud.com",
+            firstName: "Marcin",
+            lastName: "Krawczyk",
+            password: "1234567890",
+        };
+        this.userDataRepository.register(user)
+            .subscribe(
+                (val) => val,
+                (response) => console.log(response.statusText),
+            );
     }
 }

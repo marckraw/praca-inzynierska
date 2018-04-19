@@ -17,6 +17,7 @@ export class IncomesController {
 
     @Post("add")
     async addIncome( @Body() addIncomeDto: AddIncomeDto) {
+        console.log("incomes/add");
         return this.incomesService.addIncome(addIncomeDto);
     }
 

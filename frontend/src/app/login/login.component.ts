@@ -35,9 +35,20 @@ export class LoginComponent {
     }
 
     public login() {
-        this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
-        this.userDataRepository.loggedIn = true;
-        console.log(this.userDataRepository.loggedIn);
-        this.router.navigate(["/home/dashboard"]);
+        // this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
+        // this.userDataRepository.loggedIn = true;
+        // console.log(this.userDataRepository.loggedIn);
+        // this.router.navigate(["/home/dashboard"]);
+
+        const userCredentials = {
+            email: "marckraw@icloud.com",
+            password: "asdasd",
+        };
+        this.userDataRepository.login2(userCredentials)
+            .subscribe(
+                (val) => val,
+                (response) => console.log(response.statusText),
+            );
+
     }
 }

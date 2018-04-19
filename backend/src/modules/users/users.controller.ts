@@ -8,6 +8,7 @@ import { IUser } from "./interfaces/user.interface";
 
 // dto
 import { CreateUserDto } from "./dto/create-user.dto";
+import { LoginUserDto } from "./dto/login-user.dto";
 
 @Controller("users")
 export class UsersController {
@@ -15,8 +16,22 @@ export class UsersController {
 
     @Post("create")
     async createUser( @Body() createUserDto: CreateUserDto) {
+        console.log("from users/create controller");
+        console.log(createUserDto);
         return this.usersService.createUser(createUserDto);
     }
+
+    @Post("login")
+    login( @Body() loginUserDto: LoginUserDto) {
+        console.log("from users/create controller");
+        console.log(loginUserDto);
+        this.usersService.login(loginUserDto);
+    }
+
+    // @Post("create")
+    // async createUser( @Body() createUserDto: CreateUserDto) {
+    //     return this.usersService.createUser(createUserDto);
+    // }
 
     // @Get(":id")
     // async findById(id: number) {
@@ -24,8 +39,9 @@ export class UsersController {
     // }
 
     @Get()
-    async findAll(): Promise<IUser[]> {
-        return this.usersService.findAll();
+    findAll(): void { //Promise<IUser[]>
+        console.log("dupa");
+        // return this.usersService.findAll();
     }
 
 }
