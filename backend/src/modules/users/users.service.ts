@@ -43,14 +43,14 @@ export class UsersService {
 
     async login(loginUserDto: LoginUserDto): Promise<{} | boolean> {
         const user = await this.userModel.findOne({email: loginUserDto.email});
-        const result = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
+        const validatedPassword = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
 
-        if (result) {
+        if (validatedPassword) {
             const authenticatedUserJWT = this.generateJwt(user);
 
             return { authenticatedUserJWT };
         } else {
-            return result;
+            return validatedPassword;
         }
     }
 

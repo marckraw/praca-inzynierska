@@ -47,7 +47,7 @@ export class LoginComponent {
                     this.userDataRepository.loggedIn = true;
                     this.router.navigate(["/home/dashboard"]);
                 },
-                (response) => console.log(response),
+                error => console.log(error),
             );
 
     }
