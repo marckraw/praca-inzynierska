@@ -30,24 +30,21 @@ export class LoginComponent {
     }
 
     public login() {
-        // const userCredentials = {
-        //     email: "marckraw@icloud.com",
-        //     password: "1234567890",
-        // };
+        if (this.formGroup.valid) {
+            const userCredentials = this.formGroup.value;
 
-        const userCredentials = this.formGroup.value;
-
-        this.userDataRepository.login2(userCredentials)
-            .subscribe(
-                response => {
-                    console.log(response);
-                    this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
-                    this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
-                    this.userDataRepository.loggedIn = true;
-                    this.router.navigate(["/home/dashboard"]);
-                },
-                response => console.log(response.error.text),
-            );
+            this.userDataRepository.login2(userCredentials)
+                .subscribe(
+                    response => {
+                        console.log(response);
+                        this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
+                        this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
+                        this.userDataRepository.loggedIn = true;
+                        this.router.navigate(["/home/dashboard"]);
+                    },
+                    response => console.log(response.error.text),
+                );
+        }
     }
 
     private createForm() {

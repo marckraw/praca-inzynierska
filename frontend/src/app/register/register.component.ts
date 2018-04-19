@@ -27,13 +27,15 @@ export class RegisterComponent {
     }
 
     public register() {
-        const user = this.formGroup.value;
+        if (this.formGroup.valid) {
+            const user = this.formGroup.value;
 
-        this.userDataRepository.register(user)
-            .subscribe(
-                () => console.log("Użytkownik utworzony!"),
-                response => console.dir(response.error.text),
-            );
+            this.userDataRepository.register(user)
+                .subscribe(
+                    () => console.log("Użytkownik utworzony!"),
+                    response => console.dir(response.error.text),
+                );
+        }
     }
 
     private createForm() {
