@@ -20,19 +20,14 @@ export class SidenavComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-        console.log(this.loggedIn);
+        console.log(this.userDataRepository.loggedIn);
     }
 
     public logout() {
-        this.localStorage.removeItem("isLoggedIn");
-        this.userDataRepository.loggedIn = false;
+        this.userDataRepository.logout();
         this.sidenav.close();
         this.router.navigate(["/login"]);
     }
 
     public close(reason: string) { this.sidenav.close(); }
-
-    // public isLoggedIn(): boolean {
-    //     this.localStorage.getItem("isLoggedIn");
-    // }
 }

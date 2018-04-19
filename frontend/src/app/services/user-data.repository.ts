@@ -1,15 +1,29 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
+import { HttpClient } from "@angular/common/http";
 import "rxjs/add/observable/of";
+import { IUser } from "../models/user.interface";
 import { LocalStorage } from "./localstorage.service";
+
+import { API_URL } from "../shared/constants";
 
 @Injectable()
 export class UserDataRepository {
-    public loggedIn: boolean = false;
+    public loggedIn;
 
-    constructor(private localStorage: LocalStorage) {
+    private apiUrl: string = API_URL;
+
+    constructor(
+        private localStorage: LocalStorage,
+        private http: HttpClient,
+    ) {
         const loggedIn = this.localStorage.getItem("isLoggedIn");
+        if (loggedIn === "yes") {
+            this.loggedIn = true;
+        } else {
+            this.loggedIn = false;
+        }
     }
 
     public login() {
@@ -31,6 +45,28 @@ export class UserDataRepository {
 
     public register() {
         console.log("rejestrowanie...");
+    }
+
+    // this endpoints still not working
+
+    public getAll() {
+        return this.http.get<IUser[]>(`${this.apiUrl}/users`);
+    }
+
+    public getById(id: number) {
+        return this.http.get(`${this.apiUrl}/users/${id}`);
+    }
+
+    public create(user: IUser) {
+        return this.http.post(`${this.apiUrl}/users`, user);
+    }
+
+    public update(user: IUser) {
+        return this.http.put(`${this.apiUrl}/users/${user.id}`, user);
+    }
+
+    public delete(id: number) {
+        return this.http.delete(`${this.apiUrl}/users/${id}`);
     }
 
 }

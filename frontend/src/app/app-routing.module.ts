@@ -34,6 +34,8 @@ const appRoutes: Routes = [
             { path: "manage-incomes", component: ManageIncomesComponent },
             { path: "manage-budgets", component: ManageBudgetsComponent },
             { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
+            { path: "",   redirectTo: "/home/dashboard", pathMatch: "full" },
+            { path: "**", component: DashboardComponent },
         ],
     },
     { path: "register", component: RegisterComponent },
