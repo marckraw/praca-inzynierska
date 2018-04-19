@@ -35,19 +35,19 @@ export class LoginComponent {
     }
 
     public login() {
-        // this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
-        // this.userDataRepository.loggedIn = true;
-        // console.log(this.userDataRepository.loggedIn);
-        // this.router.navigate(["/home/dashboard"]);
-
         const userCredentials = {
             email: "marckraw@icloud.com",
-            password: "asdasd",
+            password: "1234567890",
         };
         this.userDataRepository.login2(userCredentials)
             .subscribe(
-                (val) => val,
-                (response) => console.log(response.statusText),
+                (response) => {
+                    this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
+                    this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
+                    this.userDataRepository.loggedIn = true;
+                    this.router.navigate(["/home/dashboard"]);
+                },
+                (response) => console.log(response),
             );
 
     }

@@ -40,7 +40,7 @@ export class UsersService {
         // return await createdUser;
     }
 
-    login(loginUserDto: LoginUserDto): void {
+    async login(loginUserDto: LoginUserDto): Promise<{} | boolean> {
         // const passwordSalt = this.saltPassword(createUserDto.password);
         // const passwordHash = this.hashPassword(createUserDto.password, passwordSalt);
 
@@ -52,14 +52,21 @@ export class UsersService {
         //     passwordSalt,
         // };
 
-        this.userModel.findOne({email: loginUserDto.email}, (err, user) => {
-            console.log(user);
+        const user = await this.userModel.findOne({email: loginUserDto.email});
 
-            const result = this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
-            console.log(result);
+        console.log(user);
 
+        const result = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
+
+        if (result) {
+            console.log("user service backend result: " + result);
+            const authenticatedUserJWT = this.generateJwt(user);
+            console.log("JWT: " + authenticatedUserJWT);
+
+            return { authenticatedUserJWT };
+        } else {
             return result;
-        });
+        }
 
 
         // wyszukaj usera o podanym emailu (loginUserDto.email)
@@ -92,18 +99,18 @@ export class UsersService {
         return userHash === hash;
     }
 
-    // generateJwt = () => {
-    //     const expiry = new Date();
-    //     expiry.setDate(expiry.getDate() + 7);
+    generateJwt = (user) => {
+        const expiry = new Date();
+        expiry.setDate(expiry.getDate() + 7);
 
-    //     return jwt.sign({
-    //         _id: this._id,
-    //         email: this.email,
-    //         firstName: this.firstName,
-    //         lastName: this.lastName,
-    //         exp: expiry.getTime() / 1000,
-    //     }, "MY_SECRET");
-    // };
+        return jwt.sign({
+            _id: user._id,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            exp: expiry.getTime() / 1000,
+        }, "MY_SECRET");
+    }
 
     // async createUser(createUserDto: CreateUserDto): any { // Promise<IUser>
 

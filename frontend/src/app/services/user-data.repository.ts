@@ -45,12 +45,13 @@ export class UserDataRepository {
 
         console.log("register from user data frontend repository");
         console.log(userCredentials);
-        console.log(`${this.apiUrl}users/login`)
+        console.log(`${this.apiUrl}users/login`);
         return this.http.post(`${this.apiUrl}users/login`, userCredentials, { headers });
     }
 
     public logout() {
         this.localStorage.removeItem("isLoggedIn");
+        this.localStorage.removeItem("jwt");
         this.loggedIn = false;
     }
 

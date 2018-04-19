@@ -22,10 +22,10 @@ export class UsersController {
     }
 
     @Post("login")
-    login( @Body() loginUserDto: LoginUserDto) {
+    async login( @Body() loginUserDto: LoginUserDto) {
         console.log("from users/create controller");
         console.log(loginUserDto);
-        this.usersService.login(loginUserDto);
+        return await this.usersService.login(loginUserDto);
     }
 
     // @Post("create")
