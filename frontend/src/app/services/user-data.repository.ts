@@ -42,10 +42,6 @@ export class UserDataRepository {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-
-        console.log("register from user data frontend repository");
-        console.log(userCredentials);
-        console.log(`${this.apiUrl}users/login`);
         return this.http.post(`${this.apiUrl}users/login`, userCredentials, { headers });
     }
 
@@ -59,15 +55,10 @@ export class UserDataRepository {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-
-        console.log("register from user data frontend repository");
-        console.log(user);
-        console.log(`${this.apiUrl}users/create`);
         return this.http.post(`${this.apiUrl}users/create`, user, { headers });
     }
 
     // this endpoints still not working
-
     public getAll() {
         return this.http.get<IUser[]>(`${this.apiUrl}users`);
     }

@@ -18,71 +18,40 @@ export class UsersService {
         @Inject("UsersModelToken") private readonly userModel: Model<IUser>,
     ) { }
 
-    async createUser(createUserDto: CreateUserDto): Promise<IUser> {
-        const passwordSalt = this.saltPassword(createUserDto.password);
-        const passwordHash = this.hashPassword(createUserDto.password, passwordSalt);
+    async createUser(createUserDto: CreateUserDto): Promise<IUser | string> {
+        const isUserExist = await this.userModel.findOne({email: createUserDto.email});
 
-        const userToSave = {
-            email: createUserDto.email,
-            firstName: createUserDto.firstName,
-            lastName: createUserDto.lastName,
-            passwordHash,
-            passwordSalt,
-        };
+        if (isUserExist) {
+            return "Email already exist";
+        } else {
+            const passwordSalt = this.saltPassword(createUserDto.password);
+            const passwordHash = this.hashPassword(createUserDto.password, passwordSalt);
 
-        console.log(userToSave);
+            const userToSave = {
+                email: createUserDto.email,
+                firstName: createUserDto.firstName,
+                lastName: createUserDto.lastName,
+                passwordHash,
+                passwordSalt,
+            };
 
-        const createdUser = new this.userModel(userToSave);
-        return await createdUser.save();
+            const createdUser = new this.userModel(userToSave);
 
-        // const createdUser = new this.userModel(createUserDto);
-        // createdUser.setPassword();
-        // return await createdUser;
+            return await createdUser.save();
+        }
     }
 
     async login(loginUserDto: LoginUserDto): Promise<{} | boolean> {
-        // const passwordSalt = this.saltPassword(createUserDto.password);
-        // const passwordHash = this.hashPassword(createUserDto.password, passwordSalt);
-
-        // const userToSave = {
-        //     email: createUserDto.email,
-        //     firstName: createUserDto.firstName,
-        //     lastName: createUserDto.lastName,
-        //     passwordHash,
-        //     passwordSalt,
-        // };
-
         const user = await this.userModel.findOne({email: loginUserDto.email});
-
-        console.log(user);
-
         const result = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
 
         if (result) {
-            console.log("user service backend result: " + result);
             const authenticatedUserJWT = this.generateJwt(user);
-            console.log("JWT: " + authenticatedUserJWT);
 
             return { authenticatedUserJWT };
         } else {
             return result;
         }
-
-
-        // wyszukaj usera o podanym emailu (loginUserDto.email)
-        // porownaj haslo z loginUserDto.password z hasłem tego usera (poprzez posolenie hasla)
-        // wyslij info, czy jest poprawne
-
-
-
-        // console.log(userToSave);
-
-        // const createdUser = new this.userModel(userToSave);
-        // return await createdUser.save();
-
-        // const createdUser = new this.userModel(createUserDto);
-        // createdUser.setPassword();
-        // return await createdUser;
     }
 
 
@@ -111,14 +80,6 @@ export class UsersService {
             exp: expiry.getTime() / 1000,
         }, "MY_SECRET");
     }
-
-    // async createUser(createUserDto: CreateUserDto): any { // Promise<IUser>
-
-    //     console.log(createUserDto.password);
-    //     // const createdUser = new this.userModel(createUserDto);
-    //     // createdUser.setPassword();
-    //     // return await createdUser;
-    // }
 
     async findAll(): Promise<IUser[]> {
         return this.userModel.find().exec();

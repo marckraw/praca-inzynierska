@@ -9,6 +9,7 @@ import { ProductsModule } from "./products/products.module";
 import { UsersModule } from "./users/users.module";
 
 import { AppController } from "./app.controller";
+import { UsersService } from "./users/users.service";
 
 @Module({
     controllers: [AppController],
@@ -22,14 +23,18 @@ import { AppController } from "./app.controller";
 })
 export class ApplicationModule implements NestModule {
     configure(consumer: MiddlewaresConsumer): void {
-        consumer.apply(LoggerMiddleware).forRoutes(
-            { path: "/products", method: RequestMethod.ALL },
-            { path: "/products/add", method: RequestMethod.ALL },
-            { path: "/incomes", method: RequestMethod.ALL },
-            { path: "/incomes/add", method: RequestMethod.ALL },
-        );
-        consumer.apply(dupaMiddleware).forRoutes(
-            { path: "/products", method: RequestMethod.ALL },
-        );
+        consumer
+            .apply(LoggerMiddleware)
+            .forRoutes(
+                { path: "/products", method: RequestMethod.ALL },
+                { path: "/products/add", method: RequestMethod.ALL },
+                { path: "/incomes", method: RequestMethod.ALL },
+                { path: "/incomes/add", method: RequestMethod.ALL },
+            );
+        consumer
+            .apply(dupaMiddleware)
+            .forRoutes(
+                { path: "/products", method: RequestMethod.ALL },
+            );
     }
 }
