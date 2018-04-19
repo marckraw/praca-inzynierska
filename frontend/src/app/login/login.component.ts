@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 
-import { FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LocalStorage } from "../services/localstorage.service";
 import { UserDataRepository } from "../services/user-data.repository";
@@ -13,14 +13,7 @@ import { MyErrorStateMatcher } from "../shared/my-error-state-matcher";
 })
 export class LoginComponent {
 
-    public emailFormControl = new FormControl("", [
-        Validators.required,
-        Validators.email,
-    ]);
-
-    public passwordFormControl = new FormControl("", [
-        Validators.required,
-    ]);
+    public formGroup: FormGroup;
 
     public matcher = new MyErrorStateMatcher();
 
@@ -28,27 +21,39 @@ export class LoginComponent {
         private localStorage: LocalStorage,
         private userDataRepository: UserDataRepository,
         private router: Router,
+        private formBuilder: FormBuilder,
     ) {}
 
     public ngOnInit() {
+        this.createForm();
         this.userDataRepository.logout();
     }
 
     public login() {
-        const userCredentials = {
-            email: "marckraw@icloud.com",
-            password: "1234567890",
-        };
+        // const userCredentials = {
+        //     email: "marckraw@icloud.com",
+        //     password: "1234567890",
+        // };
+
+        const userCredentials = this.formGroup.value;
+
         this.userDataRepository.login2(userCredentials)
             .subscribe(
-                (response) => {
+                response => {
+                    console.log(response);
                     this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
                     this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
                     this.userDataRepository.loggedIn = true;
                     this.router.navigate(["/home/dashboard"]);
                 },
-                error => console.log(error),
+                response => console.log(response.error.text),
             );
+    }
 
+    private createForm() {
+        this.formGroup = this.formBuilder.group({
+            email: ["", [Validators.required, Validators.email]],
+            password: ["", [Validators.required]],
+        });
     }
 }

@@ -22,7 +22,7 @@ export class UsersService {
         const isUserExist = await this.userModel.findOne({email: createUserDto.email});
 
         if (isUserExist) {
-            return "Email already exist";
+            return "Email jest już używany";
         } else {
             const passwordSalt = this.saltPassword(createUserDto.password);
             const passwordHash = this.hashPassword(createUserDto.password, passwordSalt);
@@ -43,14 +43,19 @@ export class UsersService {
 
     async login(loginUserDto: LoginUserDto): Promise<{} | boolean> {
         const user = await this.userModel.findOne({email: loginUserDto.email});
-        const validatedPassword = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
+        if (user) {
+            const validatedPassword = await this.validPassword(loginUserDto.password, user.passwordSalt, user.passwordHash);
 
-        if (validatedPassword) {
-            const authenticatedUserJWT = this.generateJwt(user);
+            if (validatedPassword) {
+                const authenticatedUserJWT = this.generateJwt(user);
 
-            return { authenticatedUserJWT };
+                return { authenticatedUserJWT };
+            } else {
+                // return validatedPassword;
+                return "Niepoprawne hasło";
+            }
         } else {
-            return validatedPassword;
+            return "Uytkownik nie istnieje!";
         }
     }
 

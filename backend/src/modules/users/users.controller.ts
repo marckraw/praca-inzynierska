@@ -16,15 +16,11 @@ export class UsersController {
 
     @Post("create")
     async createUser( @Body() createUserDto: CreateUserDto) {
-        console.log("from users/create controller");
-        console.log(createUserDto);
         return this.usersService.createUser(createUserDto);
     }
 
     @Post("login")
     async login( @Body() loginUserDto: LoginUserDto) {
-        console.log("from users/create controller");
-        console.log(loginUserDto);
         return await this.usersService.login(loginUserDto);
     }
 
@@ -40,7 +36,7 @@ export class UsersController {
 
     @Get()
     findAll(): void { //Promise<IUser[]>
-        console.log("dupa");
+        console.log("something");
         // return this.usersService.findAll();
     }
 
