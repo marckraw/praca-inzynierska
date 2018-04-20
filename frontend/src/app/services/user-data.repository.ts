@@ -11,6 +11,7 @@ import { API_URL } from "../shared/constants";
 @Injectable()
 export class UserDataRepository {
     public loggedIn;
+    public userData;
 
     private apiUrl: string = API_URL;
 

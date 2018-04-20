@@ -13,4 +13,5 @@ export interface IBudget extends Document {
     startDate: string;
     endDate: string;
     categories: Categories[];
+    userId: string;
 }

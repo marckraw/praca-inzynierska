@@ -5,8 +5,8 @@ import { ExpensesService } from "./expenses.service";
 import { IExpense } from "./interfaces/expense.interface";
 
 import { AddExpenseDto } from "./dto/add-expense.dto";
-import { RemoveExpenseDto } from "./dto/remove-expense.dto";
 import { EditExpenseDto } from "./dto/edit-expense.dto";
+import { RemoveExpenseDto } from "./dto/remove-expense.dto";
 
 @Controller("expenses")
 export class ExpensesController {
@@ -23,8 +23,13 @@ export class ExpensesController {
     }
 
     @Delete("remove")
-    async removeIncome( @Body() removeExpenseDto: RemoveExpenseDto) {
+    async removeExpense( @Body() removeExpenseDto: RemoveExpenseDto) {
         return this.expenseService.removeById(removeExpenseDto);
+    }
+
+    @Get(":id")
+    async getExpenses(@Param() params): Promise<IExpense[]> {
+        return this.expenseService.getExpenses(params.id);
     }
 
     @Get()

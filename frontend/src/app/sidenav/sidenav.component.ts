@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
@@ -10,7 +10,7 @@ import { UserDataRepository } from "../services/user-data.repository";
     templateUrl: "./sidenav.component.html",
     styleUrls: ["./sidenav.component.scss"],
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
     @ViewChild("sidenav") public sidenav: MatSidenav;
 
     constructor(
@@ -18,11 +18,6 @@ export class SidenavComponent implements OnInit {
         private userDataRepository: UserDataRepository,
         private router: Router,
     ) {}
-
-    public ngOnInit() {
-        console.log(this.userDataRepository.loggedIn);
-    }
-
     public logout() {
         this.userDataRepository.logout();
         this.sidenav.close();

@@ -10,4 +10,5 @@ export class AddBudgetDto {
             enteredAmount: number;
         }
     ];
+    readonly userId: string;
 }

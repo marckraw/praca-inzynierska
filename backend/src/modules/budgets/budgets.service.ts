@@ -20,6 +20,10 @@ export class BudgetsService {
         return await addedBudget.save();
     }
 
+    async getBudgets(userId): Promise<IBudget[]> {
+        return this.budgetsModel.find({userId}).exec();
+    }
+
     async getAllBudgets(): Promise<IBudget[]> {
         return this.budgetsModel.find().exec();
     }

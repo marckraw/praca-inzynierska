@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { Router } from "@angular/router";
 import { LocalStorage } from "../services/localstorage.service";
 import { UserDataRepository } from "../services/user-data.repository";
+import { decodeJwt } from "../shared/helpers";
 import { MyErrorStateMatcher } from "../shared/my-error-state-matcher";
 
 @Component({
@@ -39,6 +40,8 @@ export class LoginComponent {
                         console.log(response);
                         this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
                         this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
+                        this.userDataRepository.userData = decodeJwt(response.authenticatedUserJWT);
+                        console.log(this.userDataRepository.userData);
                         this.userDataRepository.loggedIn = true;
                         this.router.navigate(["/home/dashboard"]);
                     },

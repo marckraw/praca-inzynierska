@@ -16,7 +16,8 @@
                 <li><a mat-raised-button color="accent" (click)="sidenav.close()" routerLink="/home/manage-incomes">Zarządzaj przychodami</a></li>
                 <li><a mat-raised-button color="accent" (click)="sidenav.close()" routerLink="/home/manage-budgets">Zarządzaj budżetami</a></li>
                 <li><a mat-raised-button color="warn" (click)="sidenav.close()" routerLink="/home/manage-monthly-fees">Zarządaj miesięcznymi opłatami</a></li>
-                <li></li>
+                <li>Zalogowany jako:</li>
+                <li><strong>{{ userDataRepository.userData?.firstName }} {{ userDataRepository.userData?.lastName }}</strong></li>
                 <li><a mat-raised-button color="warn" (click)="logout()">Wyloguj</a></li>
             </ul>
         </nav>

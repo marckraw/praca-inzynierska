@@ -11,4 +11,5 @@ export const ExpenseSchema = new mongoose.Schema({
     expenseCategory: String,
     choosedBudget: String,
     choosedBudgetCategory: String,
+    userId: String,
 });

@@ -31,6 +31,11 @@ export class IncomesController {
         return this.incomesService.removeById(removeIncomeDto);
     }
 
+    @Get(":id")
+    async find(@Param() params): Promise<IIncome[]> {
+        return this.incomesService.find(params.id);
+    }
+
     @Get()
     async findAll(): Promise<IIncome[]> {
         return this.incomesService.findAll();

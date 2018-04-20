@@ -6,4 +6,5 @@ export interface IIncome extends Document {
     readonly when: string;
     readonly paymentMethod: string;
     readonly value: number;
+    readonly userId: string;
 }
