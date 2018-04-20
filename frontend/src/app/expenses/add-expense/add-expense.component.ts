@@ -39,7 +39,7 @@ export class AddExpenseComponent {
     }
 
     public ngOnInit() {
-        this.budgetService.showAllBudgets().subscribe(budgets => {
+        this.budgetService.showBudgets().subscribe(budgets => {
             this.allBudgets = budgets;
             console.log(this.allBudgets);
         });
@@ -77,7 +77,7 @@ export class AddExpenseComponent {
     }
 
     public selectionChange() {
-        const choosedBudgetId = this.formGroup.controls['choosedBudget'].value;
+        const choosedBudgetId = this.formGroup.controls.choosedBudget.value;
 
         console.log(choosedBudgetId);
 

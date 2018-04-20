@@ -33,10 +33,19 @@ import { ManageBudgetsComponent } from "./manage-budgets/manage-budgets.componen
 import { ManageMonthlyFeesComponent } from "./manage-monthly-fees/manage-monthly-fees.component";
 import { SidenavComponent } from "./sidenav/sidenav.component";
 
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+
 import { BudgetService } from "./services/budget.service";
 import { ExpenseService } from "./services/expense.service";
 import { IncomeService } from "./services/income.service";
 import { ProductService } from "./services/product.service";
+
+import { HomeComponent } from "./home/home.component";
+import { AuthGuard } from "./services/auth.guard";
+
+import { LocalStorage } from "./services/localstorage.service";
+import { UserDataRepository } from "./services/user-data.repository";
 
 @NgModule({
     declarations: [
@@ -59,6 +68,9 @@ import { ProductService } from "./services/product.service";
         AddBudgetComponent,
         ManageBudgetsComponent,
         ManageMonthlyFeesComponent,
+        LoginComponent,
+        RegisterComponent,
+        HomeComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -70,7 +82,15 @@ import { ProductService } from "./services/product.service";
         MaterialModule,
         ChartsModule,
     ],
-    providers: [ProductService, ExpenseService, IncomeService, BudgetService],
+    providers: [
+        ProductService,
+        ExpenseService,
+        IncomeService,
+        BudgetService,
+        LocalStorage,
+        UserDataRepository,
+        AuthGuard,
+    ],
     bootstrap: [AppComponent],
     entryComponents: [
         ConfirmationModalComponent,

@@ -9,4 +9,5 @@ export class AddExpenseDto {
     readonly expenseCategory: string;
     readonly choosedBudget: string;
     readonly choosedBudgetCategory: string;
+    readonly userId: string;
 }

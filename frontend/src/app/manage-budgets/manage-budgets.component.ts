@@ -17,7 +17,7 @@ export class ManageBudgetsComponent {
     ) {}
 
     public ngOnInit() {
-        this.budgets = this.budgetService.showAllBudgets();
+        this.budgets = this.budgetService.showBudgets();
     }
 
     public edit(budget: IBudget) {

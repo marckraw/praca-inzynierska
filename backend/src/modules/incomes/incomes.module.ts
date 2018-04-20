@@ -1,4 +1,6 @@
-import { Module } from "@nestjs/common";
+import { MiddlewaresConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+
+import * as passport from "passport";
 
 import { DatabaseModule } from "../database/database.module";
 
@@ -14,4 +16,4 @@ import { IncomesService } from "./incomes.service";
         ...incomesProviders,
     ],
 })
-export class IncomesModule { }
+export class IncomesModule {}

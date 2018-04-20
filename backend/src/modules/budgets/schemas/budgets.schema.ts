@@ -12,4 +12,5 @@ export const BudgetsSchema = new mongoose.Schema({
             enteredAmount: Number,
         },
     ],
+    userId: String,
 });

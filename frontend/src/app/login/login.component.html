@@ -1,0 +1,38 @@
+<div class="login-component">
+    <img src="https://picsum.photos/400/200/?random" alt="">
+    <div class="login-wrapper">
+        <form class="login-form" [formGroup]="formGroup">
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="Email"
+                    [formControlName]="'email'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['email'].hasError('email') && !formGroup.controls['email'].hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="formGroup.controls['email'].hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input
+                    [type]="'password'"
+                    matInput
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
+                    Passowrd is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button (click)="login()">Loguj</button>
+            lub
+            <a mat-button color="primary" routerLink="/register">zarejestruj</a>
+        </form>
+    </div>
+</div>

@@ -31,9 +31,9 @@ export class IncomesService {
         return this.incomeModel.find().exec();
     }
 
-    // async findById(id): Promise<IIncome> {
-    //     return this.incomeModel.findById(id).exec();
-    // }
+    async find(userId): Promise<IIncome[]> {
+        return this.incomeModel.find({userId}).exec();
+    }
 
     async removeById(removeIncomeDto: RemoveIncomeDto): Promise<IIncome> {
         return this.incomeModel.findByIdAndRemove(removeIncomeDto._id).exec();

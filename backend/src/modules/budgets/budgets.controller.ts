@@ -11,8 +11,13 @@ export class BudgetsController {
     constructor(private budgetsService: BudgetsService) {}
 
     @Post("add")
-    async addExpense(@Body() addBudgetDto: AddBudgetDto) {
+    async addBudget(@Body() addBudgetDto: AddBudgetDto) {
         return this.budgetsService.addBudget(addBudgetDto);
+    }
+
+    @Get(":id")
+    async getBudgets(@Param() params): Promise<IBudget[]> {
+        return this.budgetsService.getBudgets(params.id);
     }
 
     @Get()

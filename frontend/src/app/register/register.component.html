@@ -1,0 +1,62 @@
+<div class="register-component">
+    <div class="register-wrapper">
+        <h1>Zarejestruj</h1>
+        <form class="register-form" [formGroup]="formGroup">
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="Email"
+                    [formControlName]="'email'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['email'].hasError('email') && !formGroup.controls['email'].hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="formGroup.controls['email'].hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input
+                    [type]="'password'"
+                    matInput
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
+                    Passowrd is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="First nane"
+                    [formControlName]="'firstName'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
+                    Passowrd is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="Last name"
+                    [formControlName]="'lastName'"
+                    [errorStateMatcher]="matcher">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
+                    Passowrd is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button (click)="register()">Zarejestruj</button>
+                lub
+            <a mat-button color="primary" routerLink="/login">zaloguj</a>
+        </form>
+    </div>
+</div>

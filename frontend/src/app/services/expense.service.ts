@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { API_URL } from "../shared/constants";
 
 import { IExpense } from "../models/expense.interface";
+import { decodeJwt } from "../shared/helpers";
 
 @Injectable()
 export class ExpenseService {
@@ -16,7 +17,14 @@ export class ExpenseService {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        return this.http.post(`${this.apiUrl}expenses/add`, expense, { headers });
+        const userId = decodeJwt(localStorage.getItem("jwt"))._id;
+
+        const expenseWithUserId = {
+            ...expense,
+            userId,
+        };
+
+        return this.http.post(`${this.apiUrl}expenses/add`, expenseWithUserId, { headers });
     }
 
     public editExpense(expense: any): Observable<any> {
@@ -29,8 +37,15 @@ export class ExpenseService {
     }
 
     public showExpenses(): Observable<IExpense[]> {
+        const userId = decodeJwt(localStorage.getItem("jwt"))._id;
+
+        return this.http.get<IExpense[]>(`${this.apiUrl}expenses/${userId}`);
+    }
+
+    public showALLExpenses(): Observable<IExpense[]> {
         return this.http.get<IExpense[]>(`${this.apiUrl}expenses`);
     }
+
     public removeExpense(expense: any): Observable<any> {
         return this.http.request("delete", `${this.apiUrl}expenses/remove`, { body: expense });
     }

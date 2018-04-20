@@ -3,4 +3,5 @@ export class AddIncomeDto {
     readonly when: string;
     readonly paymentMethod: string;
     readonly value: number;
+    readonly userId: string;
 }

@@ -17,6 +17,7 @@ export class IncomesController {
 
     @Post("add")
     async addIncome( @Body() addIncomeDto: AddIncomeDto) {
+        console.log("incomes/add");
         return this.incomesService.addIncome(addIncomeDto);
     }
 
@@ -28,6 +29,11 @@ export class IncomesController {
     @Delete("remove")
     async removeIncome( @Body() removeIncomeDto: RemoveIncomeDto) {
         return this.incomesService.removeById(removeIncomeDto);
+    }
+
+    @Get(":id")
+    async find(@Param() params): Promise<IIncome[]> {
+        return this.incomesService.find(params.id);
     }
 
     @Get()

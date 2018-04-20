@@ -11,4 +11,5 @@ export interface IExpense extends Document {
     expenseCategory: string;
     choosedBudget: string;
     choosedBudgetCategory: string;
+    userId: string;
 }
