@@ -1,59 +1,32 @@
 <div>
     <h1>Dashboard</h1>
     <div class="dashboard">
-        <div class="dashboard-module">
-            <h2>Moduł - Miesięczne wydatki</h2>
-            <div class="monthly-expenses">
-                <ul>
-                    <li *ngFor="let expense of expenses"> {{ expense?.name }}: <strong>{{ expense?.expense | currencyPln }}</strong></li>
-                </ul>
-                <p>Łącznie: <strong>{{ expenseSum | currencyPln }}</strong></p>
-            </div>
-        </div>
-        <div class="dashboard-module">
-            <h2>Moduł - Miesięczne przychody</h2>
-            <div class="monthly-expenses">
-                <ul>
-                    <li *ngFor="let revenue of revenues"> {{ revenue?.name }}: <strong>{{ revenue?.revenue | currencyPln }}</strong></li>
-                </ul>
-                <p>Łącznie: <strong>{{ revenueSum | currencyPln }}</strong></p>
-            </div>
-        </div>
-        <div class="dashboard-module">
-                <h2>Moduł - Miesięczny status pieniężny po odjęciu wymaganych opłat</h2>
-                <div class="monthly-expenses">
-                    <h1>{{ currentMoney | currencyPln }}</h1>
-                </div>
-            </div>
-        <div class="dashboard-module">
-            <canvas baseChart
-              [data]="doughnutChartData"
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
-        </div>
-        <div class="dashboard-module">Moduł 5</div>
-        <div class="dashboard-module">Moduł 6</div>
-        <div class="dashboard-module">Moduł 7</div>
-        <div class="dashboard-module">
-            <canvas baseChart
-                class="chart"
-                [datasets]="datasets"
-                [labels]="labels"
-                [options]="options"
-                [chartType]="'line'">
-            </canvas>
-        </div>
-        <div class="dashboard-module">
-            <canvas baseChart
-                class="chart"
-                [datasets]="datasets2"
-                [labels]="labels2"
-                [options]="options"
-                [chartType]="'line'">
-            </canvas>
-        </div>
-        <div class="dashboard-module">Moduł 10</div>
+        <a class="dashboard-module" mat-raised-button color="primary" routerLink="/home/add-product">
+            <h2>DODAJ PRODUKT</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="primary" routerLink="/home/add-expense">
+            <h2>DODAJ WYDATEK</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="primary" routerLink="/home/add-income">
+            <h2>DODAJ PRZYCHÓD</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="primary" routerLink="/home/add-budget">
+            <h2>DODAJ BUDŻET</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="accent" routerLink="/home/manage-products">
+            <h2>ZARZĄDZAJ PRODUKTAMI</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="accent" routerLink="/home/manage-expenses">
+            <h2>ZARZĄDZAJ WYDATKAMI</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="accent" routerLink="/home/manage-incomes">
+            <h2>ZARZĄDZAJ PRZYCHODAMI</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="accent" routerLink="/home/manage-budgets">
+            <h2>ZARZĄDZAJ BUDŻETAMI</h2>
+        </a>
+        <a class="dashboard-module" mat-raised-button color="primary" routerLink="/home/chart-and-analyze">
+            <h2>WYKRESY I ANALIZA</h2>
+        </a>
     </div>
 </div>

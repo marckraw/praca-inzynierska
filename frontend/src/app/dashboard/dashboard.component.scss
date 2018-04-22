@@ -1,7 +1,7 @@
 .dashboard {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 
     &-module {
@@ -9,7 +9,6 @@
         margin: 10px;
         width: 500px;
         height: 250px;
-        border: 1px solid #cccccc;
-        overflow: scroll;
+
     }
 }
