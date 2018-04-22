@@ -1,18 +1,61 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 
+import { filter } from "rxjs/operators";
+
 import { MatDialog } from "@angular/material";
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { IExpense } from "../../models/expense.interface";
 import { ExpenseService } from "../../services/expense.service";
 import { EditExpenseComponent } from "../edit-expense/edit-expense.component";
 
 @Component({
-    selector: "pi-manage-expenses",
+    selector: "app-manage-expenses",
     templateUrl: "./manage-expenses.component.html",
     styleUrls: ["./manage-expenses.component.scss"],
 })
 export class ManageExpensesComponent {
-    public expenses: Observable<IExpense[]>;
+    public expenses$: Observable<IExpense[]>;
+
+    public isExpenseCategoryLoaded: boolean = false;
+    public isPaymentMethodLoaded: boolean = false;
+
+    public chartOptions = {
+        legend: {
+            display: false,
+         },
+         tooltips: {
+            enabled: true,
+         },
+    };
+
+    public barChartOptions = {
+        legend: {
+            display: false,
+        },
+        tooltips: {
+            enabled: true,
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    display: false,
+                },
+            }],
+            xAxes: [{
+                ticks: {
+                    display: false,
+                },
+            }],
+        },
+    };
+
+    public expenses: IExpense[];
+    public expenseCategoryChartLabels: string[] = HardcodedData.expenseCategories.map( category => category.viewValue);
+    public expenseCategoryChartData: number[] = [];
+
+    public paymentMethodChartLabels: string[] = HardcodedData.paymentMethods.map( payment => payment.viewValue);
+    public paymentMethodChartData: number[] = [];
 
     constructor(
         private expenseService: ExpenseService,
@@ -24,8 +67,38 @@ export class ManageExpensesComponent {
     }
 
     public showAllExpenses() {
-        this.expenseService.showExpenses().subscribe(val => console.log(val)); // this is only for loggin, temporary
-        this.expenses = this.expenseService.showExpenses();
+        this.expenseCategoryChartData = [];
+        this.paymentMethodChartData = [];
+        this.isExpenseCategoryLoaded = false;
+        this.isPaymentMethodLoaded = false;
+
+        this.expenseService.showExpenses().subscribe(
+            expenses => {
+                this.expenses = expenses;
+                this.expenseCategoryChartLabels.map( category => {
+                    const filteredCategory = this.expenses.filter( expense => expense.expenseCategory === category);
+                    if (!filteredCategory) {
+                        const acc = 0;
+                    }
+                    const acc = filteredCategory.reduce( (prev, curr) => prev + curr.totalCost, 0);
+
+                    this.expenseCategoryChartData.push(acc);
+                });
+                this.isExpenseCategoryLoaded = true;
+
+                this.paymentMethodChartLabels.map( method => {
+                    const filteredPayment = this.expenses.filter( expense => expense.paymentMethod === method);
+                    if (!filteredPayment) {
+                        const acc = 0;
+                    }
+                    const acc = filteredPayment.reduce( (prev, curr) => prev + curr.totalCost, 0);
+
+                    this.paymentMethodChartData.push(acc);
+                });
+                this.isPaymentMethodLoaded = true;
+            },
+        );
+        this.expenses$ = this.expenseService.showExpenses();
     }
 
     public edit(expense) {
@@ -35,22 +108,19 @@ export class ManageExpensesComponent {
         dialogRef.afterClosed().subscribe(result => {
             if (result !== undefined) {
                 if (result.confirmed) {
-                    console.log("teraz powinienem zaktualizowac dane");
-                    console.log("This is changed expense: ", result);
                     this.expenseService.editExpense(result.expense).subscribe( (data) => {
-                        this.expenses = this.expenseService.showExpenses();
+                        this.showAllExpenses();
                     });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
             } else {
-                console.log("poszedles w pizdu");
+                console.log("bad happened");
             }
         });
     }
 
     public remove(expense) {
-        console.dir(expense);
         this.expenseService.removeExpense(expense).subscribe( removedExpense => this.showAllExpenses());
     }
 }

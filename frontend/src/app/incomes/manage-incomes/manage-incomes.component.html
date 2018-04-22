@@ -1,9 +1,32 @@
 <div class="display-income-container">
     <h1>Przychody</h1>
-    <table *ngIf="(incomes | async) as incomes; else loading">
+    <div class="charts-section">
+        <div>
+            <h2>Wykres metod płatności</h2>
+            <canvas
+                *ngIf="isPaymentMethodLoaded"
+                baseChart
+                [data]="paymentMethodChartData"
+                [labels]="paymentMethodChartLabels"
+                [chartType]="'pie'"
+                [options]="chartOptions">
+            </canvas>
+        </div>
+        <div>
+            <h2>Wykres słupkowy metod płatności</h2>
+            <canvas
+                *ngIf="isPaymentMethodLoaded"
+                baseChart
+                [data]="paymentMethodChartData"
+                [labels]="paymentMethodChartLabels"
+                [chartType]="'bar'"
+                [options]="barChartOptions">
+            </canvas>
+        </div>
+    </div>
+    <table *ngIf="(incomes$ | async) as incomes$; else loading">
         <thead>
             <tr>
-                <th>id</th>
                 <th>Nazwa przychodu</th>
                 <th>Data</th>
                 <th>Metoda uzyskania przychodu</th>
@@ -13,8 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let income of incomes; let i = index">
-                <td>{{ income._id }}</td>
+            <tr *ngFor="let income of incomes$; let i = index">
                 <td>{{ income.name }} </td>
                 <td>{{ income.when }}</td>
                 <td>{{ income.paymentMethod }}</td>

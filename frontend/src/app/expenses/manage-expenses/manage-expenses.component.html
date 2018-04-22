@@ -1,6 +1,54 @@
 <div class="display-expense-container">
     <h1>Wydatki</h1>
-    <table *ngIf="(expenses | async) as expenses; else loading">
+    <div class="charts-section">
+        <div>
+            <h2>Wykres kategorii</h2>
+            <canvas
+                *ngIf="isExpenseCategoryLoaded"
+                baseChart
+                [data]="expenseCategoryChartData"
+                [labels]="expenseCategoryChartLabels"
+                [chartType]="'pie'"
+                [options]="chartOptions">
+            </canvas>
+        </div>
+        <div>
+            <h2>Wykres metod płatności</h2>
+            <canvas
+                *ngIf="isPaymentMethodLoaded"
+                baseChart
+                [data]="paymentMethodChartData"
+                [labels]="paymentMethodChartLabels"
+                [chartType]="'pie'"
+                [options]="chartOptions">
+            </canvas>
+        </div>
+
+        <div>
+            <h2>Wykres słupkowy kategorii</h2>
+            <canvas
+                *ngIf="isExpenseCategoryLoaded"
+                baseChart
+                [data]="expenseCategoryChartData"
+                [labels]="expenseCategoryChartLabels"
+                [chartType]="'bar'"
+                [options]="barChartOptions">
+            </canvas>
+        </div>
+        <div>
+            <h2>Wykres słupkowy metod płatności</h2>
+            <canvas
+                *ngIf="isPaymentMethodLoaded"
+                baseChart
+                [data]="paymentMethodChartData"
+                [labels]="paymentMethodChartLabels"
+                [chartType]="'bar'"
+                [options]="barChartOptions">
+            </canvas>
+        </div>
+
+    </div>
+    <table *ngIf="(expenses$ | async) as expenses$; else loading">
         <thead>
             <tr>
                 <th>Nazwa</th>
@@ -18,7 +66,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let expense of expenses; let i = index">
+            <tr *ngFor="let expense of expenses$; let i = index">
                 <td>{{ expense.name }}</td>
                 <td>{{ expense.expenseCategory }}</td>
                 <td>{{ expense.choosedBudget }}</td>

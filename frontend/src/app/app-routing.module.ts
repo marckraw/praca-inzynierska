@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AddBudgetComponent } from "./add-budget/add-budget.component";
+import { ChartAndAnalyzeComponent } from "./chart-and-analyze/chart-and-analyze.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AddExpenseComponent } from "./expenses/add-expense/add-expense.component";
 import { ManageExpensesComponent } from "./expenses/manage-expenses/manage-expenses.component";
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
             { path: "manage-incomes", component: ManageIncomesComponent },
             { path: "manage-budgets", component: ManageBudgetsComponent },
             { path: "manage-monthly-fees", component: ManageMonthlyFeesComponent },
+            { path: "chart-and-analyze", component: ChartAndAnalyzeComponent },
             { path: "",   redirectTo: "/home/dashboard", pathMatch: "full" },
             { path: "**", component: DashboardComponent },
         ],
