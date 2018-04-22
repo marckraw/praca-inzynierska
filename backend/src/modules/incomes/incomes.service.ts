@@ -31,6 +31,10 @@ export class IncomesService {
         return this.incomeModel.find().exec();
     }
 
+    public getByUserAndMethod(userId, method): Promise<IIncome[]> {
+        return this.incomeModel.find({userId, paymentMethod: method }).exec();
+    }
+
     async find(userId): Promise<IIncome[]> {
         return this.incomeModel.find({userId}).exec();
     }

@@ -44,6 +44,9 @@ import { ProductService } from "./services/product.service";
 import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from "./services/auth.guard";
 
+import { ChartAndAnalyzeComponent } from "./chart-and-analyze/chart-and-analyze.component";
+import { ChartAndAnalyzeService } from "./chart-and-analyze/chart-and-analyze.service";
+
 import { LocalStorage } from "./services/localstorage.service";
 import { UserDataRepository } from "./services/user-data.repository";
 
@@ -71,6 +74,7 @@ import { UserDataRepository } from "./services/user-data.repository";
         LoginComponent,
         RegisterComponent,
         HomeComponent,
+        ChartAndAnalyzeComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -90,6 +94,7 @@ import { UserDataRepository } from "./services/user-data.repository";
         LocalStorage,
         UserDataRepository,
         AuthGuard,
+        ChartAndAnalyzeService,
     ],
     bootstrap: [AppComponent],
     entryComponents: [

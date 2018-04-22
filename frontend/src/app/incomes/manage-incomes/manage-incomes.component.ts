@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material";
 import { Observable } from "rxjs/Observable";
 
 import { GenericEditComponent } from "../../generic-edit/generic-edit.component";
+import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { IIncome } from "../../models/income.interface";
 import { IncomeService } from "../../services/income.service";
 import { EditIncomeComponent } from "../edit-income/edit-income.component";
@@ -13,7 +14,44 @@ import { EditIncomeComponent } from "../edit-income/edit-income.component";
     styleUrls: ["./manage-incomes.component.scss"],
 })
 export class ManageIncomesComponent {
-    public incomes: Observable<IIncome[]>;
+    public incomes$: Observable<IIncome[]>;
+
+    public isPaymentMethodLoaded: boolean = false;
+
+    public chartOptions = {
+        legend: {
+            display: false,
+         },
+         tooltips: {
+            enabled: true,
+         },
+    };
+
+    public barChartOptions = {
+        legend: {
+            display: false,
+        },
+        tooltips: {
+            enabled: true,
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    display: false,
+                },
+            }],
+            xAxes: [{
+                ticks: {
+                    display: false,
+                },
+            }],
+        },
+    };
+
+    public incomes: IIncome[];
+
+    public paymentMethodChartLabels: string[] = HardcodedData.paymentMethods.map( payment => payment.viewValue);
+    public paymentMethodChartData: number[] = [];
 
     constructor(
         private incomeService: IncomeService,
@@ -25,8 +63,25 @@ export class ManageIncomesComponent {
     }
 
     public showAllIncomes() {
-        this.incomeService.showIncomes().subscribe(val => console.log(val)); // only for console log, temporary
-        this.incomes = this.incomeService.showIncomes();
+        this.paymentMethodChartData = [];
+        this.isPaymentMethodLoaded = false;
+
+        this.incomeService.showIncomes().subscribe(
+            incomes => {
+                this.incomes = incomes;
+                this.paymentMethodChartLabels.map( method => {
+                    const filteredPayment = this.incomes.filter( expense => expense.paymentMethod === method);
+                    if (!filteredPayment) {
+                        const acc = 0;
+                    }
+                    const acc = filteredPayment.reduce( (prev, curr) => prev + curr.value, 0);
+
+                    this.paymentMethodChartData.push(acc);
+                });
+                this.isPaymentMethodLoaded = true;
+            },
+        );
+        this.incomes$ = this.incomeService.showIncomes();
     }
 
     public edit(income) {
@@ -36,16 +91,14 @@ export class ManageIncomesComponent {
         dialogRef.afterClosed().subscribe(result => {
             if (result !== undefined) {
                 if (result.confirmed) {
-                    console.log("teraz powinienem zaktualizowac dane");
-                    console.log("This is changed income: ", result);
                     this.incomeService.editIncome(result.income).subscribe( (data) => {
-                        this.incomes = this.incomeService.showIncomes();
+                        this.showAllIncomes();
                     });
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
             } else {
-                console.log("poszedles w pizdu");
+                console.log("error happened");
             }
         });
     }
