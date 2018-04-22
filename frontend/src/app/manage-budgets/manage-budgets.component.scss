@@ -6,6 +6,61 @@
         margin-bottom: 0;
     }
 
+    .specific-budget {
+
+        h1 {
+            text-align: left;
+        }
+
+        .expense-table {
+            overflow-x: auto;
+        }
+    }
+
+    .progress-bars {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .single-chart {
+            flex-basis: 24%;
+
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+
+    .budgets-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        overflow-x: auto;
+
+        .budgets-item {
+            margin: 0px 5px;
+            flex-basis: 24%;
+
+            h3 {
+                display: block;
+                text-align: center;
+                padding: 10px;
+                cursor: pointer;
+            }
+        }
+
+        .not-selected {
+            background-color: #eee !important;
+        }
+
+        .selected {
+            background-color: #ddd !important;
+        }
+    }
+
     table {
         font-size: 12px;
         border-collapse: collapse;

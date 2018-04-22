@@ -1,33 +1,64 @@
 <div class="display-budgets-container">
         <h1>Budżety</h1>
-        <table *ngIf="(budgets | async) as budgets; else loading">
-            <thead>
-                <tr>
-                    <th>Nazwa</th>
-                    <th>Początek</th>
-                    <th>Koniec</th>
-                    <th>Kategorie</th>
-                    <th> </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let budget of budgets; let i = index">
-                    <td>{{ budget.name }}</td>
-                    <td>{{ budget.startDate }}</td>
-                    <td>{{ budget.endDate }}</td>
-                    <td>
-                        <div class="single-budget-category" *ngFor="let singleCategory of budget.categories; let j = index">
-                            <p>Name: {{ singleCategory.name }}</p>
-                            <p>Declared amount (limit): {{ singleCategory.declaredAmount }}</p>
-                            <p>Entered amount: {{ singleCategory.enteredAmount }}</p>
-                        </div>
-                    </td>
-                    <td>
-                        <button mat-raised-button color="primary" (click)="remove(budget)">DELETE</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="budgets-list" *ngIf="budgets">
+            <div class="budgets-item" *ngFor="let budget of budgets">
+                <h3
+                    [ngClass]="choosedBudget?._id === budget._id ? 'selected' : 'not-selected'"
+                    (click)="changeBudget(budget._id)">{{ budget.name }}</h3>
+            </div>
+        </div>
+
+        <div class="specific-budget">
+            <h1>{{ choosedBudget?.name }}</h1>
+            <div class="progress-bars" *ngIf="isBudgetExpenseLoaded">
+                <div class="single-chart" *ngFor="let categoryChart of categoryCharts">
+                    <h2>{{ categoryChart[0][0] }}</h2>
+                    <canvas
+                        *ngIf="isBudgetExpenseLoaded"
+                        baseChart
+                        [data]="categoryChart[1]"
+                        [labels]="categoryChart[0]"
+                        [chartType]="'doughnut'"
+                        [options]="chartOptions">
+                    </canvas>
+                </div>
+            </div>
+            <div class="days-left">
+
+            </div>
+            <div class="expense-table">
+                <table *ngIf="isBudgetExpenseLoaded; else loading">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Kategoria</th>
+                            <th>Kategoria budżetu</th>
+                            <th>Miejsce</th>
+                            <th>Data</th>
+                            <th>Ilość sztuk</th>
+                            <th>Metoda płatności</th>
+                            <th>Cena</th>
+                            <th>Łączny koszt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let expense of budgetExpenses; let i = index">
+                            <td>{{ expense.name }}</td>
+                            <td>{{ expense.expenseCategory }}</td>
+                            <td>{{ expense.choosedBudgetCategory }}</td>
+                            <td>{{ expense.where }}</td>
+                            <td>{{ expense.when }}</td>
+                            <td>{{ expense.qt }}</td>
+                            <td>{{ expense.paymentMethod }}</td>
+                            <td>{{ expense.cost }}</td>
+                            <td>{{ expense.totalCost }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
 
         <ng-template #loading>
             <mat-spinner></mat-spinner>
