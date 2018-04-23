@@ -1,3 +1,7 @@
+.dashboard-container {
+    height: calc(100vh - 60px); // TODO: I have to change it - in different place should be information how big it is
+}
+
 .dashboard {
     display: flex;
     flex-direction: row;
@@ -9,6 +13,5 @@
         margin: 10px;
         width: 500px;
         height: 250px;
-
     }
 }
