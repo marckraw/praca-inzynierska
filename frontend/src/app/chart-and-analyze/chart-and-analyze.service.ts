@@ -22,35 +22,21 @@ export class ChartAndAnalyzeService {
     ) { }
 
     public getUserIncomes() {
-        console.log("getting user incomes...");
-
         const userId = this.getUserId();
 
         return this.http.get<IIncome[]>(`${this.apiUrl}incomes/${userId}`)
     }
 
     public getUserExpenses() {
-        console.log("getting user expenses...");
-
         const userId = this.getUserId();
 
         return this.http.get<IExpense[]>(`${this.apiUrl}expenses/${userId}`);
     }
 
     public getUserIncomesByMethod(method) {
-        console.log("getting user incomes by method...");
-
         const userId = this.getUserId();
 
         return this.http.get<IIncome[]>(`${this.apiUrl}incomes/${userId}/${method}`);
-    }
-
-    public getUserExpensesByMethod() {
-        console.log("getting user expenses by method...");
-    }
-
-    public getUserExpensesByhPlace() {
-        console.log("getting user expenses by place...");
     }
 
     public addIncome(income: any): Observable<any> {
@@ -70,8 +56,6 @@ export class ChartAndAnalyzeService {
     public editIncome(income: any): Observable<any> {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
-
-        console.log(income);
 
         return this.http.put(`${this.apiUrl}incomes/edit`, income, { headers });
     }

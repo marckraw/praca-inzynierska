@@ -41,7 +41,7 @@ export class ManageProductsComponent implements OnInit {
                     console.log("Nie potwierdziles danych. Popraw je...");
                 }
             } else {
-                console.log("poszedles w pizdu");
+                console.log("Error happened");
             }
         });
     }

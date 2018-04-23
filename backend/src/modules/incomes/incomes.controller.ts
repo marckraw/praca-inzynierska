@@ -17,7 +17,6 @@ export class IncomesController {
 
     @Post("add")
     async addIncome( @Body() addIncomeDto: AddIncomeDto) {
-        console.log("incomes/add");
         return this.incomesService.addIncome(addIncomeDto);
     }
 
@@ -33,13 +32,11 @@ export class IncomesController {
 
     @Get(":id")
     async find(@Param() params): Promise<IIncome[]> {
-        console.log(params);
         return this.incomesService.find(params.id);
     }
 
     @Get("/:id/:method")
     async getByUserAndMethod(@Param() params): Promise<IIncome[]> {
-        console.log("poszedl request");
         return this.incomesService.getByUserAndMethod(params.id, params.method);
     }
 

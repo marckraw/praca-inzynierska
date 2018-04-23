@@ -37,11 +37,9 @@ export class LoginComponent {
             this.userDataRepository.login2(userCredentials)
                 .subscribe(
                     response => {
-                        console.log(response);
                         this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
                         this.localStorage.setItem({name: "jwt", content: response.authenticatedUserJWT});
                         this.userDataRepository.userData = decodeJwt(response.authenticatedUserJWT);
-                        console.log(this.userDataRepository.userData);
                         this.userDataRepository.loggedIn = true;
                         this.router.navigate(["/home/dashboard"]);
                     },

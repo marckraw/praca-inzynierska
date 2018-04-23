@@ -43,7 +43,6 @@ export class ManageBudgetsComponent {
     public ngOnInit() {
         this.budgetService.showBudgets()
             .subscribe( budgets => {
-                console.log(budgets);
                 this.budgets = budgets;
                 this.isBudgetsLoaded = true;
             });
@@ -54,13 +53,11 @@ export class ManageBudgetsComponent {
         this.categoryCharts = [];
 
         this.choosedBudget = this.budgets.filter( budget => budget._id === budgetId)[0];
-        console.log(this.choosedBudget);
 
         this.expenseService.showExpenses()
             .subscribe( expenses => {
                 this.budgetExpenses = expenses.filter( expense => expense.choosedBudget === this.choosedBudget._id);
                 this.isBudgetExpenseLoaded = true;
-                console.log(this.budgetExpenses);
 
                 this.choosedBudget.categories
                     .map( category =>
@@ -75,10 +72,6 @@ export class ManageBudgetsComponent {
                         const categoryData = [category.enteredAmount, category.declaredAmount - category.enteredAmount];
                         this.categoryCharts.push([categoryLabels, categoryData]);
                     });
-
-                console.log(this.choosedBudget);
-                console.log(this.categoryCharts);
-
             });
     }
 }

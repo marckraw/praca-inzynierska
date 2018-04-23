@@ -45,7 +45,6 @@ export class AddProductComponent {
                 data: { product, confirmed: false },
             });
             dialogRef.afterClosed().subscribe( result => {
-                console.log("Dialog was closed", result);
                 if (result.confirmed) {
                     this.product.addProduct(result.product).subscribe( (data) => console.dir(data));
                 } else {

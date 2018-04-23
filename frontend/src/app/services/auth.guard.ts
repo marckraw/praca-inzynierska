@@ -12,20 +12,15 @@ export class AuthGuard implements CanActivate {
             return true;
         }
 
-        // not logged in so redirect to login page with the return url
-        console.log("nawiguj do innego routa, nie zalogowany");
         this.router.navigate(["/login"]);
         return false;
     }
 
     public canActivateChild() {
         if (localStorage.getItem("isLoggedIn") === "yes") {
-            // logged in so return true
             return true;
         }
 
-        // not logged in so redirect to login page with the return url
-        console.log("canactivate child wykrylo ze nie mnoze isc do routa");
         this.router.navigate(["/login"]);
         return false;
     }

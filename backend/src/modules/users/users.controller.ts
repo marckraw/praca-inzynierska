@@ -23,21 +23,4 @@ export class UsersController {
     async login( @Body() loginUserDto: LoginUserDto) {
         return await this.usersService.login(loginUserDto);
     }
-
-    // @Post("create")
-    // async createUser( @Body() createUserDto: CreateUserDto) {
-    //     return this.usersService.createUser(createUserDto);
-    // }
-
-    // @Get(":id")
-    // async findById(id: number) {
-    //     // implement findById
-    // }
-
-    @Get()
-    findAll(): void { //Promise<IUser[]>
-        console.log("something");
-        // return this.usersService.findAll();
-    }
-
 }

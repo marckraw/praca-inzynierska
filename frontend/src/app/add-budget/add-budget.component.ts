@@ -29,7 +29,6 @@ export class AddBudgetComponent {
             dialogRef.afterClosed().subscribe(result => {
                 if (result.confirmed) {
                     this.budgetService.addBudget(result.budget).subscribe();
-                    console.log("frontend component: ", result.budget);
                     console.log("potwierdziles dane, czas zalozyc budzet po backendzie");
                 } else {
                     console.log("Nie potwierdziles danych. Popraw je...");

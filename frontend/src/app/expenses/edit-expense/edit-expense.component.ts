@@ -5,7 +5,7 @@ import { HardcodedData } from "../../hardcoded-data/expense-category";
 import { IEditExpense } from "../../models/edit-expense.interface";
 
 @Component({
-  selector: "pi-edit-expense",
+  selector: "app-edit-expense",
   templateUrl: "./edit-expense.component.html",
   styleUrls: ["./edit-expense.component.scss"],
 })
@@ -24,7 +24,6 @@ export class EditExpenseComponent {
     ) {}
 
     public ngOnInit() {
-        console.log(this.data);
         this.createForm();
         this.calcTotal();
     }
