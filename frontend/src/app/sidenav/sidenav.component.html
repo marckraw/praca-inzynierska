@@ -16,8 +16,6 @@
                 <li>Zalogowany jako:</li>
                 <li><strong>{{ userDataRepository.userData?.firstName }} {{ userDataRepository.userData?.lastName }}</strong></li>
                 <li><a mat-raised-button color="warn" (click)="logout()">Wyloguj</a></li>
-
-                <li><a mat-raised-button color="primary" (click)="sidenav.close()" routerLink="/home/chart-and-analyze">Wykresy i analiza</a></li>
             </ul>
         </nav>
     </mat-sidenav>

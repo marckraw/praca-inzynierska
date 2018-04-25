@@ -8,7 +8,6 @@
                     placeholder="Email"
                     [formControlName]="'email'"
                     [errorStateMatcher]="matcher">
-                <mat-hint>Errors appear instantly!</mat-hint>
                 <mat-error *ngIf="formGroup.controls['email'].hasError('email') && !formGroup.controls['email'].hasError('required')">
                     Please enter a valid email address
                 </mat-error>
@@ -24,7 +23,6 @@
                     placeholder="Password"
                     [formControlName]="'password'"
                     [errorStateMatcher]="matcher">
-                <mat-hint>Errors appear instantly!</mat-hint>
                 <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
                     Passowrd is <strong>required</strong>
                 </mat-error>
@@ -33,12 +31,11 @@
             <mat-form-field class="example-full-width">
                 <input
                     matInput
-                    placeholder="First nane"
+                    placeholder="First name"
                     [formControlName]="'firstName'"
                     [errorStateMatcher]="matcher">
-                <mat-hint>Errors appear instantly!</mat-hint>
                 <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
-                    Passowrd is <strong>required</strong>
+                    First name is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -48,9 +45,8 @@
                     placeholder="Last name"
                     [formControlName]="'lastName'"
                     [errorStateMatcher]="matcher">
-                <mat-hint>Errors appear instantly!</mat-hint>
                 <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
-                    Passowrd is <strong>required</strong>
+                    Last name is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
 
