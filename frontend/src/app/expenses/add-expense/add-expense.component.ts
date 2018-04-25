@@ -41,7 +41,6 @@ export class AddExpenseComponent {
     public ngOnInit() {
         this.budgetService.showBudgets().subscribe(budgets => {
             this.allBudgets = budgets;
-            console.log(this.allBudgets);
         });
         this.budgetCategories = [];
     }

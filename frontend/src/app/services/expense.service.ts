@@ -31,8 +31,6 @@ export class ExpenseService {
         const headers = new HttpHeaders();
         headers.set("Content-Type", "applications/json");
 
-        console.log(expense);
-
         return this.http.put(`${this.apiUrl}expenses/edit`, expense, { headers });
     }
 

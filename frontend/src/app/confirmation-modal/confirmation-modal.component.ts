@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from "@angular/material";
 import { GenericSnackbarComponent } from "./../generic-snackbar/generic-snackbar.component";
 
 @Component({
-    selector: "pi-confirmation-modal",
+    selector: "app-confirmation-modal",
     templateUrl: "./confirmation-modal.component.html",
     styleUrls: ["./confirmation-modal.component.scss"],
 })
