@@ -28,7 +28,6 @@ export class UserDataRepository {
     }
 
     public login() {
-        // request do servera
         this.localStorage.setItem({name: "isLoggedIn", content: "yes"});
         const loggedIn = this.localStorage.getItem("isLoggedIn");
 
